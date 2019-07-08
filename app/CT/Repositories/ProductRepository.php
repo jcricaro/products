@@ -29,9 +29,8 @@ interface ProductRepository
     public function update($id, $data = []);
 
     /**
-     * @param $id
      * @param array $data
      * @return mixed
      */
-    public function store($id, $data = []);
+    public function store($data = []);
 }

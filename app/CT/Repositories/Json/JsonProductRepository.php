@@ -22,9 +22,9 @@ class JsonProductRepository implements ProductRepository
     /**
      * @param Collection $products
      */
-    private function save(Collection $products)
+    private function save($products)
     {
-        Storage::put('products.json', $products->toJson());
+        Storage::put('products.json', json_encode($products));
     }
 
 
@@ -73,8 +73,14 @@ class JsonProductRepository implements ProductRepository
      * @param array $data
      * @return mixed
      */
-    public function store($id, $data = [])
+    public function store($data = [])
     {
-        // TODO: Implement store() method.
+        $products = $this->read();
+
+        $data['created_at'] = now()->format('Y-m-d H:i:s');
+
+        $this->save($products->push($data)->all());
+
+        return $data;
     }
 }

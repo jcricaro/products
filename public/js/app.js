@@ -1688,15 +1688,20 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddProduct.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddProduct.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { if (i % 2) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } else { Object.defineProperties(target, Object.getOwnPropertyDescriptors(arguments[i])); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -1713,4455 +1718,7903 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: "AddProduct",
+  data: function data() {
+    return {
+      product: {
+        name: '',
+        price: '',
+        quantity: ''
+      },
+      errors: {},
+      message: ''
+    };
+  },
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['addProduct']), {
+    handleSubmit: function handleSubmit(event) {
+      var _this = this;
+
+      event.preventDefault();
+      this.addProduct(this.product).then(function (response) {
+        _this.errors = {};
+        _this.product = {
+          name: '',
+          price: '',
+          quantity: ''
+        };
+        _this.message = response.message;
+      })["catch"](function (data) {
+        _this.errors = data.errors;
+      });
+    }
+  })
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddProduct__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddProduct */ "./resources/js/components/AddProduct.vue");
+/* harmony import */ var _ProductList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductList */ "./resources/js/components/ProductList.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "App",
+  components: {
+    AddProduct: _AddProduct__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ProductList: _ProductList__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])(['fetchProducts']),
   mounted: function mounted() {
-    console.log('Component mounted.');
+    this.fetchProducts();
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductList.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProductList.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(date_fns__WEBPACK_IMPORTED_MODULE_1__);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { if (i % 2) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } else { Object.defineProperties(target, Object.getOwnPropertyDescriptors(arguments[i])); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ProductList",
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['products']), {
+    sumTotalValue: function sumTotalValue() {
+      var _this = this;
+
+      var total = 0;
+      this.products.forEach(function (product) {
+        total = total + _this.totalValue(product.price, product.quantity);
+      });
+      return total;
+    }
+  }),
+  methods: {
+    totalValue: function totalValue($price, $quantity) {
+      return $price * $quantity;
+    },
+    formatDate: function formatDate(date) {
+      return Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["distanceInWordsStrict"])(Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["parse"])(date), new Date()) + ' ago';
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.invalid-feedback[data-v-57bf9ab9] {\n    display: block;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.card[data-v-332fccf4] {\n    margin-top: 64px;\n    margin-bottom: 40px;\n}\n.table[data-v-332fccf4] {\n    margin-bottom: 40px;\n}\n.container[data-v-332fccf4] {\n    width: 768px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/_lib/getTimezoneOffsetInMilliseconds/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/date-fns/_lib/getTimezoneOffsetInMilliseconds/index.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var MILLISECONDS_IN_MINUTE = 60000
+
+/**
+ * Google Chrome as of 67.0.3396.87 introduced timezones with offset that includes seconds.
+ * They usually appear for dates that denote time before the timezones were introduced
+ * (e.g. for 'Europe/Prague' timezone the offset is GMT+00:57:44 before 1 October 1891
+ * and GMT+01:00:00 after that date)
+ *
+ * Date#getTimezoneOffset returns the offset in minutes and would return 57 for the example above,
+ * which would lead to incorrect calculations.
+ *
+ * This function returns the timezone offset in milliseconds that takes seconds in account.
+ */
+module.exports = function getTimezoneOffsetInMilliseconds (dirtyDate) {
+  var date = new Date(dirtyDate.getTime())
+  var baseTimezoneOffset = date.getTimezoneOffset()
+  date.setSeconds(0, 0)
+  var millisecondsPartOfTimezoneOffset = date.getTime() % MILLISECONDS_IN_MINUTE
+
+  return baseTimezoneOffset * MILLISECONDS_IN_MINUTE + millisecondsPartOfTimezoneOffset
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_days/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/add_days/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Add the specified number of days to the given date.
+ *
+ * @description
+ * Add the specified number of days to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of days to be added
+ * @returns {Date} the new date with the days added
+ *
+ * @example
+ * // Add 10 days to 1 September 2014:
+ * var result = addDays(new Date(2014, 8, 1), 10)
+ * //=> Thu Sep 11 2014 00:00:00
+ */
+function addDays (dirtyDate, dirtyAmount) {
+  var date = parse(dirtyDate)
+  var amount = Number(dirtyAmount)
+  date.setDate(date.getDate() + amount)
+  return date
+}
+
+module.exports = addDays
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_hours/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/add_hours/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js")
+
+var MILLISECONDS_IN_HOUR = 3600000
+
+/**
+ * @category Hour Helpers
+ * @summary Add the specified number of hours to the given date.
+ *
+ * @description
+ * Add the specified number of hours to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of hours to be added
+ * @returns {Date} the new date with the hours added
+ *
+ * @example
+ * // Add 2 hours to 10 July 2014 23:00:00:
+ * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)
+ * //=> Fri Jul 11 2014 01:00:00
+ */
+function addHours (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR)
+}
+
+module.exports = addHours
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_iso_years/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/add_iso_years/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var setISOYear = __webpack_require__(/*! ../set_iso_year/index.js */ "./node_modules/date-fns/set_iso_year/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Add the specified number of ISO week-numbering years to the given date.
+ *
+ * @description
+ * Add the specified number of ISO week-numbering years to the given date.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of ISO week-numbering years to be added
+ * @returns {Date} the new date with the ISO week-numbering years added
+ *
+ * @example
+ * // Add 5 ISO week-numbering years to 2 July 2010:
+ * var result = addISOYears(new Date(2010, 6, 2), 5)
+ * //=> Fri Jun 26 2015 00:00:00
+ */
+function addISOYears (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return setISOYear(dirtyDate, getISOYear(dirtyDate) + amount)
+}
+
+module.exports = addISOYears
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_milliseconds/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/add_milliseconds/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Add the specified number of milliseconds to the given date.
+ *
+ * @description
+ * Add the specified number of milliseconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be added
+ * @returns {Date} the new date with the milliseconds added
+ *
+ * @example
+ * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
+ * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * //=> Thu Jul 10 2014 12:45:30.750
+ */
+function addMilliseconds (dirtyDate, dirtyAmount) {
+  var timestamp = parse(dirtyDate).getTime()
+  var amount = Number(dirtyAmount)
+  return new Date(timestamp + amount)
+}
+
+module.exports = addMilliseconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_minutes/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/add_minutes/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+
+/**
+ * @category Minute Helpers
+ * @summary Add the specified number of minutes to the given date.
+ *
+ * @description
+ * Add the specified number of minutes to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of minutes to be added
+ * @returns {Date} the new date with the minutes added
+ *
+ * @example
+ * // Add 30 minutes to 10 July 2014 12:00:00:
+ * var result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
+ * //=> Thu Jul 10 2014 12:30:00
+ */
+function addMinutes (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)
+}
+
+module.exports = addMinutes
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_months/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/add_months/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var getDaysInMonth = __webpack_require__(/*! ../get_days_in_month/index.js */ "./node_modules/date-fns/get_days_in_month/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Add the specified number of months to the given date.
+ *
+ * @description
+ * Add the specified number of months to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of months to be added
+ * @returns {Date} the new date with the months added
+ *
+ * @example
+ * // Add 5 months to 1 September 2014:
+ * var result = addMonths(new Date(2014, 8, 1), 5)
+ * //=> Sun Feb 01 2015 00:00:00
+ */
+function addMonths (dirtyDate, dirtyAmount) {
+  var date = parse(dirtyDate)
+  var amount = Number(dirtyAmount)
+  var desiredMonth = date.getMonth() + amount
+  var dateWithDesiredMonth = new Date(0)
+  dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1)
+  dateWithDesiredMonth.setHours(0, 0, 0, 0)
+  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)
+  // Set the last day of the new month
+  // if the original date was the last day of the longer month
+  date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()))
+  return date
+}
+
+module.exports = addMonths
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_quarters/index.js":
 /*!*****************************************************!*\
-  !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
+  !*** ./node_modules/date-fns/add_quarters/index.js ***!
   \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/*!
-  * Bootstrap v4.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-  */
-(function (global, factory) {
-   true ? factory(exports, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")) :
-  undefined;
-}(this, function (exports, $, Popper) { 'use strict';
+var addMonths = __webpack_require__(/*! ../add_months/index.js */ "./node_modules/date-fns/add_months/index.js")
 
-  $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
-  Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
+/**
+ * @category Quarter Helpers
+ * @summary Add the specified number of year quarters to the given date.
+ *
+ * @description
+ * Add the specified number of year quarters to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of quarters to be added
+ * @returns {Date} the new date with the quarters added
+ *
+ * @example
+ * // Add 1 quarter to 1 September 2014:
+ * var result = addQuarters(new Date(2014, 8, 1), 1)
+ * //=> Mon Dec 01 2014 00:00:00
+ */
+function addQuarters (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  var months = amount * 3
+  return addMonths(dirtyDate, months)
+}
 
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
+module.exports = addQuarters
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_seconds/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/add_seconds/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Add the specified number of seconds to the given date.
+ *
+ * @description
+ * Add the specified number of seconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of seconds to be added
+ * @returns {Date} the new date with the seconds added
+ *
+ * @example
+ * // Add 30 seconds to 10 July 2014 12:45:00:
+ * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
+ * //=> Thu Jul 10 2014 12:45:30
+ */
+function addSeconds (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMilliseconds(dirtyDate, amount * 1000)
+}
+
+module.exports = addSeconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_weeks/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/add_weeks/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addDays = __webpack_require__(/*! ../add_days/index.js */ "./node_modules/date-fns/add_days/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Add the specified number of weeks to the given date.
+ *
+ * @description
+ * Add the specified number of week to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of weeks to be added
+ * @returns {Date} the new date with the weeks added
+ *
+ * @example
+ * // Add 4 weeks to 1 September 2014:
+ * var result = addWeeks(new Date(2014, 8, 1), 4)
+ * //=> Mon Sep 29 2014 00:00:00
+ */
+function addWeeks (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  var days = amount * 7
+  return addDays(dirtyDate, days)
+}
+
+module.exports = addWeeks
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/add_years/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/add_years/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addMonths = __webpack_require__(/*! ../add_months/index.js */ "./node_modules/date-fns/add_months/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Add the specified number of years to the given date.
+ *
+ * @description
+ * Add the specified number of years to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of years to be added
+ * @returns {Date} the new date with the years added
+ *
+ * @example
+ * // Add 5 years to 1 September 2014:
+ * var result = addYears(new Date(2014, 8, 1), 5)
+ * //=> Sun Sep 01 2019 00:00:00
+ */
+function addYears (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMonths(dirtyDate, amount * 12)
+}
+
+module.exports = addYears
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/are_ranges_overlapping/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/date-fns/are_ranges_overlapping/index.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Range Helpers
+ * @summary Is the given date range overlapping with another date range?
+ *
+ * @description
+ * Is the given date range overlapping with another date range?
+ *
+ * @param {Date|String|Number} initialRangeStartDate - the start of the initial range
+ * @param {Date|String|Number} initialRangeEndDate - the end of the initial range
+ * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with
+ * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with
+ * @returns {Boolean} whether the date ranges are overlapping
+ * @throws {Error} startDate of a date range cannot be after its endDate
+ *
+ * @example
+ * // For overlapping date ranges:
+ * areRangesOverlapping(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)
+ * )
+ * //=> true
+ *
+ * @example
+ * // For non-overlapping date ranges:
+ * areRangesOverlapping(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)
+ * )
+ * //=> false
+ */
+function areRangesOverlapping (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
+  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()
+  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()
+  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()
+  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()
+
+  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
+    throw new Error('The start of the range cannot be after the end of the range')
+  }
+
+  return initialStartTime < comparedEndTime && comparedStartTime < initialEndTime
+}
+
+module.exports = areRangesOverlapping
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/closest_index_to/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/closest_index_to/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return an index of the closest date from the array comparing to the given date.
+ *
+ * @description
+ * Return an index of the closest date from the array comparing to the given date.
+ *
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date[]|String[]|Number[]} datesArray - the array to search
+ * @returns {Number} an index of the date closest to the given date
+ * @throws {TypeError} the second argument must be an instance of Array
+ *
+ * @example
+ * // Which date is closer to 6 September 2015?
+ * var dateToCompare = new Date(2015, 8, 6)
+ * var datesArray = [
+ *   new Date(2015, 0, 1),
+ *   new Date(2016, 0, 1),
+ *   new Date(2017, 0, 1)
+ * ]
+ * var result = closestIndexTo(dateToCompare, datesArray)
+ * //=> 1
+ */
+function closestIndexTo (dirtyDateToCompare, dirtyDatesArray) {
+  if (!(dirtyDatesArray instanceof Array)) {
+    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
+  }
+
+  var dateToCompare = parse(dirtyDateToCompare)
+  var timeToCompare = dateToCompare.getTime()
+
+  var result
+  var minDistance
+
+  dirtyDatesArray.forEach(function (dirtyDate, index) {
+    var currentDate = parse(dirtyDate)
+    var distance = Math.abs(timeToCompare - currentDate.getTime())
+    if (result === undefined || distance < minDistance) {
+      result = index
+      minDistance = distance
     }
+  })
+
+  return result
+}
+
+module.exports = closestIndexTo
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/closest_to/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/closest_to/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return a date from the array closest to the given date.
+ *
+ * @description
+ * Return a date from the array closest to the given date.
+ *
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date[]|String[]|Number[]} datesArray - the array to search
+ * @returns {Date} the date from the array closest to the given date
+ * @throws {TypeError} the second argument must be an instance of Array
+ *
+ * @example
+ * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
+ * var dateToCompare = new Date(2015, 8, 6)
+ * var result = closestTo(dateToCompare, [
+ *   new Date(2000, 0, 1),
+ *   new Date(2030, 0, 1)
+ * ])
+ * //=> Tue Jan 01 2030 00:00:00
+ */
+function closestTo (dirtyDateToCompare, dirtyDatesArray) {
+  if (!(dirtyDatesArray instanceof Array)) {
+    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
   }
 
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
+  var dateToCompare = parse(dirtyDateToCompare)
+  var timeToCompare = dateToCompare.getTime()
+
+  var result
+  var minDistance
+
+  dirtyDatesArray.forEach(function (dirtyDate) {
+    var currentDate = parse(dirtyDate)
+    var distance = Math.abs(timeToCompare - currentDate.getTime())
+    if (result === undefined || distance < minDistance) {
+      result = currentDate
+      minDistance = distance
+    }
+  })
+
+  return result
+}
+
+module.exports = closestTo
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/compare_asc/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/compare_asc/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Compare the two dates and return -1, 0 or 1.
+ *
+ * @description
+ * Compare the two dates and return 1 if the first date is after the second,
+ * -1 if the first date is before the second or 0 if dates are equal.
+ *
+ * @param {Date|String|Number} dateLeft - the first date to compare
+ * @param {Date|String|Number} dateRight - the second date to compare
+ * @returns {Number} the result of the comparison
+ *
+ * @example
+ * // Compare 11 February 1987 and 10 July 1989:
+ * var result = compareAsc(
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * )
+ * //=> -1
+ *
+ * @example
+ * // Sort the array of dates:
+ * var result = [
+ *   new Date(1995, 6, 2),
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * ].sort(compareAsc)
+ * //=> [
+ * //   Wed Feb 11 1987 00:00:00,
+ * //   Mon Jul 10 1989 00:00:00,
+ * //   Sun Jul 02 1995 00:00:00
+ * // ]
+ */
+function compareAsc (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var timeLeft = dateLeft.getTime()
+  var dateRight = parse(dirtyDateRight)
+  var timeRight = dateRight.getTime()
+
+  if (timeLeft < timeRight) {
+    return -1
+  } else if (timeLeft > timeRight) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+module.exports = compareAsc
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/compare_desc/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/compare_desc/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Compare the two dates reverse chronologically and return -1, 0 or 1.
+ *
+ * @description
+ * Compare the two dates and return -1 if the first date is after the second,
+ * 1 if the first date is before the second or 0 if dates are equal.
+ *
+ * @param {Date|String|Number} dateLeft - the first date to compare
+ * @param {Date|String|Number} dateRight - the second date to compare
+ * @returns {Number} the result of the comparison
+ *
+ * @example
+ * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:
+ * var result = compareDesc(
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * )
+ * //=> 1
+ *
+ * @example
+ * // Sort the array of dates in reverse chronological order:
+ * var result = [
+ *   new Date(1995, 6, 2),
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * ].sort(compareDesc)
+ * //=> [
+ * //   Sun Jul 02 1995 00:00:00,
+ * //   Mon Jul 10 1989 00:00:00,
+ * //   Wed Feb 11 1987 00:00:00
+ * // ]
+ */
+function compareDesc (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var timeLeft = dateLeft.getTime()
+  var dateRight = parse(dirtyDateRight)
+  var timeRight = dateRight.getTime()
+
+  if (timeLeft > timeRight) {
+    return -1
+  } else if (timeLeft < timeRight) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+module.exports = compareDesc
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_calendar_days/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_calendar_days/index.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+var MILLISECONDS_IN_DAY = 86400000
+
+/**
+ * @category Day Helpers
+ * @summary Get the number of calendar days between the given dates.
+ *
+ * @description
+ * Get the number of calendar days between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar days
+ *
+ * @example
+ * // How many calendar days are between
+ * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
+ * var result = differenceInCalendarDays(
+ *   new Date(2012, 6, 2, 0, 0),
+ *   new Date(2011, 6, 2, 23, 0)
+ * )
+ * //=> 366
+ */
+function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight) {
+  var startOfDayLeft = startOfDay(dirtyDateLeft)
+  var startOfDayRight = startOfDay(dirtyDateRight)
+
+  var timestampLeft = startOfDayLeft.getTime() -
+    startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampRight = startOfDayRight.getTime() -
+    startOfDayRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+
+  // Round the number of days to the nearest integer
+  // because the number of milliseconds in a day is not constant
+  // (e.g. it's different in the day of the daylight saving time clock shift)
+  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY)
+}
+
+module.exports = differenceInCalendarDays
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_calendar_iso_weeks/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_calendar_iso_weeks/index.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+var MILLISECONDS_IN_WEEK = 604800000
+
+/**
+ * @category ISO Week Helpers
+ * @summary Get the number of calendar ISO weeks between the given dates.
+ *
+ * @description
+ * Get the number of calendar ISO weeks between the given dates.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar ISO weeks
+ *
+ * @example
+ * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?
+ * var result = differenceInCalendarISOWeeks(
+ *   new Date(2014, 6, 21),
+ *   new Date(2014, 6, 6)
+ * )
+ * //=> 3
+ */
+function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight) {
+  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
+  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
+
+  var timestampLeft = startOfISOWeekLeft.getTime() -
+    startOfISOWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampRight = startOfISOWeekRight.getTime() -
+    startOfISOWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+
+  // Round the number of days to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)
+}
+
+module.exports = differenceInCalendarISOWeeks
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_calendar_iso_years/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_calendar_iso_years/index.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Get the number of calendar ISO week-numbering years between the given dates.
+ *
+ * @description
+ * Get the number of calendar ISO week-numbering years between the given dates.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar ISO week-numbering years
+ *
+ * @example
+ * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?
+ * var result = differenceInCalendarISOYears(
+ *   new Date(2012, 0, 1),
+ *   new Date(2010, 0, 1)
+ * )
+ * //=> 2
+ */
+function differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight) {
+  return getISOYear(dirtyDateLeft) - getISOYear(dirtyDateRight)
+}
+
+module.exports = differenceInCalendarISOYears
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_calendar_months/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_calendar_months/index.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Get the number of calendar months between the given dates.
+ *
+ * @description
+ * Get the number of calendar months between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar months
+ *
+ * @example
+ * // How many calendar months are between 31 January 2014 and 1 September 2014?
+ * var result = differenceInCalendarMonths(
+ *   new Date(2014, 8, 1),
+ *   new Date(2014, 0, 31)
+ * )
+ * //=> 8
+ */
+function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
+  var monthDiff = dateLeft.getMonth() - dateRight.getMonth()
+
+  return yearDiff * 12 + monthDiff
+}
+
+module.exports = differenceInCalendarMonths
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_calendar_quarters/index.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_calendar_quarters/index.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getQuarter = __webpack_require__(/*! ../get_quarter/index.js */ "./node_modules/date-fns/get_quarter/index.js")
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Get the number of calendar quarters between the given dates.
+ *
+ * @description
+ * Get the number of calendar quarters between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar quarters
+ *
+ * @example
+ * // How many calendar quarters are between 31 December 2013 and 2 July 2014?
+ * var result = differenceInCalendarQuarters(
+ *   new Date(2014, 6, 2),
+ *   new Date(2013, 11, 31)
+ * )
+ * //=> 3
+ */
+function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
+  var quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+
+  return yearDiff * 4 + quarterDiff
+}
+
+module.exports = differenceInCalendarQuarters
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_calendar_weeks/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_calendar_weeks/index.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ "./node_modules/date-fns/start_of_week/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+var MILLISECONDS_IN_WEEK = 604800000
+
+/**
+ * @category Week Helpers
+ * @summary Get the number of calendar weeks between the given dates.
+ *
+ * @description
+ * Get the number of calendar weeks between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Number} the number of calendar weeks
+ *
+ * @example
+ * // How many calendar weeks are between 5 July 2014 and 20 July 2014?
+ * var result = differenceInCalendarWeeks(
+ *   new Date(2014, 6, 20),
+ *   new Date(2014, 6, 5)
+ * )
+ * //=> 3
+ *
+ * @example
+ * // If the week starts on Monday,
+ * // how many calendar weeks are between 5 July 2014 and 20 July 2014?
+ * var result = differenceInCalendarWeeks(
+ *   new Date(2014, 6, 20),
+ *   new Date(2014, 6, 5),
+ *   {weekStartsOn: 1}
+ * )
+ * //=> 2
+ */
+function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var startOfWeekLeft = startOfWeek(dirtyDateLeft, dirtyOptions)
+  var startOfWeekRight = startOfWeek(dirtyDateRight, dirtyOptions)
+
+  var timestampLeft = startOfWeekLeft.getTime() -
+    startOfWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampRight = startOfWeekRight.getTime() -
+    startOfWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+
+  // Round the number of days to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)
+}
+
+module.exports = differenceInCalendarWeeks
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_calendar_years/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_calendar_years/index.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Get the number of calendar years between the given dates.
+ *
+ * @description
+ * Get the number of calendar years between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of calendar years
+ *
+ * @example
+ * // How many calendar years are between 31 December 2013 and 11 February 2015?
+ * var result = differenceInCalendarYears(
+ *   new Date(2015, 1, 11),
+ *   new Date(2013, 11, 31)
+ * )
+ * //=> 2
+ */
+function differenceInCalendarYears (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  return dateLeft.getFullYear() - dateRight.getFullYear()
+}
+
+module.exports = differenceInCalendarYears
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_days/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_days/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInCalendarDays = __webpack_require__(/*! ../difference_in_calendar_days/index.js */ "./node_modules/date-fns/difference_in_calendar_days/index.js")
+var compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Get the number of full days between the given dates.
+ *
+ * @description
+ * Get the number of full days between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full days
+ *
+ * @example
+ * // How many full days are between
+ * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
+ * var result = differenceInDays(
+ *   new Date(2012, 6, 2, 0, 0),
+ *   new Date(2011, 6, 2, 23, 0)
+ * )
+ * //=> 365
+ */
+function differenceInDays (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
+  dateLeft.setDate(dateLeft.getDate() - sign * difference)
+
+  // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
+  // If so, result must be decreased by 1 in absolute value
+  var isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign
+  return sign * (difference - isLastDayNotFull)
+}
+
+module.exports = differenceInDays
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_hours/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_hours/index.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_milliseconds/index.js */ "./node_modules/date-fns/difference_in_milliseconds/index.js")
+
+var MILLISECONDS_IN_HOUR = 3600000
+
+/**
+ * @category Hour Helpers
+ * @summary Get the number of hours between the given dates.
+ *
+ * @description
+ * Get the number of hours between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of hours
+ *
+ * @example
+ * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?
+ * var result = differenceInHours(
+ *   new Date(2014, 6, 2, 19, 0),
+ *   new Date(2014, 6, 2, 6, 50)
+ * )
+ * //=> 12
+ */
+function differenceInHours (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_HOUR
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInHours
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_iso_years/index.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_iso_years/index.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInCalendarISOYears = __webpack_require__(/*! ../difference_in_calendar_iso_years/index.js */ "./node_modules/date-fns/difference_in_calendar_iso_years/index.js")
+var compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js")
+var subISOYears = __webpack_require__(/*! ../sub_iso_years/index.js */ "./node_modules/date-fns/sub_iso_years/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Get the number of full ISO week-numbering years between the given dates.
+ *
+ * @description
+ * Get the number of full ISO week-numbering years between the given dates.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full ISO week-numbering years
+ *
+ * @example
+ * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?
+ * var result = differenceInISOYears(
+ *   new Date(2012, 0, 1),
+ *   new Date(2010, 0, 1)
+ * )
+ * //=> 1
+ */
+function differenceInISOYears (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarISOYears(dateLeft, dateRight))
+  dateLeft = subISOYears(dateLeft, sign * difference)
+
+  // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
+  // if last calendar ISO year is not full
+  // If so, result must be decreased by 1 in absolute value
+  var isLastISOYearNotFull = compareAsc(dateLeft, dateRight) === -sign
+  return sign * (difference - isLastISOYearNotFull)
+}
+
+module.exports = differenceInISOYears
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_milliseconds/index.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_milliseconds/index.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Get the number of milliseconds between the given dates.
+ *
+ * @description
+ * Get the number of milliseconds between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of milliseconds
+ *
+ * @example
+ * // How many milliseconds are between
+ * // 2 July 2014 12:30:20.600 and 2 July 2014 12:30:21.700?
+ * var result = differenceInMilliseconds(
+ *   new Date(2014, 6, 2, 12, 30, 21, 700),
+ *   new Date(2014, 6, 2, 12, 30, 20, 600)
+ * )
+ * //=> 1100
+ */
+function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+  return dateLeft.getTime() - dateRight.getTime()
+}
+
+module.exports = differenceInMilliseconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_minutes/index.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_minutes/index.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_milliseconds/index.js */ "./node_modules/date-fns/difference_in_milliseconds/index.js")
+
+var MILLISECONDS_IN_MINUTE = 60000
+
+/**
+ * @category Minute Helpers
+ * @summary Get the number of minutes between the given dates.
+ *
+ * @description
+ * Get the number of minutes between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of minutes
+ *
+ * @example
+ * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?
+ * var result = differenceInMinutes(
+ *   new Date(2014, 6, 2, 12, 20, 0),
+ *   new Date(2014, 6, 2, 12, 7, 59)
+ * )
+ * //=> 12
+ */
+function differenceInMinutes (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_MINUTE
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInMinutes
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_months/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_months/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInCalendarMonths = __webpack_require__(/*! ../difference_in_calendar_months/index.js */ "./node_modules/date-fns/difference_in_calendar_months/index.js")
+var compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Get the number of full months between the given dates.
+ *
+ * @description
+ * Get the number of full months between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full months
+ *
+ * @example
+ * // How many full months are between 31 January 2014 and 1 September 2014?
+ * var result = differenceInMonths(
+ *   new Date(2014, 8, 1),
+ *   new Date(2014, 0, 31)
+ * )
+ * //=> 7
+ */
+function differenceInMonths (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
+  dateLeft.setMonth(dateLeft.getMonth() - sign * difference)
+
+  // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
+  // If so, result must be decreased by 1 in absolute value
+  var isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign
+  return sign * (difference - isLastMonthNotFull)
+}
+
+module.exports = differenceInMonths
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_quarters/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_quarters/index.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var differenceInMonths = __webpack_require__(/*! ../difference_in_months/index.js */ "./node_modules/date-fns/difference_in_months/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Get the number of full quarters between the given dates.
+ *
+ * @description
+ * Get the number of full quarters between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full quarters
+ *
+ * @example
+ * // How many full quarters are between 31 December 2013 and 2 July 2014?
+ * var result = differenceInQuarters(
+ *   new Date(2014, 6, 2),
+ *   new Date(2013, 11, 31)
+ * )
+ * //=> 2
+ */
+function differenceInQuarters (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInQuarters
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_seconds/index.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_seconds/index.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var differenceInMilliseconds = __webpack_require__(/*! ../difference_in_milliseconds/index.js */ "./node_modules/date-fns/difference_in_milliseconds/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Get the number of seconds between the given dates.
+ *
+ * @description
+ * Get the number of seconds between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of seconds
+ *
+ * @example
+ * // How many seconds are between
+ * // 2 July 2014 12:30:07.999 and 2 July 2014 12:30:20.000?
+ * var result = differenceInSeconds(
+ *   new Date(2014, 6, 2, 12, 30, 20, 0),
+ *   new Date(2014, 6, 2, 12, 30, 7, 999)
+ * )
+ * //=> 12
+ */
+function differenceInSeconds (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInSeconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_weeks/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_weeks/index.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var differenceInDays = __webpack_require__(/*! ../difference_in_days/index.js */ "./node_modules/date-fns/difference_in_days/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Get the number of full weeks between the given dates.
+ *
+ * @description
+ * Get the number of full weeks between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full weeks
+ *
+ * @example
+ * // How many full weeks are between 5 July 2014 and 20 July 2014?
+ * var result = differenceInWeeks(
+ *   new Date(2014, 6, 20),
+ *   new Date(2014, 6, 5)
+ * )
+ * //=> 2
+ */
+function differenceInWeeks (dirtyDateLeft, dirtyDateRight) {
+  var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
+  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+}
+
+module.exports = differenceInWeeks
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/difference_in_years/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/date-fns/difference_in_years/index.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInCalendarYears = __webpack_require__(/*! ../difference_in_calendar_years/index.js */ "./node_modules/date-fns/difference_in_calendar_years/index.js")
+var compareAsc = __webpack_require__(/*! ../compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Get the number of full years between the given dates.
+ *
+ * @description
+ * Get the number of full years between the given dates.
+ *
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} the number of full years
+ *
+ * @example
+ * // How many full years are between 31 December 2013 and 11 February 2015?
+ * var result = differenceInYears(
+ *   new Date(2015, 1, 11),
+ *   new Date(2013, 11, 31)
+ * )
+ * //=> 1
+ */
+function differenceInYears (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight))
+  dateLeft.setFullYear(dateLeft.getFullYear() - sign * difference)
+
+  // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
+  // If so, result must be decreased by 1 in absolute value
+  var isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign
+  return sign * (difference - isLastYearNotFull)
+}
+
+module.exports = differenceInYears
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/distance_in_words/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/date-fns/distance_in_words/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var compareDesc = __webpack_require__(/*! ../compare_desc/index.js */ "./node_modules/date-fns/compare_desc/index.js")
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInSeconds = __webpack_require__(/*! ../difference_in_seconds/index.js */ "./node_modules/date-fns/difference_in_seconds/index.js")
+var differenceInMonths = __webpack_require__(/*! ../difference_in_months/index.js */ "./node_modules/date-fns/difference_in_months/index.js")
+var enLocale = __webpack_require__(/*! ../locale/en/index.js */ "./node_modules/date-fns/locale/en/index.js")
+
+var MINUTES_IN_DAY = 1440
+var MINUTES_IN_ALMOST_TWO_DAYS = 2520
+var MINUTES_IN_MONTH = 43200
+var MINUTES_IN_TWO_MONTHS = 86400
+
+/**
+ * @category Common Helpers
+ * @summary Return the distance between the given dates in words.
+ *
+ * @description
+ * Return the distance between the given dates in words.
+ *
+ * | Distance between dates                                            | Result              |
+ * |-------------------------------------------------------------------|---------------------|
+ * | 0 ... 30 secs                                                     | less than a minute  |
+ * | 30 secs ... 1 min 30 secs                                         | 1 minute            |
+ * | 1 min 30 secs ... 44 mins 30 secs                                 | [2..44] minutes     |
+ * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |
+ * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |
+ * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |
+ * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |
+ * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |
+ * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |
+ * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |
+ * | 1 yr ... 1 yr 3 months                                            | about 1 year        |
+ * | 1 yr 3 months ... 1 yr 9 month s                                  | over 1 year         |
+ * | 1 yr 9 months ... 2 yrs                                           | almost 2 years      |
+ * | N yrs ... N yrs 3 months                                          | about N years       |
+ * | N yrs 3 months ... N yrs 9 months                                 | over N years        |
+ * | N yrs 9 months ... N+1 yrs                                        | almost N+1 years    |
+ *
+ * With `options.includeSeconds == true`:
+ * | Distance between dates | Result               |
+ * |------------------------|----------------------|
+ * | 0 secs ... 5 secs      | less than 5 seconds  |
+ * | 5 secs ... 10 secs     | less than 10 seconds |
+ * | 10 secs ... 20 secs    | less than 20 seconds |
+ * | 20 secs ... 40 secs    | half a minute        |
+ * | 40 secs ... 60 secs    | less than a minute   |
+ * | 60 secs ... 90 secs    | 1 minute             |
+ *
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date|String|Number} date - the other date
+ * @param {Object} [options] - the object with options
+ * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the distance in words
+ *
+ * @example
+ * // What is the distance between 2 July 2014 and 1 January 2015?
+ * var result = distanceInWords(
+ *   new Date(2014, 6, 2),
+ *   new Date(2015, 0, 1)
+ * )
+ * //=> '6 months'
+ *
+ * @example
+ * // What is the distance between 1 January 2015 00:00:15
+ * // and 1 January 2015 00:00:00, including seconds?
+ * var result = distanceInWords(
+ *   new Date(2015, 0, 1, 0, 0, 15),
+ *   new Date(2015, 0, 1, 0, 0, 0),
+ *   {includeSeconds: true}
+ * )
+ * //=> 'less than 20 seconds'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, with a suffix?
+ * var result = distanceInWords(
+ *   new Date(2016, 0, 1),
+ *   new Date(2015, 0, 1),
+ *   {addSuffix: true}
+ * )
+ * //=> 'about 1 year ago'
+ *
+ * @example
+ * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = distanceInWords(
+ *   new Date(2016, 7, 1),
+ *   new Date(2015, 0, 1),
+ *   {locale: eoLocale}
+ * )
+ * //=> 'pli ol 1 jaro'
+ */
+function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+  var options = dirtyOptions || {}
+
+  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
+
+  var locale = options.locale
+  var localize = enLocale.distanceInWords.localize
+  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {
+    localize = locale.distanceInWords.localize
   }
 
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
+  var localizeOptions = {
+    addSuffix: Boolean(options.addSuffix),
+    comparison: comparison
+  }
+
+  var dateLeft, dateRight
+  if (comparison > 0) {
+    dateLeft = parse(dirtyDateToCompare)
+    dateRight = parse(dirtyDate)
+  } else {
+    dateLeft = parse(dirtyDate)
+    dateRight = parse(dirtyDateToCompare)
+  }
+
+  var seconds = differenceInSeconds(dateRight, dateLeft)
+  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
+  var minutes = Math.round(seconds / 60) - offset
+  var months
+
+  // 0 up to 2 mins
+  if (minutes < 2) {
+    if (options.includeSeconds) {
+      if (seconds < 5) {
+        return localize('lessThanXSeconds', 5, localizeOptions)
+      } else if (seconds < 10) {
+        return localize('lessThanXSeconds', 10, localizeOptions)
+      } else if (seconds < 20) {
+        return localize('lessThanXSeconds', 20, localizeOptions)
+      } else if (seconds < 40) {
+        return localize('halfAMinute', null, localizeOptions)
+      } else if (seconds < 60) {
+        return localize('lessThanXMinutes', 1, localizeOptions)
+      } else {
+        return localize('xMinutes', 1, localizeOptions)
+      }
     } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
-  function _objectSpread(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i] != null ? arguments[i] : {};
-      var ownKeys = Object.keys(source);
-
-      if (typeof Object.getOwnPropertySymbols === 'function') {
-        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-        }));
+      if (minutes === 0) {
+        return localize('lessThanXMinutes', 1, localizeOptions)
+      } else {
+        return localize('xMinutes', minutes, localizeOptions)
       }
-
-      ownKeys.forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
     }
 
-    return target;
+  // 2 mins up to 0.75 hrs
+  } else if (minutes < 45) {
+    return localize('xMinutes', minutes, localizeOptions)
+
+  // 0.75 hrs up to 1.5 hrs
+  } else if (minutes < 90) {
+    return localize('aboutXHours', 1, localizeOptions)
+
+  // 1.5 hrs up to 24 hrs
+  } else if (minutes < MINUTES_IN_DAY) {
+    var hours = Math.round(minutes / 60)
+    return localize('aboutXHours', hours, localizeOptions)
+
+  // 1 day up to 1.75 days
+  } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {
+    return localize('xDays', 1, localizeOptions)
+
+  // 1.75 days up to 30 days
+  } else if (minutes < MINUTES_IN_MONTH) {
+    var days = Math.round(minutes / MINUTES_IN_DAY)
+    return localize('xDays', days, localizeOptions)
+
+  // 1 month up to 2 months
+  } else if (minutes < MINUTES_IN_TWO_MONTHS) {
+    months = Math.round(minutes / MINUTES_IN_MONTH)
+    return localize('aboutXMonths', months, localizeOptions)
   }
 
-  function _inheritsLoose(subClass, superClass) {
-    subClass.prototype = Object.create(superClass.prototype);
-    subClass.prototype.constructor = subClass;
-    subClass.__proto__ = superClass;
+  months = differenceInMonths(dateRight, dateLeft)
+
+  // 2 months up to 12 months
+  if (months < 12) {
+    var nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
+    return localize('xMonths', nearestMonth, localizeOptions)
+
+  // 1 year up to max Date
+  } else {
+    var monthsSinceStartOfYear = months % 12
+    var years = Math.floor(months / 12)
+
+    // N years up to 1 years 3 months
+    if (monthsSinceStartOfYear < 3) {
+      return localize('aboutXYears', years, localizeOptions)
+
+    // N years 3 months up to N years 9 months
+    } else if (monthsSinceStartOfYear < 9) {
+      return localize('overXYears', years, localizeOptions)
+
+    // N years 9 months up to N year 12 months
+    } else {
+      return localize('almostXYears', years + 1, localizeOptions)
+    }
+  }
+}
+
+module.exports = distanceInWords
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/distance_in_words_strict/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/distance_in_words_strict/index.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var compareDesc = __webpack_require__(/*! ../compare_desc/index.js */ "./node_modules/date-fns/compare_desc/index.js")
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var differenceInSeconds = __webpack_require__(/*! ../difference_in_seconds/index.js */ "./node_modules/date-fns/difference_in_seconds/index.js")
+var enLocale = __webpack_require__(/*! ../locale/en/index.js */ "./node_modules/date-fns/locale/en/index.js")
+
+var MINUTES_IN_DAY = 1440
+var MINUTES_IN_MONTH = 43200
+var MINUTES_IN_YEAR = 525600
+
+/**
+ * @category Common Helpers
+ * @summary Return the distance between the given dates in words.
+ *
+ * @description
+ * Return the distance between the given dates in words, using strict units.
+ * This is like `distanceInWords`, but does not use helpers like 'almost', 'over',
+ * 'less than' and the like.
+ *
+ * | Distance between dates | Result              |
+ * |------------------------|---------------------|
+ * | 0 ... 59 secs          | [0..59] seconds     |
+ * | 1 ... 59 mins          | [1..59] minutes     |
+ * | 1 ... 23 hrs           | [1..23] hours       |
+ * | 1 ... 29 days          | [1..29] days        |
+ * | 1 ... 11 months        | [1..11] months      |
+ * | 1 ... N years          | [1..N]  years       |
+ *
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date|String|Number} date - the other date
+ * @param {Object} [options] - the object with options
+ * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param {'s'|'m'|'h'|'d'|'M'|'Y'} [options.unit] - if specified, will force a unit
+ * @param {'floor'|'ceil'|'round'} [options.partialMethod='floor'] - which way to round partial units
+ * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the distance in words
+ *
+ * @example
+ * // What is the distance between 2 July 2014 and 1 January 2015?
+ * var result = distanceInWordsStrict(
+ *   new Date(2014, 6, 2),
+ *   new Date(2015, 0, 2)
+ * )
+ * //=> '6 months'
+ *
+ * @example
+ * // What is the distance between 1 January 2015 00:00:15
+ * // and 1 January 2015 00:00:00?
+ * var result = distanceInWordsStrict(
+ *   new Date(2015, 0, 1, 0, 0, 15),
+ *   new Date(2015, 0, 1, 0, 0, 0),
+ * )
+ * //=> '15 seconds'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, with a suffix?
+ * var result = distanceInWordsStrict(
+ *   new Date(2016, 0, 1),
+ *   new Date(2015, 0, 1),
+ *   {addSuffix: true}
+ * )
+ * //=> '1 year ago'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, in minutes?
+ * var result = distanceInWordsStrict(
+ *   new Date(2016, 0, 1),
+ *   new Date(2015, 0, 1),
+ *   {unit: 'm'}
+ * )
+ * //=> '525600 minutes'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 28 January 2015, in months, rounded up?
+ * var result = distanceInWordsStrict(
+ *   new Date(2015, 0, 28),
+ *   new Date(2015, 0, 1),
+ *   {unit: 'M', partialMethod: 'ceil'}
+ * )
+ * //=> '1 month'
+ *
+ * @example
+ * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = distanceInWordsStrict(
+ *   new Date(2016, 7, 1),
+ *   new Date(2015, 0, 1),
+ *   {locale: eoLocale}
+ * )
+ * //=> '1 jaro'
+ */
+function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+  var options = dirtyOptions || {}
+
+  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
+
+  var locale = options.locale
+  var localize = enLocale.distanceInWords.localize
+  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {
+    localize = locale.distanceInWords.localize
   }
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): util.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  /**
-   * ------------------------------------------------------------------------
-   * Private TransitionEnd Helpers
-   * ------------------------------------------------------------------------
-   */
-
-  var TRANSITION_END = 'transitionend';
-  var MAX_UID = 1000000;
-  var MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
-
-  function toType(obj) {
-    return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
+  var localizeOptions = {
+    addSuffix: Boolean(options.addSuffix),
+    comparison: comparison
   }
 
-  function getSpecialTransitionEndEvent() {
+  var dateLeft, dateRight
+  if (comparison > 0) {
+    dateLeft = parse(dirtyDateToCompare)
+    dateRight = parse(dirtyDate)
+  } else {
+    dateLeft = parse(dirtyDate)
+    dateRight = parse(dirtyDateToCompare)
+  }
+
+  var unit
+  var mathPartial = Math[options.partialMethod ? String(options.partialMethod) : 'floor']
+  var seconds = differenceInSeconds(dateRight, dateLeft)
+  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
+  var minutes = mathPartial(seconds / 60) - offset
+  var hours, days, months, years
+
+  if (options.unit) {
+    unit = String(options.unit)
+  } else {
+    if (minutes < 1) {
+      unit = 's'
+    } else if (minutes < 60) {
+      unit = 'm'
+    } else if (minutes < MINUTES_IN_DAY) {
+      unit = 'h'
+    } else if (minutes < MINUTES_IN_MONTH) {
+      unit = 'd'
+    } else if (minutes < MINUTES_IN_YEAR) {
+      unit = 'M'
+    } else {
+      unit = 'Y'
+    }
+  }
+
+  // 0 up to 60 seconds
+  if (unit === 's') {
+    return localize('xSeconds', seconds, localizeOptions)
+
+  // 1 up to 60 mins
+  } else if (unit === 'm') {
+    return localize('xMinutes', minutes, localizeOptions)
+
+  // 1 up to 24 hours
+  } else if (unit === 'h') {
+    hours = mathPartial(minutes / 60)
+    return localize('xHours', hours, localizeOptions)
+
+  // 1 up to 30 days
+  } else if (unit === 'd') {
+    days = mathPartial(minutes / MINUTES_IN_DAY)
+    return localize('xDays', days, localizeOptions)
+
+  // 1 up to 12 months
+  } else if (unit === 'M') {
+    months = mathPartial(minutes / MINUTES_IN_MONTH)
+    return localize('xMonths', months, localizeOptions)
+
+  // 1 year up to max Date
+  } else if (unit === 'Y') {
+    years = mathPartial(minutes / MINUTES_IN_YEAR)
+    return localize('xYears', years, localizeOptions)
+  }
+
+  throw new Error('Unknown unit: ' + unit)
+}
+
+module.exports = distanceInWordsStrict
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/distance_in_words_to_now/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/date-fns/distance_in_words_to_now/index.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var distanceInWords = __webpack_require__(/*! ../distance_in_words/index.js */ "./node_modules/date-fns/distance_in_words/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return the distance between the given date and now in words.
+ *
+ * @description
+ * Return the distance between the given date and now in words.
+ *
+ * | Distance to now                                                   | Result              |
+ * |-------------------------------------------------------------------|---------------------|
+ * | 0 ... 30 secs                                                     | less than a minute  |
+ * | 30 secs ... 1 min 30 secs                                         | 1 minute            |
+ * | 1 min 30 secs ... 44 mins 30 secs                                 | [2..44] minutes     |
+ * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |
+ * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |
+ * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |
+ * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |
+ * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |
+ * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |
+ * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |
+ * | 1 yr ... 1 yr 3 months                                            | about 1 year        |
+ * | 1 yr 3 months ... 1 yr 9 month s                                  | over 1 year         |
+ * | 1 yr 9 months ... 2 yrs                                           | almost 2 years      |
+ * | N yrs ... N yrs 3 months                                          | about N years       |
+ * | N yrs 3 months ... N yrs 9 months                                 | over N years        |
+ * | N yrs 9 months ... N+1 yrs                                        | almost N+1 years    |
+ *
+ * With `options.includeSeconds == true`:
+ * | Distance to now     | Result               |
+ * |---------------------|----------------------|
+ * | 0 secs ... 5 secs   | less than 5 seconds  |
+ * | 5 secs ... 10 secs  | less than 10 seconds |
+ * | 10 secs ... 20 secs | less than 20 seconds |
+ * | 20 secs ... 40 secs | half a minute        |
+ * | 40 secs ... 60 secs | less than a minute   |
+ * | 60 secs ... 90 secs | 1 minute             |
+ *
+ * @param {Date|String|Number} date - the given date
+ * @param {Object} [options] - the object with options
+ * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param {Boolean} [options.addSuffix=false] - result specifies if the second date is earlier or later than the first
+ * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the distance in words
+ *
+ * @example
+ * // If today is 1 January 2015, what is the distance to 2 July 2014?
+ * var result = distanceInWordsToNow(
+ *   new Date(2014, 6, 2)
+ * )
+ * //=> '6 months'
+ *
+ * @example
+ * // If now is 1 January 2015 00:00:00,
+ * // what is the distance to 1 January 2015 00:00:15, including seconds?
+ * var result = distanceInWordsToNow(
+ *   new Date(2015, 0, 1, 0, 0, 15),
+ *   {includeSeconds: true}
+ * )
+ * //=> 'less than 20 seconds'
+ *
+ * @example
+ * // If today is 1 January 2015,
+ * // what is the distance to 1 January 2016, with a suffix?
+ * var result = distanceInWordsToNow(
+ *   new Date(2016, 0, 1),
+ *   {addSuffix: true}
+ * )
+ * //=> 'in about 1 year'
+ *
+ * @example
+ * // If today is 1 January 2015,
+ * // what is the distance to 1 August 2016 in Esperanto?
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = distanceInWordsToNow(
+ *   new Date(2016, 7, 1),
+ *   {locale: eoLocale}
+ * )
+ * //=> 'pli ol 1 jaro'
+ */
+function distanceInWordsToNow (dirtyDate, dirtyOptions) {
+  return distanceInWords(Date.now(), dirtyDate, dirtyOptions)
+}
+
+module.exports = distanceInWordsToNow
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/each_day/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/each_day/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the array of dates within the specified range.
+ *
+ * @description
+ * Return the array of dates within the specified range.
+ *
+ * @param {Date|String|Number} startDate - the first date
+ * @param {Date|String|Number} endDate - the last date
+ * @param {Number} [step=1] - the step between each day
+ * @returns {Date[]} the array with starts of days from the day of startDate to the day of endDate
+ * @throws {Error} startDate cannot be after endDate
+ *
+ * @example
+ * // Each day between 6 October 2014 and 10 October 2014:
+ * var result = eachDay(
+ *   new Date(2014, 9, 6),
+ *   new Date(2014, 9, 10)
+ * )
+ * //=> [
+ * //   Mon Oct 06 2014 00:00:00,
+ * //   Tue Oct 07 2014 00:00:00,
+ * //   Wed Oct 08 2014 00:00:00,
+ * //   Thu Oct 09 2014 00:00:00,
+ * //   Fri Oct 10 2014 00:00:00
+ * // ]
+ */
+function eachDay (dirtyStartDate, dirtyEndDate, dirtyStep) {
+  var startDate = parse(dirtyStartDate)
+  var endDate = parse(dirtyEndDate)
+  var step = dirtyStep !== undefined ? dirtyStep : 1
+
+  var endTime = endDate.getTime()
+
+  if (startDate.getTime() > endTime) {
+    throw new Error('The first date cannot be after the second date')
+  }
+
+  var dates = []
+
+  var currentDate = startDate
+  currentDate.setHours(0, 0, 0, 0)
+
+  while (currentDate.getTime() <= endTime) {
+    dates.push(parse(currentDate))
+    currentDate.setDate(currentDate.getDate() + step)
+  }
+
+  return dates
+}
+
+module.exports = eachDay
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_day/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/end_of_day/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the end of a day for the given date.
+ *
+ * @description
+ * Return the end of a day for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a day
+ *
+ * @example
+ * // The end of a day for 2 September 2014 11:55:00:
+ * var result = endOfDay(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 02 2014 23:59:59.999
+ */
+function endOfDay (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfDay
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_hour/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/end_of_hour/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Return the end of an hour for the given date.
+ *
+ * @description
+ * Return the end of an hour for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of an hour
+ *
+ * @example
+ * // The end of an hour for 2 September 2014 11:55:00:
+ * var result = endOfHour(new Date(2014, 8, 2, 11, 55))
+ * //=> Tue Sep 02 2014 11:59:59.999
+ */
+function endOfHour (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setMinutes(59, 59, 999)
+  return date
+}
+
+module.exports = endOfHour
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_iso_week/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/end_of_iso_week/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var endOfWeek = __webpack_require__(/*! ../end_of_week/index.js */ "./node_modules/date-fns/end_of_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Return the end of an ISO week for the given date.
+ *
+ * @description
+ * Return the end of an ISO week for the given date.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of an ISO week
+ *
+ * @example
+ * // The end of an ISO week for 2 September 2014 11:55:00:
+ * var result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sun Sep 07 2014 23:59:59.999
+ */
+function endOfISOWeek (dirtyDate) {
+  return endOfWeek(dirtyDate, {weekStartsOn: 1})
+}
+
+module.exports = endOfISOWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_iso_year/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/end_of_iso_year/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Return the end of an ISO week-numbering year for the given date.
+ *
+ * @description
+ * Return the end of an ISO week-numbering year,
+ * which always starts 3 days before the year's first Thursday.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of an ISO week-numbering year
+ *
+ * @example
+ * // The end of an ISO week-numbering year for 2 July 2005:
+ * var result = endOfISOYear(new Date(2005, 6, 2))
+ * //=> Sun Jan 01 2006 23:59:59.999
+ */
+function endOfISOYear (dirtyDate) {
+  var year = getISOYear(dirtyDate)
+  var fourthOfJanuaryOfNextYear = new Date(0)
+  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
+  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
+  var date = startOfISOWeek(fourthOfJanuaryOfNextYear)
+  date.setMilliseconds(date.getMilliseconds() - 1)
+  return date
+}
+
+module.exports = endOfISOYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_minute/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/end_of_minute/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Return the end of a minute for the given date.
+ *
+ * @description
+ * Return the end of a minute for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a minute
+ *
+ * @example
+ * // The end of a minute for 1 December 2014 22:15:45.400:
+ * var result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * //=> Mon Dec 01 2014 22:15:59.999
+ */
+function endOfMinute (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setSeconds(59, 999)
+  return date
+}
+
+module.exports = endOfMinute
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_month/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/end_of_month/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Return the end of a month for the given date.
+ *
+ * @description
+ * Return the end of a month for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a month
+ *
+ * @example
+ * // The end of a month for 2 September 2014 11:55:00:
+ * var result = endOfMonth(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 30 2014 23:59:59.999
+ */
+function endOfMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  var month = date.getMonth()
+  date.setFullYear(date.getFullYear(), month + 1, 0)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_quarter/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/end_of_quarter/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Return the end of a year quarter for the given date.
+ *
+ * @description
+ * Return the end of a year quarter for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a quarter
+ *
+ * @example
+ * // The end of a quarter for 2 September 2014 11:55:00:
+ * var result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 30 2014 23:59:59.999
+ */
+function endOfQuarter (dirtyDate) {
+  var date = parse(dirtyDate)
+  var currentMonth = date.getMonth()
+  var month = currentMonth - currentMonth % 3 + 3
+  date.setMonth(month, 0)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfQuarter
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_second/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/end_of_second/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Return the end of a second for the given date.
+ *
+ * @description
+ * Return the end of a second for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a second
+ *
+ * @example
+ * // The end of a second for 1 December 2014 22:15:45.400:
+ * var result = endOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * //=> Mon Dec 01 2014 22:15:45.999
+ */
+function endOfSecond (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setMilliseconds(999)
+  return date
+}
+
+module.exports = endOfSecond
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_today/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/end_of_today/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var endOfDay = __webpack_require__(/*! ../end_of_day/index.js */ "./node_modules/date-fns/end_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the end of today.
+ *
+ * @description
+ * Return the end of today.
+ *
+ * @returns {Date} the end of today
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = endOfToday()
+ * //=> Mon Oct 6 2014 23:59:59.999
+ */
+function endOfToday () {
+  return endOfDay(new Date())
+}
+
+module.exports = endOfToday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_tomorrow/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/end_of_tomorrow/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * @category Day Helpers
+ * @summary Return the end of tomorrow.
+ *
+ * @description
+ * Return the end of tomorrow.
+ *
+ * @returns {Date} the end of tomorrow
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = endOfTomorrow()
+ * //=> Tue Oct 7 2014 23:59:59.999
+ */
+function endOfTomorrow () {
+  var now = new Date()
+  var year = now.getFullYear()
+  var month = now.getMonth()
+  var day = now.getDate()
+
+  var date = new Date(0)
+  date.setFullYear(year, month, day + 1)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfTomorrow
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_week/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/end_of_week/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Return the end of a week for the given date.
+ *
+ * @description
+ * Return the end of a week for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the end of a week
+ *
+ * @example
+ * // The end of a week for 2 September 2014 11:55:00:
+ * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sat Sep 06 2014 23:59:59.999
+ *
+ * @example
+ * // If the week starts on Monday, the end of the week for 2 September 2014 11:55:00:
+ * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
+ * //=> Sun Sep 07 2014 23:59:59.999
+ */
+function endOfWeek (dirtyDate, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
+
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
+
+  date.setDate(date.getDate() + diff)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_year/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/end_of_year/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Return the end of a year for the given date.
+ *
+ * @description
+ * Return the end of a year for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of a year
+ *
+ * @example
+ * // The end of a year for 2 September 2014 11:55:00:
+ * var result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
+ * //=> Wed Dec 31 2014 23:59:59.999
+ */
+function endOfYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  date.setFullYear(year + 1, 0, 0)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/end_of_yesterday/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/end_of_yesterday/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * @category Day Helpers
+ * @summary Return the end of yesterday.
+ *
+ * @description
+ * Return the end of yesterday.
+ *
+ * @returns {Date} the end of yesterday
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = endOfYesterday()
+ * //=> Sun Oct 5 2014 23:59:59.999
+ */
+function endOfYesterday () {
+  var now = new Date()
+  var year = now.getFullYear()
+  var month = now.getMonth()
+  var day = now.getDate()
+
+  var date = new Date(0)
+  date.setFullYear(year, month, day - 1)
+  date.setHours(23, 59, 59, 999)
+  return date
+}
+
+module.exports = endOfYesterday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/format/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/date-fns/format/index.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getDayOfYear = __webpack_require__(/*! ../get_day_of_year/index.js */ "./node_modules/date-fns/get_day_of_year/index.js")
+var getISOWeek = __webpack_require__(/*! ../get_iso_week/index.js */ "./node_modules/date-fns/get_iso_week/index.js")
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var isValid = __webpack_require__(/*! ../is_valid/index.js */ "./node_modules/date-fns/is_valid/index.js")
+var enLocale = __webpack_require__(/*! ../locale/en/index.js */ "./node_modules/date-fns/locale/en/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Format the date.
+ *
+ * @description
+ * Return the formatted date string in the given format.
+ *
+ * Accepted tokens:
+ * | Unit                    | Token | Result examples                  |
+ * |-------------------------|-------|----------------------------------|
+ * | Month                   | M     | 1, 2, ..., 12                    |
+ * |                         | Mo    | 1st, 2nd, ..., 12th              |
+ * |                         | MM    | 01, 02, ..., 12                  |
+ * |                         | MMM   | Jan, Feb, ..., Dec               |
+ * |                         | MMMM  | January, February, ..., December |
+ * | Quarter                 | Q     | 1, 2, 3, 4                       |
+ * |                         | Qo    | 1st, 2nd, 3rd, 4th               |
+ * | Day of month            | D     | 1, 2, ..., 31                    |
+ * |                         | Do    | 1st, 2nd, ..., 31st              |
+ * |                         | DD    | 01, 02, ..., 31                  |
+ * | Day of year             | DDD   | 1, 2, ..., 366                   |
+ * |                         | DDDo  | 1st, 2nd, ..., 366th             |
+ * |                         | DDDD  | 001, 002, ..., 366               |
+ * | Day of week             | d     | 0, 1, ..., 6                     |
+ * |                         | do    | 0th, 1st, ..., 6th               |
+ * |                         | dd    | Su, Mo, ..., Sa                  |
+ * |                         | ddd   | Sun, Mon, ..., Sat               |
+ * |                         | dddd  | Sunday, Monday, ..., Saturday    |
+ * | Day of ISO week         | E     | 1, 2, ..., 7                     |
+ * | ISO week                | W     | 1, 2, ..., 53                    |
+ * |                         | Wo    | 1st, 2nd, ..., 53rd              |
+ * |                         | WW    | 01, 02, ..., 53                  |
+ * | Year                    | YY    | 00, 01, ..., 99                  |
+ * |                         | YYYY  | 1900, 1901, ..., 2099            |
+ * | ISO week-numbering year | GG    | 00, 01, ..., 99                  |
+ * |                         | GGGG  | 1900, 1901, ..., 2099            |
+ * | AM/PM                   | A     | AM, PM                           |
+ * |                         | a     | am, pm                           |
+ * |                         | aa    | a.m., p.m.                       |
+ * | Hour                    | H     | 0, 1, ... 23                     |
+ * |                         | HH    | 00, 01, ... 23                   |
+ * |                         | h     | 1, 2, ..., 12                    |
+ * |                         | hh    | 01, 02, ..., 12                  |
+ * | Minute                  | m     | 0, 1, ..., 59                    |
+ * |                         | mm    | 00, 01, ..., 59                  |
+ * | Second                  | s     | 0, 1, ..., 59                    |
+ * |                         | ss    | 00, 01, ..., 59                  |
+ * | 1/10 of second          | S     | 0, 1, ..., 9                     |
+ * | 1/100 of second         | SS    | 00, 01, ..., 99                  |
+ * | Millisecond             | SSS   | 000, 001, ..., 999               |
+ * | Timezone                | Z     | -01:00, +00:00, ... +12:00       |
+ * |                         | ZZ    | -0100, +0000, ..., +1200         |
+ * | Seconds timestamp       | X     | 512969520                        |
+ * | Milliseconds timestamp  | x     | 512969520900                     |
+ *
+ * The characters wrapped in square brackets are escaped.
+ *
+ * The result may vary by locale.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
+ * @param {Object} [options] - the object with options
+ * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the formatted date string
+ *
+ * @example
+ * // Represent 11 February 2014 in middle-endian format:
+ * var result = format(
+ *   new Date(2014, 1, 11),
+ *   'MM/DD/YYYY'
+ * )
+ * //=> '02/11/2014'
+ *
+ * @example
+ * // Represent 2 July 2014 in Esperanto:
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = format(
+ *   new Date(2014, 6, 2),
+ *   'Do [de] MMMM YYYY',
+ *   {locale: eoLocale}
+ * )
+ * //=> '2-a de julio 2014'
+ */
+function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
+  var formatStr = dirtyFormatStr ? String(dirtyFormatStr) : 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+  var options = dirtyOptions || {}
+
+  var locale = options.locale
+  var localeFormatters = enLocale.format.formatters
+  var formattingTokensRegExp = enLocale.format.formattingTokensRegExp
+  if (locale && locale.format && locale.format.formatters) {
+    localeFormatters = locale.format.formatters
+
+    if (locale.format.formattingTokensRegExp) {
+      formattingTokensRegExp = locale.format.formattingTokensRegExp
+    }
+  }
+
+  var date = parse(dirtyDate)
+
+  if (!isValid(date)) {
+    return 'Invalid Date'
+  }
+
+  var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
+
+  return formatFn(date)
+}
+
+var formatters = {
+  // Month: 1, 2, ..., 12
+  'M': function (date) {
+    return date.getMonth() + 1
+  },
+
+  // Month: 01, 02, ..., 12
+  'MM': function (date) {
+    return addLeadingZeros(date.getMonth() + 1, 2)
+  },
+
+  // Quarter: 1, 2, 3, 4
+  'Q': function (date) {
+    return Math.ceil((date.getMonth() + 1) / 3)
+  },
+
+  // Day of month: 1, 2, ..., 31
+  'D': function (date) {
+    return date.getDate()
+  },
+
+  // Day of month: 01, 02, ..., 31
+  'DD': function (date) {
+    return addLeadingZeros(date.getDate(), 2)
+  },
+
+  // Day of year: 1, 2, ..., 366
+  'DDD': function (date) {
+    return getDayOfYear(date)
+  },
+
+  // Day of year: 001, 002, ..., 366
+  'DDDD': function (date) {
+    return addLeadingZeros(getDayOfYear(date), 3)
+  },
+
+  // Day of week: 0, 1, ..., 6
+  'd': function (date) {
+    return date.getDay()
+  },
+
+  // Day of ISO week: 1, 2, ..., 7
+  'E': function (date) {
+    return date.getDay() || 7
+  },
+
+  // ISO week: 1, 2, ..., 53
+  'W': function (date) {
+    return getISOWeek(date)
+  },
+
+  // ISO week: 01, 02, ..., 53
+  'WW': function (date) {
+    return addLeadingZeros(getISOWeek(date), 2)
+  },
+
+  // Year: 00, 01, ..., 99
+  'YY': function (date) {
+    return addLeadingZeros(date.getFullYear(), 4).substr(2)
+  },
+
+  // Year: 1900, 1901, ..., 2099
+  'YYYY': function (date) {
+    return addLeadingZeros(date.getFullYear(), 4)
+  },
+
+  // ISO week-numbering year: 00, 01, ..., 99
+  'GG': function (date) {
+    return String(getISOYear(date)).substr(2)
+  },
+
+  // ISO week-numbering year: 1900, 1901, ..., 2099
+  'GGGG': function (date) {
+    return getISOYear(date)
+  },
+
+  // Hour: 0, 1, ... 23
+  'H': function (date) {
+    return date.getHours()
+  },
+
+  // Hour: 00, 01, ..., 23
+  'HH': function (date) {
+    return addLeadingZeros(date.getHours(), 2)
+  },
+
+  // Hour: 1, 2, ..., 12
+  'h': function (date) {
+    var hours = date.getHours()
+    if (hours === 0) {
+      return 12
+    } else if (hours > 12) {
+      return hours % 12
+    } else {
+      return hours
+    }
+  },
+
+  // Hour: 01, 02, ..., 12
+  'hh': function (date) {
+    return addLeadingZeros(formatters['h'](date), 2)
+  },
+
+  // Minute: 0, 1, ..., 59
+  'm': function (date) {
+    return date.getMinutes()
+  },
+
+  // Minute: 00, 01, ..., 59
+  'mm': function (date) {
+    return addLeadingZeros(date.getMinutes(), 2)
+  },
+
+  // Second: 0, 1, ..., 59
+  's': function (date) {
+    return date.getSeconds()
+  },
+
+  // Second: 00, 01, ..., 59
+  'ss': function (date) {
+    return addLeadingZeros(date.getSeconds(), 2)
+  },
+
+  // 1/10 of second: 0, 1, ..., 9
+  'S': function (date) {
+    return Math.floor(date.getMilliseconds() / 100)
+  },
+
+  // 1/100 of second: 00, 01, ..., 99
+  'SS': function (date) {
+    return addLeadingZeros(Math.floor(date.getMilliseconds() / 10), 2)
+  },
+
+  // Millisecond: 000, 001, ..., 999
+  'SSS': function (date) {
+    return addLeadingZeros(date.getMilliseconds(), 3)
+  },
+
+  // Timezone: -01:00, +00:00, ... +12:00
+  'Z': function (date) {
+    return formatTimezone(date.getTimezoneOffset(), ':')
+  },
+
+  // Timezone: -0100, +0000, ... +1200
+  'ZZ': function (date) {
+    return formatTimezone(date.getTimezoneOffset())
+  },
+
+  // Seconds timestamp: 512969520
+  'X': function (date) {
+    return Math.floor(date.getTime() / 1000)
+  },
+
+  // Milliseconds timestamp: 512969520900
+  'x': function (date) {
+    return date.getTime()
+  }
+}
+
+function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
+  var array = formatStr.match(formattingTokensRegExp)
+  var length = array.length
+
+  var i
+  var formatter
+  for (i = 0; i < length; i++) {
+    formatter = localeFormatters[array[i]] || formatters[array[i]]
+    if (formatter) {
+      array[i] = formatter
+    } else {
+      array[i] = removeFormattingTokens(array[i])
+    }
+  }
+
+  return function (date) {
+    var output = ''
+    for (var i = 0; i < length; i++) {
+      if (array[i] instanceof Function) {
+        output += array[i](date, formatters)
+      } else {
+        output += array[i]
+      }
+    }
+    return output
+  }
+}
+
+function removeFormattingTokens (input) {
+  if (input.match(/\[[\s\S]/)) {
+    return input.replace(/^\[|]$/g, '')
+  }
+  return input.replace(/\\/g, '')
+}
+
+function formatTimezone (offset, delimeter) {
+  delimeter = delimeter || ''
+  var sign = offset > 0 ? '-' : '+'
+  var absOffset = Math.abs(offset)
+  var hours = Math.floor(absOffset / 60)
+  var minutes = absOffset % 60
+  return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)
+}
+
+function addLeadingZeros (number, targetLength) {
+  var output = Math.abs(number).toString()
+  while (output.length < targetLength) {
+    output = '0' + output
+  }
+  return output
+}
+
+module.exports = format
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_date/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/get_date/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Get the day of the month of the given date.
+ *
+ * @description
+ * Get the day of the month of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the day of month
+ *
+ * @example
+ * // Which day of the month is 29 February 2012?
+ * var result = getDate(new Date(2012, 1, 29))
+ * //=> 29
+ */
+function getDate (dirtyDate) {
+  var date = parse(dirtyDate)
+  var dayOfMonth = date.getDate()
+  return dayOfMonth
+}
+
+module.exports = getDate
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_day/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/date-fns/get_day/index.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Get the day of the week of the given date.
+ *
+ * @description
+ * Get the day of the week of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the day of week
+ *
+ * @example
+ * // Which day of the week is 29 February 2012?
+ * var result = getDay(new Date(2012, 1, 29))
+ * //=> 3
+ */
+function getDay (dirtyDate) {
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  return day
+}
+
+module.exports = getDay
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_day_of_year/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/get_day_of_year/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var startOfYear = __webpack_require__(/*! ../start_of_year/index.js */ "./node_modules/date-fns/start_of_year/index.js")
+var differenceInCalendarDays = __webpack_require__(/*! ../difference_in_calendar_days/index.js */ "./node_modules/date-fns/difference_in_calendar_days/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Get the day of the year of the given date.
+ *
+ * @description
+ * Get the day of the year of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the day of year
+ *
+ * @example
+ * // Which day of the year is 2 July 2014?
+ * var result = getDayOfYear(new Date(2014, 6, 2))
+ * //=> 183
+ */
+function getDayOfYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var diff = differenceInCalendarDays(date, startOfYear(date))
+  var dayOfYear = diff + 1
+  return dayOfYear
+}
+
+module.exports = getDayOfYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_days_in_month/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/date-fns/get_days_in_month/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Get the number of days in a month of the given date.
+ *
+ * @description
+ * Get the number of days in a month of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the number of days in a month
+ *
+ * @example
+ * // How many days are in February 2000?
+ * var result = getDaysInMonth(new Date(2000, 1))
+ * //=> 29
+ */
+function getDaysInMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  var monthIndex = date.getMonth()
+  var lastDayOfMonth = new Date(0)
+  lastDayOfMonth.setFullYear(year, monthIndex + 1, 0)
+  lastDayOfMonth.setHours(0, 0, 0, 0)
+  return lastDayOfMonth.getDate()
+}
+
+module.exports = getDaysInMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_days_in_year/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/get_days_in_year/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isLeapYear = __webpack_require__(/*! ../is_leap_year/index.js */ "./node_modules/date-fns/is_leap_year/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Get the number of days in a year of the given date.
+ *
+ * @description
+ * Get the number of days in a year of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the number of days in a year
+ *
+ * @example
+ * // How many days are in 2012?
+ * var result = getDaysInYear(new Date(2012, 0, 1))
+ * //=> 366
+ */
+function getDaysInYear (dirtyDate) {
+  return isLeapYear(dirtyDate) ? 366 : 365
+}
+
+module.exports = getDaysInYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_hours/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/get_hours/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Get the hours of the given date.
+ *
+ * @description
+ * Get the hours of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the hours
+ *
+ * @example
+ * // Get the hours of 29 February 2012 11:45:00:
+ * var result = getHours(new Date(2012, 1, 29, 11, 45))
+ * //=> 11
+ */
+function getHours (dirtyDate) {
+  var date = parse(dirtyDate)
+  var hours = date.getHours()
+  return hours
+}
+
+module.exports = getHours
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_iso_day/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/get_iso_day/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Get the day of the ISO week of the given date.
+ *
+ * @description
+ * Get the day of the ISO week of the given date,
+ * which is 7 for Sunday, 1 for Monday etc.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the day of ISO week
+ *
+ * @example
+ * // Which day of the ISO week is 26 February 2012?
+ * var result = getISODay(new Date(2012, 1, 26))
+ * //=> 7
+ */
+function getISODay (dirtyDate) {
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+
+  if (day === 0) {
+    day = 7
+  }
+
+  return day
+}
+
+module.exports = getISODay
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_iso_week/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/get_iso_week/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js")
+
+var MILLISECONDS_IN_WEEK = 604800000
+
+/**
+ * @category ISO Week Helpers
+ * @summary Get the ISO week of the given date.
+ *
+ * @description
+ * Get the ISO week of the given date.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the ISO week
+ *
+ * @example
+ * // Which week of the ISO-week numbering year is 2 January 2005?
+ * var result = getISOWeek(new Date(2005, 0, 2))
+ * //=> 53
+ */
+function getISOWeek (dirtyDate) {
+  var date = parse(dirtyDate)
+  var diff = startOfISOWeek(date).getTime() - startOfISOYear(date).getTime()
+
+  // Round the number of days to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
+}
+
+module.exports = getISOWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_iso_weeks_in_year/index.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/date-fns/get_iso_weeks_in_year/index.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js")
+var addWeeks = __webpack_require__(/*! ../add_weeks/index.js */ "./node_modules/date-fns/add_weeks/index.js")
+
+var MILLISECONDS_IN_WEEK = 604800000
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Get the number of weeks in an ISO week-numbering year of the given date.
+ *
+ * @description
+ * Get the number of weeks in an ISO week-numbering year of the given date.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the number of ISO weeks in a year
+ *
+ * @example
+ * // How many weeks are in ISO week-numbering year 2015?
+ * var result = getISOWeeksInYear(new Date(2015, 1, 11))
+ * //=> 53
+ */
+function getISOWeeksInYear (dirtyDate) {
+  var thisYear = startOfISOYear(dirtyDate)
+  var nextYear = startOfISOYear(addWeeks(thisYear, 60))
+  var diff = nextYear.valueOf() - thisYear.valueOf()
+  // Round the number of weeks to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+  return Math.round(diff / MILLISECONDS_IN_WEEK)
+}
+
+module.exports = getISOWeeksInYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_iso_year/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/get_iso_year/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Get the ISO week-numbering year of the given date.
+ *
+ * @description
+ * Get the ISO week-numbering year of the given date,
+ * which always starts 3 days before the year's first Thursday.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the ISO week-numbering year
+ *
+ * @example
+ * // Which ISO-week numbering year is 2 January 2005?
+ * var result = getISOYear(new Date(2005, 0, 2))
+ * //=> 2004
+ */
+function getISOYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+
+  var fourthOfJanuaryOfNextYear = new Date(0)
+  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
+  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
+  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
+
+  var fourthOfJanuaryOfThisYear = new Date(0)
+  fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
+  fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
+  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
+
+  if (date.getTime() >= startOfNextYear.getTime()) {
+    return year + 1
+  } else if (date.getTime() >= startOfThisYear.getTime()) {
+    return year
+  } else {
+    return year - 1
+  }
+}
+
+module.exports = getISOYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_milliseconds/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/get_milliseconds/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Get the milliseconds of the given date.
+ *
+ * @description
+ * Get the milliseconds of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the milliseconds
+ *
+ * @example
+ * // Get the milliseconds of 29 February 2012 11:45:05.123:
+ * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
+ * //=> 123
+ */
+function getMilliseconds (dirtyDate) {
+  var date = parse(dirtyDate)
+  var milliseconds = date.getMilliseconds()
+  return milliseconds
+}
+
+module.exports = getMilliseconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_minutes/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/get_minutes/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Get the minutes of the given date.
+ *
+ * @description
+ * Get the minutes of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the minutes
+ *
+ * @example
+ * // Get the minutes of 29 February 2012 11:45:05:
+ * var result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))
+ * //=> 45
+ */
+function getMinutes (dirtyDate) {
+  var date = parse(dirtyDate)
+  var minutes = date.getMinutes()
+  return minutes
+}
+
+module.exports = getMinutes
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_month/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/get_month/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Get the month of the given date.
+ *
+ * @description
+ * Get the month of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the month
+ *
+ * @example
+ * // Which month is 29 February 2012?
+ * var result = getMonth(new Date(2012, 1, 29))
+ * //=> 1
+ */
+function getMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  var month = date.getMonth()
+  return month
+}
+
+module.exports = getMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_overlapping_days_in_ranges/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/date-fns/get_overlapping_days_in_ranges/index.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
+
+/**
+ * @category Range Helpers
+ * @summary Get the number of days that overlap in two date ranges
+ *
+ * @description
+ * Get the number of days that overlap in two date ranges
+ *
+ * @param {Date|String|Number} initialRangeStartDate - the start of the initial range
+ * @param {Date|String|Number} initialRangeEndDate - the end of the initial range
+ * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with
+ * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with
+ * @returns {Number} the number of days that overlap in two date ranges
+ * @throws {Error} startDate of a date range cannot be after its endDate
+ *
+ * @example
+ * // For overlapping date ranges adds 1 for each started overlapping day:
+ * getOverlappingDaysInRanges(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)
+ * )
+ * //=> 3
+ *
+ * @example
+ * // For non-overlapping date ranges returns 0:
+ * getOverlappingDaysInRanges(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)
+ * )
+ * //=> 0
+ */
+function getOverlappingDaysInRanges (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
+  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()
+  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()
+  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()
+  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()
+
+  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
+    throw new Error('The start of the range cannot be after the end of the range')
+  }
+
+  var isOverlapping = initialStartTime < comparedEndTime && comparedStartTime < initialEndTime
+
+  if (!isOverlapping) {
+    return 0
+  }
+
+  var overlapStartDate = comparedStartTime < initialStartTime
+    ? initialStartTime
+    : comparedStartTime
+
+  var overlapEndDate = comparedEndTime > initialEndTime
+    ? initialEndTime
+    : comparedEndTime
+
+  var differenceInMs = overlapEndDate - overlapStartDate
+
+  return Math.ceil(differenceInMs / MILLISECONDS_IN_DAY)
+}
+
+module.exports = getOverlappingDaysInRanges
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_quarter/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/get_quarter/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Get the year quarter of the given date.
+ *
+ * @description
+ * Get the year quarter of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the quarter
+ *
+ * @example
+ * // Which quarter is 2 July 2014?
+ * var result = getQuarter(new Date(2014, 6, 2))
+ * //=> 3
+ */
+function getQuarter (dirtyDate) {
+  var date = parse(dirtyDate)
+  var quarter = Math.floor(date.getMonth() / 3) + 1
+  return quarter
+}
+
+module.exports = getQuarter
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_seconds/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/get_seconds/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Get the seconds of the given date.
+ *
+ * @description
+ * Get the seconds of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the seconds
+ *
+ * @example
+ * // Get the seconds of 29 February 2012 11:45:05.123:
+ * var result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))
+ * //=> 5
+ */
+function getSeconds (dirtyDate) {
+  var date = parse(dirtyDate)
+  var seconds = date.getSeconds()
+  return seconds
+}
+
+module.exports = getSeconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_time/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/get_time/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Timestamp Helpers
+ * @summary Get the milliseconds timestamp of the given date.
+ *
+ * @description
+ * Get the milliseconds timestamp of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the timestamp
+ *
+ * @example
+ * // Get the timestamp of 29 February 2012 11:45:05.123:
+ * var result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
+ * //=> 1330515905123
+ */
+function getTime (dirtyDate) {
+  var date = parse(dirtyDate)
+  var timestamp = date.getTime()
+  return timestamp
+}
+
+module.exports = getTime
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/get_year/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/get_year/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Get the year of the given date.
+ *
+ * @description
+ * Get the year of the given date.
+ *
+ * @param {Date|String|Number} date - the given date
+ * @returns {Number} the year
+ *
+ * @example
+ * // Which year is 2 July 2014?
+ * var result = getYear(new Date(2014, 6, 2))
+ * //=> 2014
+ */
+function getYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  return year
+}
+
+module.exports = getYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/date-fns/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = {
+  addDays: __webpack_require__(/*! ./add_days/index.js */ "./node_modules/date-fns/add_days/index.js"),
+  addHours: __webpack_require__(/*! ./add_hours/index.js */ "./node_modules/date-fns/add_hours/index.js"),
+  addISOYears: __webpack_require__(/*! ./add_iso_years/index.js */ "./node_modules/date-fns/add_iso_years/index.js"),
+  addMilliseconds: __webpack_require__(/*! ./add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js"),
+  addMinutes: __webpack_require__(/*! ./add_minutes/index.js */ "./node_modules/date-fns/add_minutes/index.js"),
+  addMonths: __webpack_require__(/*! ./add_months/index.js */ "./node_modules/date-fns/add_months/index.js"),
+  addQuarters: __webpack_require__(/*! ./add_quarters/index.js */ "./node_modules/date-fns/add_quarters/index.js"),
+  addSeconds: __webpack_require__(/*! ./add_seconds/index.js */ "./node_modules/date-fns/add_seconds/index.js"),
+  addWeeks: __webpack_require__(/*! ./add_weeks/index.js */ "./node_modules/date-fns/add_weeks/index.js"),
+  addYears: __webpack_require__(/*! ./add_years/index.js */ "./node_modules/date-fns/add_years/index.js"),
+  areRangesOverlapping: __webpack_require__(/*! ./are_ranges_overlapping/index.js */ "./node_modules/date-fns/are_ranges_overlapping/index.js"),
+  closestIndexTo: __webpack_require__(/*! ./closest_index_to/index.js */ "./node_modules/date-fns/closest_index_to/index.js"),
+  closestTo: __webpack_require__(/*! ./closest_to/index.js */ "./node_modules/date-fns/closest_to/index.js"),
+  compareAsc: __webpack_require__(/*! ./compare_asc/index.js */ "./node_modules/date-fns/compare_asc/index.js"),
+  compareDesc: __webpack_require__(/*! ./compare_desc/index.js */ "./node_modules/date-fns/compare_desc/index.js"),
+  differenceInCalendarDays: __webpack_require__(/*! ./difference_in_calendar_days/index.js */ "./node_modules/date-fns/difference_in_calendar_days/index.js"),
+  differenceInCalendarISOWeeks: __webpack_require__(/*! ./difference_in_calendar_iso_weeks/index.js */ "./node_modules/date-fns/difference_in_calendar_iso_weeks/index.js"),
+  differenceInCalendarISOYears: __webpack_require__(/*! ./difference_in_calendar_iso_years/index.js */ "./node_modules/date-fns/difference_in_calendar_iso_years/index.js"),
+  differenceInCalendarMonths: __webpack_require__(/*! ./difference_in_calendar_months/index.js */ "./node_modules/date-fns/difference_in_calendar_months/index.js"),
+  differenceInCalendarQuarters: __webpack_require__(/*! ./difference_in_calendar_quarters/index.js */ "./node_modules/date-fns/difference_in_calendar_quarters/index.js"),
+  differenceInCalendarWeeks: __webpack_require__(/*! ./difference_in_calendar_weeks/index.js */ "./node_modules/date-fns/difference_in_calendar_weeks/index.js"),
+  differenceInCalendarYears: __webpack_require__(/*! ./difference_in_calendar_years/index.js */ "./node_modules/date-fns/difference_in_calendar_years/index.js"),
+  differenceInDays: __webpack_require__(/*! ./difference_in_days/index.js */ "./node_modules/date-fns/difference_in_days/index.js"),
+  differenceInHours: __webpack_require__(/*! ./difference_in_hours/index.js */ "./node_modules/date-fns/difference_in_hours/index.js"),
+  differenceInISOYears: __webpack_require__(/*! ./difference_in_iso_years/index.js */ "./node_modules/date-fns/difference_in_iso_years/index.js"),
+  differenceInMilliseconds: __webpack_require__(/*! ./difference_in_milliseconds/index.js */ "./node_modules/date-fns/difference_in_milliseconds/index.js"),
+  differenceInMinutes: __webpack_require__(/*! ./difference_in_minutes/index.js */ "./node_modules/date-fns/difference_in_minutes/index.js"),
+  differenceInMonths: __webpack_require__(/*! ./difference_in_months/index.js */ "./node_modules/date-fns/difference_in_months/index.js"),
+  differenceInQuarters: __webpack_require__(/*! ./difference_in_quarters/index.js */ "./node_modules/date-fns/difference_in_quarters/index.js"),
+  differenceInSeconds: __webpack_require__(/*! ./difference_in_seconds/index.js */ "./node_modules/date-fns/difference_in_seconds/index.js"),
+  differenceInWeeks: __webpack_require__(/*! ./difference_in_weeks/index.js */ "./node_modules/date-fns/difference_in_weeks/index.js"),
+  differenceInYears: __webpack_require__(/*! ./difference_in_years/index.js */ "./node_modules/date-fns/difference_in_years/index.js"),
+  distanceInWords: __webpack_require__(/*! ./distance_in_words/index.js */ "./node_modules/date-fns/distance_in_words/index.js"),
+  distanceInWordsStrict: __webpack_require__(/*! ./distance_in_words_strict/index.js */ "./node_modules/date-fns/distance_in_words_strict/index.js"),
+  distanceInWordsToNow: __webpack_require__(/*! ./distance_in_words_to_now/index.js */ "./node_modules/date-fns/distance_in_words_to_now/index.js"),
+  eachDay: __webpack_require__(/*! ./each_day/index.js */ "./node_modules/date-fns/each_day/index.js"),
+  endOfDay: __webpack_require__(/*! ./end_of_day/index.js */ "./node_modules/date-fns/end_of_day/index.js"),
+  endOfHour: __webpack_require__(/*! ./end_of_hour/index.js */ "./node_modules/date-fns/end_of_hour/index.js"),
+  endOfISOWeek: __webpack_require__(/*! ./end_of_iso_week/index.js */ "./node_modules/date-fns/end_of_iso_week/index.js"),
+  endOfISOYear: __webpack_require__(/*! ./end_of_iso_year/index.js */ "./node_modules/date-fns/end_of_iso_year/index.js"),
+  endOfMinute: __webpack_require__(/*! ./end_of_minute/index.js */ "./node_modules/date-fns/end_of_minute/index.js"),
+  endOfMonth: __webpack_require__(/*! ./end_of_month/index.js */ "./node_modules/date-fns/end_of_month/index.js"),
+  endOfQuarter: __webpack_require__(/*! ./end_of_quarter/index.js */ "./node_modules/date-fns/end_of_quarter/index.js"),
+  endOfSecond: __webpack_require__(/*! ./end_of_second/index.js */ "./node_modules/date-fns/end_of_second/index.js"),
+  endOfToday: __webpack_require__(/*! ./end_of_today/index.js */ "./node_modules/date-fns/end_of_today/index.js"),
+  endOfTomorrow: __webpack_require__(/*! ./end_of_tomorrow/index.js */ "./node_modules/date-fns/end_of_tomorrow/index.js"),
+  endOfWeek: __webpack_require__(/*! ./end_of_week/index.js */ "./node_modules/date-fns/end_of_week/index.js"),
+  endOfYear: __webpack_require__(/*! ./end_of_year/index.js */ "./node_modules/date-fns/end_of_year/index.js"),
+  endOfYesterday: __webpack_require__(/*! ./end_of_yesterday/index.js */ "./node_modules/date-fns/end_of_yesterday/index.js"),
+  format: __webpack_require__(/*! ./format/index.js */ "./node_modules/date-fns/format/index.js"),
+  getDate: __webpack_require__(/*! ./get_date/index.js */ "./node_modules/date-fns/get_date/index.js"),
+  getDay: __webpack_require__(/*! ./get_day/index.js */ "./node_modules/date-fns/get_day/index.js"),
+  getDayOfYear: __webpack_require__(/*! ./get_day_of_year/index.js */ "./node_modules/date-fns/get_day_of_year/index.js"),
+  getDaysInMonth: __webpack_require__(/*! ./get_days_in_month/index.js */ "./node_modules/date-fns/get_days_in_month/index.js"),
+  getDaysInYear: __webpack_require__(/*! ./get_days_in_year/index.js */ "./node_modules/date-fns/get_days_in_year/index.js"),
+  getHours: __webpack_require__(/*! ./get_hours/index.js */ "./node_modules/date-fns/get_hours/index.js"),
+  getISODay: __webpack_require__(/*! ./get_iso_day/index.js */ "./node_modules/date-fns/get_iso_day/index.js"),
+  getISOWeek: __webpack_require__(/*! ./get_iso_week/index.js */ "./node_modules/date-fns/get_iso_week/index.js"),
+  getISOWeeksInYear: __webpack_require__(/*! ./get_iso_weeks_in_year/index.js */ "./node_modules/date-fns/get_iso_weeks_in_year/index.js"),
+  getISOYear: __webpack_require__(/*! ./get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js"),
+  getMilliseconds: __webpack_require__(/*! ./get_milliseconds/index.js */ "./node_modules/date-fns/get_milliseconds/index.js"),
+  getMinutes: __webpack_require__(/*! ./get_minutes/index.js */ "./node_modules/date-fns/get_minutes/index.js"),
+  getMonth: __webpack_require__(/*! ./get_month/index.js */ "./node_modules/date-fns/get_month/index.js"),
+  getOverlappingDaysInRanges: __webpack_require__(/*! ./get_overlapping_days_in_ranges/index.js */ "./node_modules/date-fns/get_overlapping_days_in_ranges/index.js"),
+  getQuarter: __webpack_require__(/*! ./get_quarter/index.js */ "./node_modules/date-fns/get_quarter/index.js"),
+  getSeconds: __webpack_require__(/*! ./get_seconds/index.js */ "./node_modules/date-fns/get_seconds/index.js"),
+  getTime: __webpack_require__(/*! ./get_time/index.js */ "./node_modules/date-fns/get_time/index.js"),
+  getYear: __webpack_require__(/*! ./get_year/index.js */ "./node_modules/date-fns/get_year/index.js"),
+  isAfter: __webpack_require__(/*! ./is_after/index.js */ "./node_modules/date-fns/is_after/index.js"),
+  isBefore: __webpack_require__(/*! ./is_before/index.js */ "./node_modules/date-fns/is_before/index.js"),
+  isDate: __webpack_require__(/*! ./is_date/index.js */ "./node_modules/date-fns/is_date/index.js"),
+  isEqual: __webpack_require__(/*! ./is_equal/index.js */ "./node_modules/date-fns/is_equal/index.js"),
+  isFirstDayOfMonth: __webpack_require__(/*! ./is_first_day_of_month/index.js */ "./node_modules/date-fns/is_first_day_of_month/index.js"),
+  isFriday: __webpack_require__(/*! ./is_friday/index.js */ "./node_modules/date-fns/is_friday/index.js"),
+  isFuture: __webpack_require__(/*! ./is_future/index.js */ "./node_modules/date-fns/is_future/index.js"),
+  isLastDayOfMonth: __webpack_require__(/*! ./is_last_day_of_month/index.js */ "./node_modules/date-fns/is_last_day_of_month/index.js"),
+  isLeapYear: __webpack_require__(/*! ./is_leap_year/index.js */ "./node_modules/date-fns/is_leap_year/index.js"),
+  isMonday: __webpack_require__(/*! ./is_monday/index.js */ "./node_modules/date-fns/is_monday/index.js"),
+  isPast: __webpack_require__(/*! ./is_past/index.js */ "./node_modules/date-fns/is_past/index.js"),
+  isSameDay: __webpack_require__(/*! ./is_same_day/index.js */ "./node_modules/date-fns/is_same_day/index.js"),
+  isSameHour: __webpack_require__(/*! ./is_same_hour/index.js */ "./node_modules/date-fns/is_same_hour/index.js"),
+  isSameISOWeek: __webpack_require__(/*! ./is_same_iso_week/index.js */ "./node_modules/date-fns/is_same_iso_week/index.js"),
+  isSameISOYear: __webpack_require__(/*! ./is_same_iso_year/index.js */ "./node_modules/date-fns/is_same_iso_year/index.js"),
+  isSameMinute: __webpack_require__(/*! ./is_same_minute/index.js */ "./node_modules/date-fns/is_same_minute/index.js"),
+  isSameMonth: __webpack_require__(/*! ./is_same_month/index.js */ "./node_modules/date-fns/is_same_month/index.js"),
+  isSameQuarter: __webpack_require__(/*! ./is_same_quarter/index.js */ "./node_modules/date-fns/is_same_quarter/index.js"),
+  isSameSecond: __webpack_require__(/*! ./is_same_second/index.js */ "./node_modules/date-fns/is_same_second/index.js"),
+  isSameWeek: __webpack_require__(/*! ./is_same_week/index.js */ "./node_modules/date-fns/is_same_week/index.js"),
+  isSameYear: __webpack_require__(/*! ./is_same_year/index.js */ "./node_modules/date-fns/is_same_year/index.js"),
+  isSaturday: __webpack_require__(/*! ./is_saturday/index.js */ "./node_modules/date-fns/is_saturday/index.js"),
+  isSunday: __webpack_require__(/*! ./is_sunday/index.js */ "./node_modules/date-fns/is_sunday/index.js"),
+  isThisHour: __webpack_require__(/*! ./is_this_hour/index.js */ "./node_modules/date-fns/is_this_hour/index.js"),
+  isThisISOWeek: __webpack_require__(/*! ./is_this_iso_week/index.js */ "./node_modules/date-fns/is_this_iso_week/index.js"),
+  isThisISOYear: __webpack_require__(/*! ./is_this_iso_year/index.js */ "./node_modules/date-fns/is_this_iso_year/index.js"),
+  isThisMinute: __webpack_require__(/*! ./is_this_minute/index.js */ "./node_modules/date-fns/is_this_minute/index.js"),
+  isThisMonth: __webpack_require__(/*! ./is_this_month/index.js */ "./node_modules/date-fns/is_this_month/index.js"),
+  isThisQuarter: __webpack_require__(/*! ./is_this_quarter/index.js */ "./node_modules/date-fns/is_this_quarter/index.js"),
+  isThisSecond: __webpack_require__(/*! ./is_this_second/index.js */ "./node_modules/date-fns/is_this_second/index.js"),
+  isThisWeek: __webpack_require__(/*! ./is_this_week/index.js */ "./node_modules/date-fns/is_this_week/index.js"),
+  isThisYear: __webpack_require__(/*! ./is_this_year/index.js */ "./node_modules/date-fns/is_this_year/index.js"),
+  isThursday: __webpack_require__(/*! ./is_thursday/index.js */ "./node_modules/date-fns/is_thursday/index.js"),
+  isToday: __webpack_require__(/*! ./is_today/index.js */ "./node_modules/date-fns/is_today/index.js"),
+  isTomorrow: __webpack_require__(/*! ./is_tomorrow/index.js */ "./node_modules/date-fns/is_tomorrow/index.js"),
+  isTuesday: __webpack_require__(/*! ./is_tuesday/index.js */ "./node_modules/date-fns/is_tuesday/index.js"),
+  isValid: __webpack_require__(/*! ./is_valid/index.js */ "./node_modules/date-fns/is_valid/index.js"),
+  isWednesday: __webpack_require__(/*! ./is_wednesday/index.js */ "./node_modules/date-fns/is_wednesday/index.js"),
+  isWeekend: __webpack_require__(/*! ./is_weekend/index.js */ "./node_modules/date-fns/is_weekend/index.js"),
+  isWithinRange: __webpack_require__(/*! ./is_within_range/index.js */ "./node_modules/date-fns/is_within_range/index.js"),
+  isYesterday: __webpack_require__(/*! ./is_yesterday/index.js */ "./node_modules/date-fns/is_yesterday/index.js"),
+  lastDayOfISOWeek: __webpack_require__(/*! ./last_day_of_iso_week/index.js */ "./node_modules/date-fns/last_day_of_iso_week/index.js"),
+  lastDayOfISOYear: __webpack_require__(/*! ./last_day_of_iso_year/index.js */ "./node_modules/date-fns/last_day_of_iso_year/index.js"),
+  lastDayOfMonth: __webpack_require__(/*! ./last_day_of_month/index.js */ "./node_modules/date-fns/last_day_of_month/index.js"),
+  lastDayOfQuarter: __webpack_require__(/*! ./last_day_of_quarter/index.js */ "./node_modules/date-fns/last_day_of_quarter/index.js"),
+  lastDayOfWeek: __webpack_require__(/*! ./last_day_of_week/index.js */ "./node_modules/date-fns/last_day_of_week/index.js"),
+  lastDayOfYear: __webpack_require__(/*! ./last_day_of_year/index.js */ "./node_modules/date-fns/last_day_of_year/index.js"),
+  max: __webpack_require__(/*! ./max/index.js */ "./node_modules/date-fns/max/index.js"),
+  min: __webpack_require__(/*! ./min/index.js */ "./node_modules/date-fns/min/index.js"),
+  parse: __webpack_require__(/*! ./parse/index.js */ "./node_modules/date-fns/parse/index.js"),
+  setDate: __webpack_require__(/*! ./set_date/index.js */ "./node_modules/date-fns/set_date/index.js"),
+  setDay: __webpack_require__(/*! ./set_day/index.js */ "./node_modules/date-fns/set_day/index.js"),
+  setDayOfYear: __webpack_require__(/*! ./set_day_of_year/index.js */ "./node_modules/date-fns/set_day_of_year/index.js"),
+  setHours: __webpack_require__(/*! ./set_hours/index.js */ "./node_modules/date-fns/set_hours/index.js"),
+  setISODay: __webpack_require__(/*! ./set_iso_day/index.js */ "./node_modules/date-fns/set_iso_day/index.js"),
+  setISOWeek: __webpack_require__(/*! ./set_iso_week/index.js */ "./node_modules/date-fns/set_iso_week/index.js"),
+  setISOYear: __webpack_require__(/*! ./set_iso_year/index.js */ "./node_modules/date-fns/set_iso_year/index.js"),
+  setMilliseconds: __webpack_require__(/*! ./set_milliseconds/index.js */ "./node_modules/date-fns/set_milliseconds/index.js"),
+  setMinutes: __webpack_require__(/*! ./set_minutes/index.js */ "./node_modules/date-fns/set_minutes/index.js"),
+  setMonth: __webpack_require__(/*! ./set_month/index.js */ "./node_modules/date-fns/set_month/index.js"),
+  setQuarter: __webpack_require__(/*! ./set_quarter/index.js */ "./node_modules/date-fns/set_quarter/index.js"),
+  setSeconds: __webpack_require__(/*! ./set_seconds/index.js */ "./node_modules/date-fns/set_seconds/index.js"),
+  setYear: __webpack_require__(/*! ./set_year/index.js */ "./node_modules/date-fns/set_year/index.js"),
+  startOfDay: __webpack_require__(/*! ./start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js"),
+  startOfHour: __webpack_require__(/*! ./start_of_hour/index.js */ "./node_modules/date-fns/start_of_hour/index.js"),
+  startOfISOWeek: __webpack_require__(/*! ./start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js"),
+  startOfISOYear: __webpack_require__(/*! ./start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js"),
+  startOfMinute: __webpack_require__(/*! ./start_of_minute/index.js */ "./node_modules/date-fns/start_of_minute/index.js"),
+  startOfMonth: __webpack_require__(/*! ./start_of_month/index.js */ "./node_modules/date-fns/start_of_month/index.js"),
+  startOfQuarter: __webpack_require__(/*! ./start_of_quarter/index.js */ "./node_modules/date-fns/start_of_quarter/index.js"),
+  startOfSecond: __webpack_require__(/*! ./start_of_second/index.js */ "./node_modules/date-fns/start_of_second/index.js"),
+  startOfToday: __webpack_require__(/*! ./start_of_today/index.js */ "./node_modules/date-fns/start_of_today/index.js"),
+  startOfTomorrow: __webpack_require__(/*! ./start_of_tomorrow/index.js */ "./node_modules/date-fns/start_of_tomorrow/index.js"),
+  startOfWeek: __webpack_require__(/*! ./start_of_week/index.js */ "./node_modules/date-fns/start_of_week/index.js"),
+  startOfYear: __webpack_require__(/*! ./start_of_year/index.js */ "./node_modules/date-fns/start_of_year/index.js"),
+  startOfYesterday: __webpack_require__(/*! ./start_of_yesterday/index.js */ "./node_modules/date-fns/start_of_yesterday/index.js"),
+  subDays: __webpack_require__(/*! ./sub_days/index.js */ "./node_modules/date-fns/sub_days/index.js"),
+  subHours: __webpack_require__(/*! ./sub_hours/index.js */ "./node_modules/date-fns/sub_hours/index.js"),
+  subISOYears: __webpack_require__(/*! ./sub_iso_years/index.js */ "./node_modules/date-fns/sub_iso_years/index.js"),
+  subMilliseconds: __webpack_require__(/*! ./sub_milliseconds/index.js */ "./node_modules/date-fns/sub_milliseconds/index.js"),
+  subMinutes: __webpack_require__(/*! ./sub_minutes/index.js */ "./node_modules/date-fns/sub_minutes/index.js"),
+  subMonths: __webpack_require__(/*! ./sub_months/index.js */ "./node_modules/date-fns/sub_months/index.js"),
+  subQuarters: __webpack_require__(/*! ./sub_quarters/index.js */ "./node_modules/date-fns/sub_quarters/index.js"),
+  subSeconds: __webpack_require__(/*! ./sub_seconds/index.js */ "./node_modules/date-fns/sub_seconds/index.js"),
+  subWeeks: __webpack_require__(/*! ./sub_weeks/index.js */ "./node_modules/date-fns/sub_weeks/index.js"),
+  subYears: __webpack_require__(/*! ./sub_years/index.js */ "./node_modules/date-fns/sub_years/index.js")
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_after/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/is_after/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the first date after the second one?
+ *
+ * @description
+ * Is the first date after the second one?
+ *
+ * @param {Date|String|Number} date - the date that should be after the other one to return true
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @returns {Boolean} the first date is after the second date
+ *
+ * @example
+ * // Is 10 July 1989 after 11 February 1987?
+ * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * //=> true
+ */
+function isAfter (dirtyDate, dirtyDateToCompare) {
+  var date = parse(dirtyDate)
+  var dateToCompare = parse(dirtyDateToCompare)
+  return date.getTime() > dateToCompare.getTime()
+}
+
+module.exports = isAfter
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_before/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/is_before/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the first date before the second one?
+ *
+ * @description
+ * Is the first date before the second one?
+ *
+ * @param {Date|String|Number} date - the date that should be before the other one to return true
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @returns {Boolean} the first date is before the second date
+ *
+ * @example
+ * // Is 10 July 1989 before 11 February 1987?
+ * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * //=> false
+ */
+function isBefore (dirtyDate, dirtyDateToCompare) {
+  var date = parse(dirtyDate)
+  var dateToCompare = parse(dirtyDateToCompare)
+  return date.getTime() < dateToCompare.getTime()
+}
+
+module.exports = isBefore
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_date/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/date-fns/is_date/index.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * @category Common Helpers
+ * @summary Is the given argument an instance of Date?
+ *
+ * @description
+ * Is the given argument an instance of Date?
+ *
+ * @param {*} argument - the argument to check
+ * @returns {Boolean} the given argument is an instance of Date
+ *
+ * @example
+ * // Is 'mayonnaise' a Date?
+ * var result = isDate('mayonnaise')
+ * //=> false
+ */
+function isDate (argument) {
+  return argument instanceof Date
+}
+
+module.exports = isDate
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_equal/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/is_equal/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Are the given dates equal?
+ *
+ * @description
+ * Are the given dates equal?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to compare
+ * @param {Date|String|Number} dateRight - the second date to compare
+ * @returns {Boolean} the dates are equal
+ *
+ * @example
+ * // Are 2 July 2014 06:30:45.000 and 2 July 2014 06:30:45.500 equal?
+ * var result = isEqual(
+ *   new Date(2014, 6, 2, 6, 30, 45, 0)
+ *   new Date(2014, 6, 2, 6, 30, 45, 500)
+ * )
+ * //=> false
+ */
+function isEqual (dirtyLeftDate, dirtyRightDate) {
+  var dateLeft = parse(dirtyLeftDate)
+  var dateRight = parse(dirtyRightDate)
+  return dateLeft.getTime() === dateRight.getTime()
+}
+
+module.exports = isEqual
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_first_day_of_month/index.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/date-fns/is_first_day_of_month/index.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Is the given date the first day of a month?
+ *
+ * @description
+ * Is the given date the first day of a month?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is the first day of a month
+ *
+ * @example
+ * // Is 1 September 2014 the first day of a month?
+ * var result = isFirstDayOfMonth(new Date(2014, 8, 1))
+ * //=> true
+ */
+function isFirstDayOfMonth (dirtyDate) {
+  return parse(dirtyDate).getDate() === 1
+}
+
+module.exports = isFirstDayOfMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_friday/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/is_friday/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Friday?
+ *
+ * @description
+ * Is the given date Friday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Friday
+ *
+ * @example
+ * // Is 26 September 2014 Friday?
+ * var result = isFriday(new Date(2014, 8, 26))
+ * //=> true
+ */
+function isFriday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 5
+}
+
+module.exports = isFriday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_future/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/is_future/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the given date in the future?
+ *
+ * @description
+ * Is the given date in the future?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in the future
+ *
+ * @example
+ * // If today is 6 October 2014, is 31 December 2014 in the future?
+ * var result = isFuture(new Date(2014, 11, 31))
+ * //=> true
+ */
+function isFuture (dirtyDate) {
+  return parse(dirtyDate).getTime() > new Date().getTime()
+}
+
+module.exports = isFuture
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_last_day_of_month/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/date-fns/is_last_day_of_month/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var endOfDay = __webpack_require__(/*! ../end_of_day/index.js */ "./node_modules/date-fns/end_of_day/index.js")
+var endOfMonth = __webpack_require__(/*! ../end_of_month/index.js */ "./node_modules/date-fns/end_of_month/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Is the given date the last day of a month?
+ *
+ * @description
+ * Is the given date the last day of a month?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is the last day of a month
+ *
+ * @example
+ * // Is 28 February 2014 the last day of a month?
+ * var result = isLastDayOfMonth(new Date(2014, 1, 28))
+ * //=> true
+ */
+function isLastDayOfMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  return endOfDay(date).getTime() === endOfMonth(date).getTime()
+}
+
+module.exports = isLastDayOfMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_leap_year/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/is_leap_year/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Is the given date in the leap year?
+ *
+ * @description
+ * Is the given date in the leap year?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in the leap year
+ *
+ * @example
+ * // Is 1 September 2012 in the leap year?
+ * var result = isLeapYear(new Date(2012, 8, 1))
+ * //=> true
+ */
+function isLeapYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
+}
+
+module.exports = isLeapYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_monday/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/is_monday/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Monday?
+ *
+ * @description
+ * Is the given date Monday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Monday
+ *
+ * @example
+ * // Is 22 September 2014 Monday?
+ * var result = isMonday(new Date(2014, 8, 22))
+ * //=> true
+ */
+function isMonday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 1
+}
+
+module.exports = isMonday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_past/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/date-fns/is_past/index.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the given date in the past?
+ *
+ * @description
+ * Is the given date in the past?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in the past
+ *
+ * @example
+ * // If today is 6 October 2014, is 2 July 2014 in the past?
+ * var result = isPast(new Date(2014, 6, 2))
+ * //=> true
+ */
+function isPast (dirtyDate) {
+  return parse(dirtyDate).getTime() < new Date().getTime()
+}
+
+module.exports = isPast
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_day/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/is_same_day/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Are the given dates in the same day?
+ *
+ * @description
+ * Are the given dates in the same day?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same day
+ *
+ * @example
+ * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
+ * var result = isSameDay(
+ *   new Date(2014, 8, 4, 6, 0),
+ *   new Date(2014, 8, 4, 18, 0)
+ * )
+ * //=> true
+ */
+function isSameDay (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfDay = startOfDay(dirtyDateLeft)
+  var dateRightStartOfDay = startOfDay(dirtyDateRight)
+
+  return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
+}
+
+module.exports = isSameDay
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_hour/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/is_same_hour/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfHour = __webpack_require__(/*! ../start_of_hour/index.js */ "./node_modules/date-fns/start_of_hour/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Are the given dates in the same hour?
+ *
+ * @description
+ * Are the given dates in the same hour?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same hour
+ *
+ * @example
+ * // Are 4 September 2014 06:00:00 and 4 September 06:30:00 in the same hour?
+ * var result = isSameHour(
+ *   new Date(2014, 8, 4, 6, 0),
+ *   new Date(2014, 8, 4, 6, 30)
+ * )
+ * //=> true
+ */
+function isSameHour (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfHour = startOfHour(dirtyDateLeft)
+  var dateRightStartOfHour = startOfHour(dirtyDateRight)
+
+  return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
+}
+
+module.exports = isSameHour
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_iso_week/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/is_same_iso_week/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameWeek = __webpack_require__(/*! ../is_same_week/index.js */ "./node_modules/date-fns/is_same_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Are the given dates in the same ISO week?
+ *
+ * @description
+ * Are the given dates in the same ISO week?
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same ISO week
+ *
+ * @example
+ * // Are 1 September 2014 and 7 September 2014 in the same ISO week?
+ * var result = isSameISOWeek(
+ *   new Date(2014, 8, 1),
+ *   new Date(2014, 8, 7)
+ * )
+ * //=> true
+ */
+function isSameISOWeek (dirtyDateLeft, dirtyDateRight) {
+  return isSameWeek(dirtyDateLeft, dirtyDateRight, {weekStartsOn: 1})
+}
+
+module.exports = isSameISOWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_iso_year/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/is_same_iso_year/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Are the given dates in the same ISO week-numbering year?
+ *
+ * @description
+ * Are the given dates in the same ISO week-numbering year?
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same ISO week-numbering year
+ *
+ * @example
+ * // Are 29 December 2003 and 2 January 2005 in the same ISO week-numbering year?
+ * var result = isSameISOYear(
+ *   new Date(2003, 11, 29),
+ *   new Date(2005, 0, 2)
+ * )
+ * //=> true
+ */
+function isSameISOYear (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft)
+  var dateRightStartOfYear = startOfISOYear(dirtyDateRight)
+
+  return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
+}
+
+module.exports = isSameISOYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_minute/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/is_same_minute/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfMinute = __webpack_require__(/*! ../start_of_minute/index.js */ "./node_modules/date-fns/start_of_minute/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Are the given dates in the same minute?
+ *
+ * @description
+ * Are the given dates in the same minute?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same minute
+ *
+ * @example
+ * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15
+ * // in the same minute?
+ * var result = isSameMinute(
+ *   new Date(2014, 8, 4, 6, 30),
+ *   new Date(2014, 8, 4, 6, 30, 15)
+ * )
+ * //=> true
+ */
+function isSameMinute (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
+  var dateRightStartOfMinute = startOfMinute(dirtyDateRight)
+
+  return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
+}
+
+module.exports = isSameMinute
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_month/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/is_same_month/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Are the given dates in the same month?
+ *
+ * @description
+ * Are the given dates in the same month?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same month
+ *
+ * @example
+ * // Are 2 September 2014 and 25 September 2014 in the same month?
+ * var result = isSameMonth(
+ *   new Date(2014, 8, 2),
+ *   new Date(2014, 8, 25)
+ * )
+ * //=> true
+ */
+function isSameMonth (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+  return dateLeft.getFullYear() === dateRight.getFullYear() &&
+    dateLeft.getMonth() === dateRight.getMonth()
+}
+
+module.exports = isSameMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_quarter/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/is_same_quarter/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfQuarter = __webpack_require__(/*! ../start_of_quarter/index.js */ "./node_modules/date-fns/start_of_quarter/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Are the given dates in the same year quarter?
+ *
+ * @description
+ * Are the given dates in the same year quarter?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same quarter
+ *
+ * @example
+ * // Are 1 January 2014 and 8 March 2014 in the same quarter?
+ * var result = isSameQuarter(
+ *   new Date(2014, 0, 1),
+ *   new Date(2014, 2, 8)
+ * )
+ * //=> true
+ */
+function isSameQuarter (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
+  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)
+
+  return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
+}
+
+module.exports = isSameQuarter
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_second/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/is_same_second/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfSecond = __webpack_require__(/*! ../start_of_second/index.js */ "./node_modules/date-fns/start_of_second/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Are the given dates in the same second?
+ *
+ * @description
+ * Are the given dates in the same second?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same second
+ *
+ * @example
+ * // Are 4 September 2014 06:30:15.000 and 4 September 2014 06:30.15.500
+ * // in the same second?
+ * var result = isSameSecond(
+ *   new Date(2014, 8, 4, 6, 30, 15),
+ *   new Date(2014, 8, 4, 6, 30, 15, 500)
+ * )
+ * //=> true
+ */
+function isSameSecond (dirtyDateLeft, dirtyDateRight) {
+  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
+  var dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+
+  return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
+}
+
+module.exports = isSameSecond
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_week/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/is_same_week/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ "./node_modules/date-fns/start_of_week/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Are the given dates in the same week?
+ *
+ * @description
+ * Are the given dates in the same week?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Boolean} the dates are in the same week
+ *
+ * @example
+ * // Are 31 August 2014 and 4 September 2014 in the same week?
+ * var result = isSameWeek(
+ *   new Date(2014, 7, 31),
+ *   new Date(2014, 8, 4)
+ * )
+ * //=> true
+ *
+ * @example
+ * // If week starts with Monday,
+ * // are 31 August 2014 and 4 September 2014 in the same week?
+ * var result = isSameWeek(
+ *   new Date(2014, 7, 31),
+ *   new Date(2014, 8, 4),
+ *   {weekStartsOn: 1}
+ * )
+ * //=> false
+ */
+function isSameWeek (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
+  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
+
+  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
+}
+
+module.exports = isSameWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_same_year/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/is_same_year/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Are the given dates in the same year?
+ *
+ * @description
+ * Are the given dates in the same year?
+ *
+ * @param {Date|String|Number} dateLeft - the first date to check
+ * @param {Date|String|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same year
+ *
+ * @example
+ * // Are 2 September 2014 and 25 September 2014 in the same year?
+ * var result = isSameYear(
+ *   new Date(2014, 8, 2),
+ *   new Date(2014, 8, 25)
+ * )
+ * //=> true
+ */
+function isSameYear (dirtyDateLeft, dirtyDateRight) {
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
+  return dateLeft.getFullYear() === dateRight.getFullYear()
+}
+
+module.exports = isSameYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_saturday/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/is_saturday/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Saturday?
+ *
+ * @description
+ * Is the given date Saturday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Saturday
+ *
+ * @example
+ * // Is 27 September 2014 Saturday?
+ * var result = isSaturday(new Date(2014, 8, 27))
+ * //=> true
+ */
+function isSaturday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 6
+}
+
+module.exports = isSaturday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_sunday/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/is_sunday/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Sunday?
+ *
+ * @description
+ * Is the given date Sunday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Sunday
+ *
+ * @example
+ * // Is 21 September 2014 Sunday?
+ * var result = isSunday(new Date(2014, 8, 21))
+ * //=> true
+ */
+function isSunday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 0
+}
+
+module.exports = isSunday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_this_hour/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/is_this_hour/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameHour = __webpack_require__(/*! ../is_same_hour/index.js */ "./node_modules/date-fns/is_same_hour/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Is the given date in the same hour as the current date?
+ *
+ * @description
+ * Is the given date in the same hour as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this hour
+ *
+ * @example
+ * // If now is 25 September 2014 18:30:15.500,
+ * // is 25 September 2014 18:00:00 in this hour?
+ * var result = isThisHour(new Date(2014, 8, 25, 18))
+ * //=> true
+ */
+function isThisHour (dirtyDate) {
+  return isSameHour(new Date(), dirtyDate)
+}
+
+module.exports = isThisHour
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_this_iso_week/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/is_this_iso_week/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameISOWeek = __webpack_require__(/*! ../is_same_iso_week/index.js */ "./node_modules/date-fns/is_same_iso_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Is the given date in the same ISO week as the current date?
+ *
+ * @description
+ * Is the given date in the same ISO week as the current date?
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this ISO week
+ *
+ * @example
+ * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
+ * var result = isThisISOWeek(new Date(2014, 8, 22))
+ * //=> true
+ */
+function isThisISOWeek (dirtyDate) {
+  return isSameISOWeek(new Date(), dirtyDate)
+}
+
+module.exports = isThisISOWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_this_iso_year/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/is_this_iso_year/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameISOYear = __webpack_require__(/*! ../is_same_iso_year/index.js */ "./node_modules/date-fns/is_same_iso_year/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Is the given date in the same ISO week-numbering year as the current date?
+ *
+ * @description
+ * Is the given date in the same ISO week-numbering year as the current date?
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this ISO week-numbering year
+ *
+ * @example
+ * // If today is 25 September 2014,
+ * // is 30 December 2013 in this ISO week-numbering year?
+ * var result = isThisISOYear(new Date(2013, 11, 30))
+ * //=> true
+ */
+function isThisISOYear (dirtyDate) {
+  return isSameISOYear(new Date(), dirtyDate)
+}
+
+module.exports = isThisISOYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_this_minute/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/is_this_minute/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameMinute = __webpack_require__(/*! ../is_same_minute/index.js */ "./node_modules/date-fns/is_same_minute/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Is the given date in the same minute as the current date?
+ *
+ * @description
+ * Is the given date in the same minute as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this minute
+ *
+ * @example
+ * // If now is 25 September 2014 18:30:15.500,
+ * // is 25 September 2014 18:30:00 in this minute?
+ * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
+ * //=> true
+ */
+function isThisMinute (dirtyDate) {
+  return isSameMinute(new Date(), dirtyDate)
+}
+
+module.exports = isThisMinute
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_this_month/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/is_this_month/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameMonth = __webpack_require__(/*! ../is_same_month/index.js */ "./node_modules/date-fns/is_same_month/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Is the given date in the same month as the current date?
+ *
+ * @description
+ * Is the given date in the same month as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this month
+ *
+ * @example
+ * // If today is 25 September 2014, is 15 September 2014 in this month?
+ * var result = isThisMonth(new Date(2014, 8, 15))
+ * //=> true
+ */
+function isThisMonth (dirtyDate) {
+  return isSameMonth(new Date(), dirtyDate)
+}
+
+module.exports = isThisMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_this_quarter/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/is_this_quarter/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameQuarter = __webpack_require__(/*! ../is_same_quarter/index.js */ "./node_modules/date-fns/is_same_quarter/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Is the given date in the same quarter as the current date?
+ *
+ * @description
+ * Is the given date in the same quarter as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this quarter
+ *
+ * @example
+ * // If today is 25 September 2014, is 2 July 2014 in this quarter?
+ * var result = isThisQuarter(new Date(2014, 6, 2))
+ * //=> true
+ */
+function isThisQuarter (dirtyDate) {
+  return isSameQuarter(new Date(), dirtyDate)
+}
+
+module.exports = isThisQuarter
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_this_second/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/is_this_second/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameSecond = __webpack_require__(/*! ../is_same_second/index.js */ "./node_modules/date-fns/is_same_second/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Is the given date in the same second as the current date?
+ *
+ * @description
+ * Is the given date in the same second as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this second
+ *
+ * @example
+ * // If now is 25 September 2014 18:30:15.500,
+ * // is 25 September 2014 18:30:15.000 in this second?
+ * var result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
+ * //=> true
+ */
+function isThisSecond (dirtyDate) {
+  return isSameSecond(new Date(), dirtyDate)
+}
+
+module.exports = isThisSecond
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_this_week/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/is_this_week/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameWeek = __webpack_require__(/*! ../is_same_week/index.js */ "./node_modules/date-fns/is_same_week/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Is the given date in the same week as the current date?
+ *
+ * @description
+ * Is the given date in the same week as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Boolean} the date is in this week
+ *
+ * @example
+ * // If today is 25 September 2014, is 21 September 2014 in this week?
+ * var result = isThisWeek(new Date(2014, 8, 21))
+ * //=> true
+ *
+ * @example
+ * // If today is 25 September 2014 and week starts with Monday
+ * // is 21 September 2014 in this week?
+ * var result = isThisWeek(new Date(2014, 8, 21), {weekStartsOn: 1})
+ * //=> false
+ */
+function isThisWeek (dirtyDate, dirtyOptions) {
+  return isSameWeek(new Date(), dirtyDate, dirtyOptions)
+}
+
+module.exports = isThisWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_this_year/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/is_this_year/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isSameYear = __webpack_require__(/*! ../is_same_year/index.js */ "./node_modules/date-fns/is_same_year/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Is the given date in the same year as the current date?
+ *
+ * @description
+ * Is the given date in the same year as the current date?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is in this year
+ *
+ * @example
+ * // If today is 25 September 2014, is 2 July 2014 in this year?
+ * var result = isThisYear(new Date(2014, 6, 2))
+ * //=> true
+ */
+function isThisYear (dirtyDate) {
+  return isSameYear(new Date(), dirtyDate)
+}
+
+module.exports = isThisYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_thursday/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/is_thursday/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Thursday?
+ *
+ * @description
+ * Is the given date Thursday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Thursday
+ *
+ * @example
+ * // Is 25 September 2014 Thursday?
+ * var result = isThursday(new Date(2014, 8, 25))
+ * //=> true
+ */
+function isThursday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 4
+}
+
+module.exports = isThursday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_today/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/is_today/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Is the given date today?
+ *
+ * @description
+ * Is the given date today?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is today
+ *
+ * @example
+ * // If today is 6 October 2014, is 6 October 14:00:00 today?
+ * var result = isToday(new Date(2014, 9, 6, 14, 0))
+ * //=> true
+ */
+function isToday (dirtyDate) {
+  return startOfDay(dirtyDate).getTime() === startOfDay(new Date()).getTime()
+}
+
+module.exports = isToday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_tomorrow/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/is_tomorrow/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Is the given date tomorrow?
+ *
+ * @description
+ * Is the given date tomorrow?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is tomorrow
+ *
+ * @example
+ * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?
+ * var result = isTomorrow(new Date(2014, 9, 7, 14, 0))
+ * //=> true
+ */
+function isTomorrow (dirtyDate) {
+  var tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  return startOfDay(dirtyDate).getTime() === startOfDay(tomorrow).getTime()
+}
+
+module.exports = isTomorrow
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_tuesday/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/is_tuesday/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Tuesday?
+ *
+ * @description
+ * Is the given date Tuesday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Tuesday
+ *
+ * @example
+ * // Is 23 September 2014 Tuesday?
+ * var result = isTuesday(new Date(2014, 8, 23))
+ * //=> true
+ */
+function isTuesday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 2
+}
+
+module.exports = isTuesday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_valid/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/is_valid/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isDate = __webpack_require__(/*! ../is_date/index.js */ "./node_modules/date-fns/is_date/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Is the given date valid?
+ *
+ * @description
+ * Returns false if argument is Invalid Date and true otherwise.
+ * Invalid Date is a Date, whose time value is NaN.
+ *
+ * Time value of Date: http://es5.github.io/#x15.9.1.1
+ *
+ * @param {Date} date - the date to check
+ * @returns {Boolean} the date is valid
+ * @throws {TypeError} argument must be an instance of Date
+ *
+ * @example
+ * // For the valid date:
+ * var result = isValid(new Date(2014, 1, 31))
+ * //=> true
+ *
+ * @example
+ * // For the invalid date:
+ * var result = isValid(new Date(''))
+ * //=> false
+ */
+function isValid (dirtyDate) {
+  if (isDate(dirtyDate)) {
+    return !isNaN(dirtyDate)
+  } else {
+    throw new TypeError(toString.call(dirtyDate) + ' is not an instance of Date')
+  }
+}
+
+module.exports = isValid
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_wednesday/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/is_wednesday/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Is the given date Wednesday?
+ *
+ * @description
+ * Is the given date Wednesday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is Wednesday
+ *
+ * @example
+ * // Is 24 September 2014 Wednesday?
+ * var result = isWednesday(new Date(2014, 8, 24))
+ * //=> true
+ */
+function isWednesday (dirtyDate) {
+  return parse(dirtyDate).getDay() === 3
+}
+
+module.exports = isWednesday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_weekend/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/is_weekend/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Does the given date fall on a weekend?
+ *
+ * @description
+ * Does the given date fall on a weekend?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date falls on a weekend
+ *
+ * @example
+ * // Does 5 October 2014 fall on a weekend?
+ * var result = isWeekend(new Date(2014, 9, 5))
+ * //=> true
+ */
+function isWeekend (dirtyDate) {
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  return day === 0 || day === 6
+}
+
+module.exports = isWeekend
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_within_range/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/is_within_range/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Range Helpers
+ * @summary Is the given date within the range?
+ *
+ * @description
+ * Is the given date within the range?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @param {Date|String|Number} startDate - the start of range
+ * @param {Date|String|Number} endDate - the end of range
+ * @returns {Boolean} the date is within the range
+ * @throws {Error} startDate cannot be after endDate
+ *
+ * @example
+ * // For the date within the range:
+ * isWithinRange(
+ *   new Date(2014, 0, 3), new Date(2014, 0, 1), new Date(2014, 0, 7)
+ * )
+ * //=> true
+ *
+ * @example
+ * // For the date outside of the range:
+ * isWithinRange(
+ *   new Date(2014, 0, 10), new Date(2014, 0, 1), new Date(2014, 0, 7)
+ * )
+ * //=> false
+ */
+function isWithinRange (dirtyDate, dirtyStartDate, dirtyEndDate) {
+  var time = parse(dirtyDate).getTime()
+  var startTime = parse(dirtyStartDate).getTime()
+  var endTime = parse(dirtyEndDate).getTime()
+
+  if (startTime > endTime) {
+    throw new Error('The start of the range cannot be after the end of the range')
+  }
+
+  return time >= startTime && time <= endTime
+}
+
+module.exports = isWithinRange
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/is_yesterday/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/is_yesterday/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Is the given date yesterday?
+ *
+ * @description
+ * Is the given date yesterday?
+ *
+ * @param {Date|String|Number} date - the date to check
+ * @returns {Boolean} the date is yesterday
+ *
+ * @example
+ * // If today is 6 October 2014, is 5 October 14:00:00 yesterday?
+ * var result = isYesterday(new Date(2014, 9, 5, 14, 0))
+ * //=> true
+ */
+function isYesterday (dirtyDate) {
+  var yesterday = new Date()
+  yesterday.setDate(yesterday.getDate() - 1)
+  return startOfDay(dirtyDate).getTime() === startOfDay(yesterday).getTime()
+}
+
+module.exports = isYesterday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/last_day_of_iso_week/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/date-fns/last_day_of_iso_week/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var lastDayOfWeek = __webpack_require__(/*! ../last_day_of_week/index.js */ "./node_modules/date-fns/last_day_of_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Return the last day of an ISO week for the given date.
+ *
+ * @description
+ * Return the last day of an ISO week for the given date.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the last day of an ISO week
+ *
+ * @example
+ * // The last day of an ISO week for 2 September 2014 11:55:00:
+ * var result = lastDayOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sun Sep 07 2014 00:00:00
+ */
+function lastDayOfISOWeek (dirtyDate) {
+  return lastDayOfWeek(dirtyDate, {weekStartsOn: 1})
+}
+
+module.exports = lastDayOfISOWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/last_day_of_iso_year/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/date-fns/last_day_of_iso_year/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Return the last day of an ISO week-numbering year for the given date.
+ *
+ * @description
+ * Return the last day of an ISO week-numbering year,
+ * which always starts 3 days before the year's first Thursday.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the end of an ISO week-numbering year
+ *
+ * @example
+ * // The last day of an ISO week-numbering year for 2 July 2005:
+ * var result = lastDayOfISOYear(new Date(2005, 6, 2))
+ * //=> Sun Jan 01 2006 00:00:00
+ */
+function lastDayOfISOYear (dirtyDate) {
+  var year = getISOYear(dirtyDate)
+  var fourthOfJanuary = new Date(0)
+  fourthOfJanuary.setFullYear(year + 1, 0, 4)
+  fourthOfJanuary.setHours(0, 0, 0, 0)
+  var date = startOfISOWeek(fourthOfJanuary)
+  date.setDate(date.getDate() - 1)
+  return date
+}
+
+module.exports = lastDayOfISOYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/last_day_of_month/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/date-fns/last_day_of_month/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Return the last day of a month for the given date.
+ *
+ * @description
+ * Return the last day of a month for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the last day of a month
+ *
+ * @example
+ * // The last day of a month for 2 September 2014 11:55:00:
+ * var result = lastDayOfMonth(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 30 2014 00:00:00
+ */
+function lastDayOfMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  var month = date.getMonth()
+  date.setFullYear(date.getFullYear(), month + 1, 0)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = lastDayOfMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/last_day_of_quarter/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/date-fns/last_day_of_quarter/index.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Return the last day of a year quarter for the given date.
+ *
+ * @description
+ * Return the last day of a year quarter for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the last day of a quarter
+ *
+ * @example
+ * // The last day of a quarter for 2 September 2014 11:55:00:
+ * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 30 2014 00:00:00
+ */
+function lastDayOfQuarter (dirtyDate) {
+  var date = parse(dirtyDate)
+  var currentMonth = date.getMonth()
+  var month = currentMonth - currentMonth % 3 + 3
+  date.setMonth(month, 0)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = lastDayOfQuarter
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/last_day_of_week/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/last_day_of_week/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Return the last day of a week for the given date.
+ *
+ * @description
+ * Return the last day of a week for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the last day of a week
+ *
+ * @example
+ * // The last day of a week for 2 September 2014 11:55:00:
+ * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sat Sep 06 2014 00:00:00
+ *
+ * @example
+ * // If the week starts on Monday, the last day of the week for 2 September 2014 11:55:00:
+ * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
+ * //=> Sun Sep 07 2014 00:00:00
+ */
+function lastDayOfWeek (dirtyDate, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
+
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
+
+  date.setHours(0, 0, 0, 0)
+  date.setDate(date.getDate() + diff)
+  return date
+}
+
+module.exports = lastDayOfWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/last_day_of_year/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/last_day_of_year/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Return the last day of a year for the given date.
+ *
+ * @description
+ * Return the last day of a year for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the last day of a year
+ *
+ * @example
+ * // The last day of a year for 2 September 2014 11:55:00:
+ * var result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))
+ * //=> Wed Dec 31 2014 00:00:00
+ */
+function lastDayOfYear (dirtyDate) {
+  var date = parse(dirtyDate)
+  var year = date.getFullYear()
+  date.setFullYear(year + 1, 0, 0)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = lastDayOfYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/locale/_lib/build_formatting_tokens_reg_exp/index.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/date-fns/locale/_lib/build_formatting_tokens_reg_exp/index.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var commonFormatterKeys = [
+  'M', 'MM', 'Q', 'D', 'DD', 'DDD', 'DDDD', 'd',
+  'E', 'W', 'WW', 'YY', 'YYYY', 'GG', 'GGGG',
+  'H', 'HH', 'h', 'hh', 'm', 'mm',
+  's', 'ss', 'S', 'SS', 'SSS',
+  'Z', 'ZZ', 'X', 'x'
+]
+
+function buildFormattingTokensRegExp (formatters) {
+  var formatterKeys = []
+  for (var key in formatters) {
+    if (formatters.hasOwnProperty(key)) {
+      formatterKeys.push(key)
+    }
+  }
+
+  var formattingTokens = commonFormatterKeys
+    .concat(formatterKeys)
+    .sort()
+    .reverse()
+  var formattingTokensRegExp = new RegExp(
+    '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
+  )
+
+  return formattingTokensRegExp
+}
+
+module.exports = buildFormattingTokensRegExp
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/locale/en/build_distance_in_words_locale/index.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/date-fns/locale/en/build_distance_in_words_locale/index.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function buildDistanceInWordsLocale () {
+  var distanceInWordsLocale = {
+    lessThanXSeconds: {
+      one: 'less than a second',
+      other: 'less than {{count}} seconds'
+    },
+
+    xSeconds: {
+      one: '1 second',
+      other: '{{count}} seconds'
+    },
+
+    halfAMinute: 'half a minute',
+
+    lessThanXMinutes: {
+      one: 'less than a minute',
+      other: 'less than {{count}} minutes'
+    },
+
+    xMinutes: {
+      one: '1 minute',
+      other: '{{count}} minutes'
+    },
+
+    aboutXHours: {
+      one: 'about 1 hour',
+      other: 'about {{count}} hours'
+    },
+
+    xHours: {
+      one: '1 hour',
+      other: '{{count}} hours'
+    },
+
+    xDays: {
+      one: '1 day',
+      other: '{{count}} days'
+    },
+
+    aboutXMonths: {
+      one: 'about 1 month',
+      other: 'about {{count}} months'
+    },
+
+    xMonths: {
+      one: '1 month',
+      other: '{{count}} months'
+    },
+
+    aboutXYears: {
+      one: 'about 1 year',
+      other: 'about {{count}} years'
+    },
+
+    xYears: {
+      one: '1 year',
+      other: '{{count}} years'
+    },
+
+    overXYears: {
+      one: 'over 1 year',
+      other: 'over {{count}} years'
+    },
+
+    almostXYears: {
+      one: 'almost 1 year',
+      other: 'almost {{count}} years'
+    }
+  }
+
+  function localize (token, count, options) {
+    options = options || {}
+
+    var result
+    if (typeof distanceInWordsLocale[token] === 'string') {
+      result = distanceInWordsLocale[token]
+    } else if (count === 1) {
+      result = distanceInWordsLocale[token].one
+    } else {
+      result = distanceInWordsLocale[token].other.replace('{{count}}', count)
+    }
+
+    if (options.addSuffix) {
+      if (options.comparison > 0) {
+        return 'in ' + result
+      } else {
+        return result + ' ago'
+      }
+    }
+
+    return result
+  }
+
+  return {
+    localize: localize
+  }
+}
+
+module.exports = buildDistanceInWordsLocale
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/locale/en/build_format_locale/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/date-fns/locale/en/build_format_locale/index.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var buildFormattingTokensRegExp = __webpack_require__(/*! ../../_lib/build_formatting_tokens_reg_exp/index.js */ "./node_modules/date-fns/locale/_lib/build_formatting_tokens_reg_exp/index.js")
+
+function buildFormatLocale () {
+  // Note: in English, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+  var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  var monthsFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  var weekdays2char = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+  var weekdays3char = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  var weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  var meridiemUppercase = ['AM', 'PM']
+  var meridiemLowercase = ['am', 'pm']
+  var meridiemFull = ['a.m.', 'p.m.']
+
+  var formatters = {
+    // Month: Jan, Feb, ..., Dec
+    'MMM': function (date) {
+      return months3char[date.getMonth()]
+    },
+
+    // Month: January, February, ..., December
+    'MMMM': function (date) {
+      return monthsFull[date.getMonth()]
+    },
+
+    // Day of week: Su, Mo, ..., Sa
+    'dd': function (date) {
+      return weekdays2char[date.getDay()]
+    },
+
+    // Day of week: Sun, Mon, ..., Sat
+    'ddd': function (date) {
+      return weekdays3char[date.getDay()]
+    },
+
+    // Day of week: Sunday, Monday, ..., Saturday
+    'dddd': function (date) {
+      return weekdaysFull[date.getDay()]
+    },
+
+    // AM, PM
+    'A': function (date) {
+      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
+    },
+
+    // am, pm
+    'a': function (date) {
+      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
+    },
+
+    // a.m., p.m.
+    'aa': function (date) {
+      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
+    }
+  }
+
+  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
+  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W']
+  ordinalFormatters.forEach(function (formatterToken) {
+    formatters[formatterToken + 'o'] = function (date, formatters) {
+      return ordinal(formatters[formatterToken](date))
+    }
+  })
+
+  return {
+    formatters: formatters,
+    formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
+  }
+}
+
+function ordinal (number) {
+  var rem100 = number % 100
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return number + 'st'
+      case 2:
+        return number + 'nd'
+      case 3:
+        return number + 'rd'
+    }
+  }
+  return number + 'th'
+}
+
+module.exports = buildFormatLocale
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/locale/en/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/locale/en/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var buildDistanceInWordsLocale = __webpack_require__(/*! ./build_distance_in_words_locale/index.js */ "./node_modules/date-fns/locale/en/build_distance_in_words_locale/index.js")
+var buildFormatLocale = __webpack_require__(/*! ./build_format_locale/index.js */ "./node_modules/date-fns/locale/en/build_format_locale/index.js")
+
+/**
+ * @category Locales
+ * @summary English locale.
+ */
+module.exports = {
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale()
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/max/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/date-fns/max/index.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return the latest of the given dates.
+ *
+ * @description
+ * Return the latest of the given dates.
+ *
+ * @param {...(Date|String|Number)} dates - the dates to compare
+ * @returns {Date} the latest of the dates
+ *
+ * @example
+ * // Which of these dates is the latest?
+ * var result = max(
+ *   new Date(1989, 6, 10),
+ *   new Date(1987, 1, 11),
+ *   new Date(1995, 6, 2),
+ *   new Date(1990, 0, 1)
+ * )
+ * //=> Sun Jul 02 1995 00:00:00
+ */
+function max () {
+  var dirtyDates = Array.prototype.slice.call(arguments)
+  var dates = dirtyDates.map(function (dirtyDate) {
+    return parse(dirtyDate)
+  })
+  var latestTimestamp = Math.max.apply(null, dates)
+  return new Date(latestTimestamp)
+}
+
+module.exports = max
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/min/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/date-fns/min/index.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Common Helpers
+ * @summary Return the earliest of the given dates.
+ *
+ * @description
+ * Return the earliest of the given dates.
+ *
+ * @param {...(Date|String|Number)} dates - the dates to compare
+ * @returns {Date} the earliest of the dates
+ *
+ * @example
+ * // Which of these dates is the earliest?
+ * var result = min(
+ *   new Date(1989, 6, 10),
+ *   new Date(1987, 1, 11),
+ *   new Date(1995, 6, 2),
+ *   new Date(1990, 0, 1)
+ * )
+ * //=> Wed Feb 11 1987 00:00:00
+ */
+function min () {
+  var dirtyDates = Array.prototype.slice.call(arguments)
+  var dates = dirtyDates.map(function (dirtyDate) {
+    return parse(dirtyDate)
+  })
+  var earliestTimestamp = Math.min.apply(null, dates)
+  return new Date(earliestTimestamp)
+}
+
+module.exports = min
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/parse/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/date-fns/parse/index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getTimezoneOffsetInMilliseconds = __webpack_require__(/*! ../_lib/getTimezoneOffsetInMilliseconds/index.js */ "./node_modules/date-fns/_lib/getTimezoneOffsetInMilliseconds/index.js")
+var isDate = __webpack_require__(/*! ../is_date/index.js */ "./node_modules/date-fns/is_date/index.js")
+
+var MILLISECONDS_IN_HOUR = 3600000
+var MILLISECONDS_IN_MINUTE = 60000
+var DEFAULT_ADDITIONAL_DIGITS = 2
+
+var parseTokenDateTimeDelimeter = /[T ]/
+var parseTokenPlainTime = /:/
+
+// year tokens
+var parseTokenYY = /^(\d{2})$/
+var parseTokensYYY = [
+  /^([+-]\d{2})$/, // 0 additional digits
+  /^([+-]\d{3})$/, // 1 additional digit
+  /^([+-]\d{4})$/ // 2 additional digits
+]
+
+var parseTokenYYYY = /^(\d{4})/
+var parseTokensYYYYY = [
+  /^([+-]\d{4})/, // 0 additional digits
+  /^([+-]\d{5})/, // 1 additional digit
+  /^([+-]\d{6})/ // 2 additional digits
+]
+
+// date tokens
+var parseTokenMM = /^-(\d{2})$/
+var parseTokenDDD = /^-?(\d{3})$/
+var parseTokenMMDD = /^-?(\d{2})-?(\d{2})$/
+var parseTokenWww = /^-?W(\d{2})$/
+var parseTokenWwwD = /^-?W(\d{2})-?(\d{1})$/
+
+// time tokens
+var parseTokenHH = /^(\d{2}([.,]\d*)?)$/
+var parseTokenHHMM = /^(\d{2}):?(\d{2}([.,]\d*)?)$/
+var parseTokenHHMMSS = /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/
+
+// timezone tokens
+var parseTokenTimezone = /([Z+-].*)$/
+var parseTokenTimezoneZ = /^(Z)$/
+var parseTokenTimezoneHH = /^([+-])(\d{2})$/
+var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
+
+/**
+ * @category Common Helpers
+ * @summary Convert the given argument to an instance of Date.
+ *
+ * @description
+ * Convert the given argument to an instance of Date.
+ *
+ * If the argument is an instance of Date, the function returns its clone.
+ *
+ * If the argument is a number, it is treated as a timestamp.
+ *
+ * If an argument is a string, the function tries to parse it.
+ * Function accepts complete ISO 8601 formats as well as partial implementations.
+ * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ *
+ * If all above fails, the function passes the given argument to Date constructor.
+ *
+ * @param {Date|String|Number} argument - the value to convert
+ * @param {Object} [options] - the object with options
+ * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
+ * @returns {Date} the parsed date in the local time zone
+ *
+ * @example
+ * // Convert string '2014-02-11T11:30:30' to date:
+ * var result = parse('2014-02-11T11:30:30')
+ * //=> Tue Feb 11 2014 11:30:30
+ *
+ * @example
+ * // Parse string '+02014101',
+ * // if the additional number of digits in the extended year format is 1:
+ * var result = parse('+02014101', {additionalDigits: 1})
+ * //=> Fri Apr 11 2014 00:00:00
+ */
+function parse (argument, dirtyOptions) {
+  if (isDate(argument)) {
+    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
+    return new Date(argument.getTime())
+  } else if (typeof argument !== 'string') {
+    return new Date(argument)
+  }
+
+  var options = dirtyOptions || {}
+  var additionalDigits = options.additionalDigits
+  if (additionalDigits == null) {
+    additionalDigits = DEFAULT_ADDITIONAL_DIGITS
+  } else {
+    additionalDigits = Number(additionalDigits)
+  }
+
+  var dateStrings = splitDateString(argument)
+
+  var parseYearResult = parseYear(dateStrings.date, additionalDigits)
+  var year = parseYearResult.year
+  var restDateString = parseYearResult.restDateString
+
+  var date = parseDate(restDateString, year)
+
+  if (date) {
+    var timestamp = date.getTime()
+    var time = 0
+    var offset
+
+    if (dateStrings.time) {
+      time = parseTime(dateStrings.time)
+    }
+
+    if (dateStrings.timezone) {
+      offset = parseTimezone(dateStrings.timezone) * MILLISECONDS_IN_MINUTE
+    } else {
+      var fullTime = timestamp + time
+      var fullTimeDate = new Date(fullTime)
+
+      offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
+
+      // Adjust time when it's coming from DST
+      var fullTimeDateNextDay = new Date(fullTime)
+      fullTimeDateNextDay.setDate(fullTimeDate.getDate() + 1)
+      var offsetDiff =
+        getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) -
+        getTimezoneOffsetInMilliseconds(fullTimeDate)
+      if (offsetDiff > 0) {
+        offset += offsetDiff
+      }
+    }
+
+    return new Date(timestamp + time + offset)
+  } else {
+    return new Date(argument)
+  }
+}
+
+function splitDateString (dateString) {
+  var dateStrings = {}
+  var array = dateString.split(parseTokenDateTimeDelimeter)
+  var timeString
+
+  if (parseTokenPlainTime.test(array[0])) {
+    dateStrings.date = null
+    timeString = array[0]
+  } else {
+    dateStrings.date = array[0]
+    timeString = array[1]
+  }
+
+  if (timeString) {
+    var token = parseTokenTimezone.exec(timeString)
+    if (token) {
+      dateStrings.time = timeString.replace(token[1], '')
+      dateStrings.timezone = token[1]
+    } else {
+      dateStrings.time = timeString
+    }
+  }
+
+  return dateStrings
+}
+
+function parseYear (dateString, additionalDigits) {
+  var parseTokenYYY = parseTokensYYY[additionalDigits]
+  var parseTokenYYYYY = parseTokensYYYYY[additionalDigits]
+
+  var token
+
+  // YYYY or ±YYYYY
+  token = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString)
+  if (token) {
+    var yearString = token[1]
     return {
-      bindType: TRANSITION_END,
-      delegateType: TRANSITION_END,
-      handle: function handle(event) {
-        if ($(event.target).is(this)) {
-          return event.handleObj.handler.apply(this, arguments); // eslint-disable-line prefer-rest-params
-        }
-
-        return undefined; // eslint-disable-line no-undefined
-      }
-    };
+      year: parseInt(yearString, 10),
+      restDateString: dateString.slice(yearString.length)
+    }
   }
 
-  function transitionEndEmulator(duration) {
-    var _this = this;
-
-    var called = false;
-    $(this).one(Util.TRANSITION_END, function () {
-      called = true;
-    });
-    setTimeout(function () {
-      if (!called) {
-        Util.triggerTransitionEnd(_this);
-      }
-    }, duration);
-    return this;
+  // YY or ±YYY
+  token = parseTokenYY.exec(dateString) || parseTokenYYY.exec(dateString)
+  if (token) {
+    var centuryString = token[1]
+    return {
+      year: parseInt(centuryString, 10) * 100,
+      restDateString: dateString.slice(centuryString.length)
+    }
   }
 
-  function setTransitionEndSupport() {
-    $.fn.emulateTransitionEnd = transitionEndEmulator;
-    $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+  // Invalid ISO-formatted year
+  return {
+    year: null
   }
-  /**
-   * --------------------------------------------------------------------------
-   * Public Util Api
-   * --------------------------------------------------------------------------
-   */
-
-
-  var Util = {
-    TRANSITION_END: 'bsTransitionEnd',
-    getUID: function getUID(prefix) {
-      do {
-        // eslint-disable-next-line no-bitwise
-        prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
-      } while (document.getElementById(prefix));
-
-      return prefix;
-    },
-    getSelectorFromElement: function getSelectorFromElement(element) {
-      var selector = element.getAttribute('data-target');
-
-      if (!selector || selector === '#') {
-        var hrefAttr = element.getAttribute('href');
-        selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
-      }
-
-      try {
-        return document.querySelector(selector) ? selector : null;
-      } catch (err) {
-        return null;
-      }
-    },
-    getTransitionDurationFromElement: function getTransitionDurationFromElement(element) {
-      if (!element) {
-        return 0;
-      } // Get transition-duration of the element
-
-
-      var transitionDuration = $(element).css('transition-duration');
-      var transitionDelay = $(element).css('transition-delay');
-      var floatTransitionDuration = parseFloat(transitionDuration);
-      var floatTransitionDelay = parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
-
-      if (!floatTransitionDuration && !floatTransitionDelay) {
-        return 0;
-      } // If multiple durations are defined, take the first
-
-
-      transitionDuration = transitionDuration.split(',')[0];
-      transitionDelay = transitionDelay.split(',')[0];
-      return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
-    },
-    reflow: function reflow(element) {
-      return element.offsetHeight;
-    },
-    triggerTransitionEnd: function triggerTransitionEnd(element) {
-      $(element).trigger(TRANSITION_END);
-    },
-    // TODO: Remove in v5
-    supportsTransitionEnd: function supportsTransitionEnd() {
-      return Boolean(TRANSITION_END);
-    },
-    isElement: function isElement(obj) {
-      return (obj[0] || obj).nodeType;
-    },
-    typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
-      for (var property in configTypes) {
-        if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
-          var expectedTypes = configTypes[property];
-          var value = config[property];
-          var valueType = value && Util.isElement(value) ? 'element' : toType(value);
-
-          if (!new RegExp(expectedTypes).test(valueType)) {
-            throw new Error(componentName.toUpperCase() + ": " + ("Option \"" + property + "\" provided type \"" + valueType + "\" ") + ("but expected type \"" + expectedTypes + "\"."));
-          }
-        }
-      }
-    },
-    findShadowRoot: function findShadowRoot(element) {
-      if (!document.documentElement.attachShadow) {
-        return null;
-      } // Can find the shadow root otherwise it'll return the document
-
-
-      if (typeof element.getRootNode === 'function') {
-        var root = element.getRootNode();
-        return root instanceof ShadowRoot ? root : null;
-      }
-
-      if (element instanceof ShadowRoot) {
-        return element;
-      } // when we don't find a shadow root
-
-
-      if (!element.parentNode) {
-        return null;
-      }
-
-      return Util.findShadowRoot(element.parentNode);
-    }
-  };
-  setTransitionEndSupport();
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME = 'alert';
-  var VERSION = '4.3.1';
-  var DATA_KEY = 'bs.alert';
-  var EVENT_KEY = "." + DATA_KEY;
-  var DATA_API_KEY = '.data-api';
-  var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var Selector = {
-    DISMISS: '[data-dismiss="alert"]'
-  };
-  var Event = {
-    CLOSE: "close" + EVENT_KEY,
-    CLOSED: "closed" + EVENT_KEY,
-    CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
-  };
-  var ClassName = {
-    ALERT: 'alert',
-    FADE: 'fade',
-    SHOW: 'show'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Alert =
-  /*#__PURE__*/
-  function () {
-    function Alert(element) {
-      this._element = element;
-    } // Getters
-
-
-    var _proto = Alert.prototype;
-
-    // Public
-    _proto.close = function close(element) {
-      var rootElement = this._element;
-
-      if (element) {
-        rootElement = this._getRootElement(element);
-      }
-
-      var customEvent = this._triggerCloseEvent(rootElement);
-
-      if (customEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      this._removeElement(rootElement);
-    };
-
-    _proto.dispose = function dispose() {
-      $.removeData(this._element, DATA_KEY);
-      this._element = null;
-    } // Private
-    ;
-
-    _proto._getRootElement = function _getRootElement(element) {
-      var selector = Util.getSelectorFromElement(element);
-      var parent = false;
-
-      if (selector) {
-        parent = document.querySelector(selector);
-      }
-
-      if (!parent) {
-        parent = $(element).closest("." + ClassName.ALERT)[0];
-      }
-
-      return parent;
-    };
-
-    _proto._triggerCloseEvent = function _triggerCloseEvent(element) {
-      var closeEvent = $.Event(Event.CLOSE);
-      $(element).trigger(closeEvent);
-      return closeEvent;
-    };
-
-    _proto._removeElement = function _removeElement(element) {
-      var _this = this;
-
-      $(element).removeClass(ClassName.SHOW);
-
-      if (!$(element).hasClass(ClassName.FADE)) {
-        this._destroyElement(element);
-
-        return;
-      }
-
-      var transitionDuration = Util.getTransitionDurationFromElement(element);
-      $(element).one(Util.TRANSITION_END, function (event) {
-        return _this._destroyElement(element, event);
-      }).emulateTransitionEnd(transitionDuration);
-    };
-
-    _proto._destroyElement = function _destroyElement(element) {
-      $(element).detach().trigger(Event.CLOSED).remove();
-    } // Static
-    ;
-
-    Alert._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var $element = $(this);
-        var data = $element.data(DATA_KEY);
-
-        if (!data) {
-          data = new Alert(this);
-          $element.data(DATA_KEY, data);
-        }
-
-        if (config === 'close') {
-          data[config](this);
-        }
-      });
-    };
-
-    Alert._handleDismiss = function _handleDismiss(alertInstance) {
-      return function (event) {
-        if (event) {
-          event.preventDefault();
-        }
-
-        alertInstance.close(this);
-      };
-    };
-
-    _createClass(Alert, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION;
-      }
-    }]);
-
-    return Alert;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-
-  $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME] = Alert._jQueryInterface;
-  $.fn[NAME].Constructor = Alert;
-
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT;
-    return Alert._jQueryInterface;
-  };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$1 = 'button';
-  var VERSION$1 = '4.3.1';
-  var DATA_KEY$1 = 'bs.button';
-  var EVENT_KEY$1 = "." + DATA_KEY$1;
-  var DATA_API_KEY$1 = '.data-api';
-  var JQUERY_NO_CONFLICT$1 = $.fn[NAME$1];
-  var ClassName$1 = {
-    ACTIVE: 'active',
-    BUTTON: 'btn',
-    FOCUS: 'focus'
-  };
-  var Selector$1 = {
-    DATA_TOGGLE_CARROT: '[data-toggle^="button"]',
-    DATA_TOGGLE: '[data-toggle="buttons"]',
-    INPUT: 'input:not([type="hidden"])',
-    ACTIVE: '.active',
-    BUTTON: '.btn'
-  };
-  var Event$1 = {
-    CLICK_DATA_API: "click" + EVENT_KEY$1 + DATA_API_KEY$1,
-    FOCUS_BLUR_DATA_API: "focus" + EVENT_KEY$1 + DATA_API_KEY$1 + " " + ("blur" + EVENT_KEY$1 + DATA_API_KEY$1)
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Button =
-  /*#__PURE__*/
-  function () {
-    function Button(element) {
-      this._element = element;
-    } // Getters
-
-
-    var _proto = Button.prototype;
-
-    // Public
-    _proto.toggle = function toggle() {
-      var triggerChangeEvent = true;
-      var addAriaPressed = true;
-      var rootElement = $(this._element).closest(Selector$1.DATA_TOGGLE)[0];
-
-      if (rootElement) {
-        var input = this._element.querySelector(Selector$1.INPUT);
-
-        if (input) {
-          if (input.type === 'radio') {
-            if (input.checked && this._element.classList.contains(ClassName$1.ACTIVE)) {
-              triggerChangeEvent = false;
-            } else {
-              var activeElement = rootElement.querySelector(Selector$1.ACTIVE);
-
-              if (activeElement) {
-                $(activeElement).removeClass(ClassName$1.ACTIVE);
-              }
-            }
-          }
-
-          if (triggerChangeEvent) {
-            if (input.hasAttribute('disabled') || rootElement.hasAttribute('disabled') || input.classList.contains('disabled') || rootElement.classList.contains('disabled')) {
-              return;
-            }
-
-            input.checked = !this._element.classList.contains(ClassName$1.ACTIVE);
-            $(input).trigger('change');
-          }
-
-          input.focus();
-          addAriaPressed = false;
-        }
-      }
-
-      if (addAriaPressed) {
-        this._element.setAttribute('aria-pressed', !this._element.classList.contains(ClassName$1.ACTIVE));
-      }
-
-      if (triggerChangeEvent) {
-        $(this._element).toggleClass(ClassName$1.ACTIVE);
-      }
-    };
-
-    _proto.dispose = function dispose() {
-      $.removeData(this._element, DATA_KEY$1);
-      this._element = null;
-    } // Static
-    ;
-
-    Button._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var data = $(this).data(DATA_KEY$1);
-
-        if (!data) {
-          data = new Button(this);
-          $(this).data(DATA_KEY$1, data);
-        }
-
-        if (config === 'toggle') {
-          data[config]();
-        }
-      });
-    };
-
-    _createClass(Button, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION$1;
-      }
-    }]);
-
-    return Button;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-
-  $(document).on(Event$1.CLICK_DATA_API, Selector$1.DATA_TOGGLE_CARROT, function (event) {
-    event.preventDefault();
-    var button = event.target;
-
-    if (!$(button).hasClass(ClassName$1.BUTTON)) {
-      button = $(button).closest(Selector$1.BUTTON);
-    }
-
-    Button._jQueryInterface.call($(button), 'toggle');
-  }).on(Event$1.FOCUS_BLUR_DATA_API, Selector$1.DATA_TOGGLE_CARROT, function (event) {
-    var button = $(event.target).closest(Selector$1.BUTTON)[0];
-    $(button).toggleClass(ClassName$1.FOCUS, /^focus(in)?$/.test(event.type));
-  });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME$1] = Button._jQueryInterface;
-  $.fn[NAME$1].Constructor = Button;
-
-  $.fn[NAME$1].noConflict = function () {
-    $.fn[NAME$1] = JQUERY_NO_CONFLICT$1;
-    return Button._jQueryInterface;
-  };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$2 = 'carousel';
-  var VERSION$2 = '4.3.1';
-  var DATA_KEY$2 = 'bs.carousel';
-  var EVENT_KEY$2 = "." + DATA_KEY$2;
-  var DATA_API_KEY$2 = '.data-api';
-  var JQUERY_NO_CONFLICT$2 = $.fn[NAME$2];
-  var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
-
-  var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
-
-  var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
-
-  var SWIPE_THRESHOLD = 40;
-  var Default = {
-    interval: 5000,
-    keyboard: true,
-    slide: false,
-    pause: 'hover',
-    wrap: true,
-    touch: true
-  };
-  var DefaultType = {
-    interval: '(number|boolean)',
-    keyboard: 'boolean',
-    slide: '(boolean|string)',
-    pause: '(string|boolean)',
-    wrap: 'boolean',
-    touch: 'boolean'
-  };
-  var Direction = {
-    NEXT: 'next',
-    PREV: 'prev',
-    LEFT: 'left',
-    RIGHT: 'right'
-  };
-  var Event$2 = {
-    SLIDE: "slide" + EVENT_KEY$2,
-    SLID: "slid" + EVENT_KEY$2,
-    KEYDOWN: "keydown" + EVENT_KEY$2,
-    MOUSEENTER: "mouseenter" + EVENT_KEY$2,
-    MOUSELEAVE: "mouseleave" + EVENT_KEY$2,
-    TOUCHSTART: "touchstart" + EVENT_KEY$2,
-    TOUCHMOVE: "touchmove" + EVENT_KEY$2,
-    TOUCHEND: "touchend" + EVENT_KEY$2,
-    POINTERDOWN: "pointerdown" + EVENT_KEY$2,
-    POINTERUP: "pointerup" + EVENT_KEY$2,
-    DRAG_START: "dragstart" + EVENT_KEY$2,
-    LOAD_DATA_API: "load" + EVENT_KEY$2 + DATA_API_KEY$2,
-    CLICK_DATA_API: "click" + EVENT_KEY$2 + DATA_API_KEY$2
-  };
-  var ClassName$2 = {
-    CAROUSEL: 'carousel',
-    ACTIVE: 'active',
-    SLIDE: 'slide',
-    RIGHT: 'carousel-item-right',
-    LEFT: 'carousel-item-left',
-    NEXT: 'carousel-item-next',
-    PREV: 'carousel-item-prev',
-    ITEM: 'carousel-item',
-    POINTER_EVENT: 'pointer-event'
-  };
-  var Selector$2 = {
-    ACTIVE: '.active',
-    ACTIVE_ITEM: '.active.carousel-item',
-    ITEM: '.carousel-item',
-    ITEM_IMG: '.carousel-item img',
-    NEXT_PREV: '.carousel-item-next, .carousel-item-prev',
-    INDICATORS: '.carousel-indicators',
-    DATA_SLIDE: '[data-slide], [data-slide-to]',
-    DATA_RIDE: '[data-ride="carousel"]'
-  };
-  var PointerType = {
-    TOUCH: 'touch',
-    PEN: 'pen'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Carousel =
-  /*#__PURE__*/
-  function () {
-    function Carousel(element, config) {
-      this._items = null;
-      this._interval = null;
-      this._activeElement = null;
-      this._isPaused = false;
-      this._isSliding = false;
-      this.touchTimeout = null;
-      this.touchStartX = 0;
-      this.touchDeltaX = 0;
-      this._config = this._getConfig(config);
-      this._element = element;
-      this._indicatorsElement = this._element.querySelector(Selector$2.INDICATORS);
-      this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
-      this._pointerEvent = Boolean(window.PointerEvent || window.MSPointerEvent);
-
-      this._addEventListeners();
-    } // Getters
-
-
-    var _proto = Carousel.prototype;
-
-    // Public
-    _proto.next = function next() {
-      if (!this._isSliding) {
-        this._slide(Direction.NEXT);
-      }
-    };
-
-    _proto.nextWhenVisible = function nextWhenVisible() {
-      // Don't call next when the page isn't visible
-      // or the carousel or its parent isn't visible
-      if (!document.hidden && $(this._element).is(':visible') && $(this._element).css('visibility') !== 'hidden') {
-        this.next();
-      }
-    };
-
-    _proto.prev = function prev() {
-      if (!this._isSliding) {
-        this._slide(Direction.PREV);
-      }
-    };
-
-    _proto.pause = function pause(event) {
-      if (!event) {
-        this._isPaused = true;
-      }
-
-      if (this._element.querySelector(Selector$2.NEXT_PREV)) {
-        Util.triggerTransitionEnd(this._element);
-        this.cycle(true);
-      }
-
-      clearInterval(this._interval);
-      this._interval = null;
-    };
-
-    _proto.cycle = function cycle(event) {
-      if (!event) {
-        this._isPaused = false;
-      }
-
-      if (this._interval) {
-        clearInterval(this._interval);
-        this._interval = null;
-      }
-
-      if (this._config.interval && !this._isPaused) {
-        this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
-      }
-    };
-
-    _proto.to = function to(index) {
-      var _this = this;
-
-      this._activeElement = this._element.querySelector(Selector$2.ACTIVE_ITEM);
-
-      var activeIndex = this._getItemIndex(this._activeElement);
-
-      if (index > this._items.length - 1 || index < 0) {
-        return;
-      }
-
-      if (this._isSliding) {
-        $(this._element).one(Event$2.SLID, function () {
-          return _this.to(index);
-        });
-        return;
-      }
-
-      if (activeIndex === index) {
-        this.pause();
-        this.cycle();
-        return;
-      }
-
-      var direction = index > activeIndex ? Direction.NEXT : Direction.PREV;
-
-      this._slide(direction, this._items[index]);
-    };
-
-    _proto.dispose = function dispose() {
-      $(this._element).off(EVENT_KEY$2);
-      $.removeData(this._element, DATA_KEY$2);
-      this._items = null;
-      this._config = null;
-      this._element = null;
-      this._interval = null;
-      this._isPaused = null;
-      this._isSliding = null;
-      this._activeElement = null;
-      this._indicatorsElement = null;
-    } // Private
-    ;
-
-    _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread({}, Default, config);
-      Util.typeCheckConfig(NAME$2, config, DefaultType);
-      return config;
-    };
-
-    _proto._handleSwipe = function _handleSwipe() {
-      var absDeltax = Math.abs(this.touchDeltaX);
-
-      if (absDeltax <= SWIPE_THRESHOLD) {
-        return;
-      }
-
-      var direction = absDeltax / this.touchDeltaX; // swipe left
-
-      if (direction > 0) {
-        this.prev();
-      } // swipe right
-
-
-      if (direction < 0) {
-        this.next();
-      }
-    };
-
-    _proto._addEventListeners = function _addEventListeners() {
-      var _this2 = this;
-
-      if (this._config.keyboard) {
-        $(this._element).on(Event$2.KEYDOWN, function (event) {
-          return _this2._keydown(event);
-        });
-      }
-
-      if (this._config.pause === 'hover') {
-        $(this._element).on(Event$2.MOUSEENTER, function (event) {
-          return _this2.pause(event);
-        }).on(Event$2.MOUSELEAVE, function (event) {
-          return _this2.cycle(event);
-        });
-      }
-
-      if (this._config.touch) {
-        this._addTouchEventListeners();
-      }
-    };
-
-    _proto._addTouchEventListeners = function _addTouchEventListeners() {
-      var _this3 = this;
-
-      if (!this._touchSupported) {
-        return;
-      }
-
-      var start = function start(event) {
-        if (_this3._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
-          _this3.touchStartX = event.originalEvent.clientX;
-        } else if (!_this3._pointerEvent) {
-          _this3.touchStartX = event.originalEvent.touches[0].clientX;
-        }
-      };
-
-      var move = function move(event) {
-        // ensure swiping with one touch and not pinching
-        if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
-          _this3.touchDeltaX = 0;
-        } else {
-          _this3.touchDeltaX = event.originalEvent.touches[0].clientX - _this3.touchStartX;
-        }
-      };
-
-      var end = function end(event) {
-        if (_this3._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
-          _this3.touchDeltaX = event.originalEvent.clientX - _this3.touchStartX;
-        }
-
-        _this3._handleSwipe();
-
-        if (_this3._config.pause === 'hover') {
-          // If it's a touch-enabled device, mouseenter/leave are fired as
-          // part of the mouse compatibility events on first tap - the carousel
-          // would stop cycling until user tapped out of it;
-          // here, we listen for touchend, explicitly pause the carousel
-          // (as if it's the second time we tap on it, mouseenter compat event
-          // is NOT fired) and after a timeout (to allow for mouse compatibility
-          // events to fire) we explicitly restart cycling
-          _this3.pause();
-
-          if (_this3.touchTimeout) {
-            clearTimeout(_this3.touchTimeout);
-          }
-
-          _this3.touchTimeout = setTimeout(function (event) {
-            return _this3.cycle(event);
-          }, TOUCHEVENT_COMPAT_WAIT + _this3._config.interval);
-        }
-      };
-
-      $(this._element.querySelectorAll(Selector$2.ITEM_IMG)).on(Event$2.DRAG_START, function (e) {
-        return e.preventDefault();
-      });
-
-      if (this._pointerEvent) {
-        $(this._element).on(Event$2.POINTERDOWN, function (event) {
-          return start(event);
-        });
-        $(this._element).on(Event$2.POINTERUP, function (event) {
-          return end(event);
-        });
-
-        this._element.classList.add(ClassName$2.POINTER_EVENT);
-      } else {
-        $(this._element).on(Event$2.TOUCHSTART, function (event) {
-          return start(event);
-        });
-        $(this._element).on(Event$2.TOUCHMOVE, function (event) {
-          return move(event);
-        });
-        $(this._element).on(Event$2.TOUCHEND, function (event) {
-          return end(event);
-        });
-      }
-    };
-
-    _proto._keydown = function _keydown(event) {
-      if (/input|textarea/i.test(event.target.tagName)) {
-        return;
-      }
-
-      switch (event.which) {
-        case ARROW_LEFT_KEYCODE:
-          event.preventDefault();
-          this.prev();
-          break;
-
-        case ARROW_RIGHT_KEYCODE:
-          event.preventDefault();
-          this.next();
-          break;
-
-        default:
-      }
-    };
-
-    _proto._getItemIndex = function _getItemIndex(element) {
-      this._items = element && element.parentNode ? [].slice.call(element.parentNode.querySelectorAll(Selector$2.ITEM)) : [];
-      return this._items.indexOf(element);
-    };
-
-    _proto._getItemByDirection = function _getItemByDirection(direction, activeElement) {
-      var isNextDirection = direction === Direction.NEXT;
-      var isPrevDirection = direction === Direction.PREV;
-
-      var activeIndex = this._getItemIndex(activeElement);
-
-      var lastItemIndex = this._items.length - 1;
-      var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex === lastItemIndex;
-
-      if (isGoingToWrap && !this._config.wrap) {
-        return activeElement;
-      }
-
-      var delta = direction === Direction.PREV ? -1 : 1;
-      var itemIndex = (activeIndex + delta) % this._items.length;
-      return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
-    };
-
-    _proto._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
-      var targetIndex = this._getItemIndex(relatedTarget);
-
-      var fromIndex = this._getItemIndex(this._element.querySelector(Selector$2.ACTIVE_ITEM));
-
-      var slideEvent = $.Event(Event$2.SLIDE, {
-        relatedTarget: relatedTarget,
-        direction: eventDirectionName,
-        from: fromIndex,
-        to: targetIndex
-      });
-      $(this._element).trigger(slideEvent);
-      return slideEvent;
-    };
-
-    _proto._setActiveIndicatorElement = function _setActiveIndicatorElement(element) {
-      if (this._indicatorsElement) {
-        var indicators = [].slice.call(this._indicatorsElement.querySelectorAll(Selector$2.ACTIVE));
-        $(indicators).removeClass(ClassName$2.ACTIVE);
-
-        var nextIndicator = this._indicatorsElement.children[this._getItemIndex(element)];
-
-        if (nextIndicator) {
-          $(nextIndicator).addClass(ClassName$2.ACTIVE);
-        }
-      }
-    };
-
-    _proto._slide = function _slide(direction, element) {
-      var _this4 = this;
-
-      var activeElement = this._element.querySelector(Selector$2.ACTIVE_ITEM);
-
-      var activeElementIndex = this._getItemIndex(activeElement);
-
-      var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
-
-      var nextElementIndex = this._getItemIndex(nextElement);
-
-      var isCycling = Boolean(this._interval);
-      var directionalClassName;
-      var orderClassName;
-      var eventDirectionName;
-
-      if (direction === Direction.NEXT) {
-        directionalClassName = ClassName$2.LEFT;
-        orderClassName = ClassName$2.NEXT;
-        eventDirectionName = Direction.LEFT;
-      } else {
-        directionalClassName = ClassName$2.RIGHT;
-        orderClassName = ClassName$2.PREV;
-        eventDirectionName = Direction.RIGHT;
-      }
-
-      if (nextElement && $(nextElement).hasClass(ClassName$2.ACTIVE)) {
-        this._isSliding = false;
-        return;
-      }
-
-      var slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName);
-
-      if (slideEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      if (!activeElement || !nextElement) {
-        // Some weirdness is happening, so we bail
-        return;
-      }
-
-      this._isSliding = true;
-
-      if (isCycling) {
-        this.pause();
-      }
-
-      this._setActiveIndicatorElement(nextElement);
-
-      var slidEvent = $.Event(Event$2.SLID, {
-        relatedTarget: nextElement,
-        direction: eventDirectionName,
-        from: activeElementIndex,
-        to: nextElementIndex
-      });
-
-      if ($(this._element).hasClass(ClassName$2.SLIDE)) {
-        $(nextElement).addClass(orderClassName);
-        Util.reflow(nextElement);
-        $(activeElement).addClass(directionalClassName);
-        $(nextElement).addClass(directionalClassName);
-        var nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10);
-
-        if (nextElementInterval) {
-          this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
-          this._config.interval = nextElementInterval;
-        } else {
-          this._config.interval = this._config.defaultInterval || this._config.interval;
-        }
-
-        var transitionDuration = Util.getTransitionDurationFromElement(activeElement);
-        $(activeElement).one(Util.TRANSITION_END, function () {
-          $(nextElement).removeClass(directionalClassName + " " + orderClassName).addClass(ClassName$2.ACTIVE);
-          $(activeElement).removeClass(ClassName$2.ACTIVE + " " + orderClassName + " " + directionalClassName);
-          _this4._isSliding = false;
-          setTimeout(function () {
-            return $(_this4._element).trigger(slidEvent);
-          }, 0);
-        }).emulateTransitionEnd(transitionDuration);
-      } else {
-        $(activeElement).removeClass(ClassName$2.ACTIVE);
-        $(nextElement).addClass(ClassName$2.ACTIVE);
-        this._isSliding = false;
-        $(this._element).trigger(slidEvent);
-      }
-
-      if (isCycling) {
-        this.cycle();
-      }
-    } // Static
-    ;
-
-    Carousel._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var data = $(this).data(DATA_KEY$2);
-
-        var _config = _objectSpread({}, Default, $(this).data());
-
-        if (typeof config === 'object') {
-          _config = _objectSpread({}, _config, config);
-        }
-
-        var action = typeof config === 'string' ? config : _config.slide;
-
-        if (!data) {
-          data = new Carousel(this, _config);
-          $(this).data(DATA_KEY$2, data);
-        }
-
-        if (typeof config === 'number') {
-          data.to(config);
-        } else if (typeof action === 'string') {
-          if (typeof data[action] === 'undefined') {
-            throw new TypeError("No method named \"" + action + "\"");
-          }
-
-          data[action]();
-        } else if (_config.interval && _config.ride) {
-          data.pause();
-          data.cycle();
-        }
-      });
-    };
-
-    Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
-      var selector = Util.getSelectorFromElement(this);
-
-      if (!selector) {
-        return;
-      }
-
-      var target = $(selector)[0];
-
-      if (!target || !$(target).hasClass(ClassName$2.CAROUSEL)) {
-        return;
-      }
-
-      var config = _objectSpread({}, $(target).data(), $(this).data());
-
-      var slideIndex = this.getAttribute('data-slide-to');
-
-      if (slideIndex) {
-        config.interval = false;
-      }
-
-      Carousel._jQueryInterface.call($(target), config);
-
-      if (slideIndex) {
-        $(target).data(DATA_KEY$2).to(slideIndex);
-      }
-
-      event.preventDefault();
-    };
-
-    _createClass(Carousel, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION$2;
-      }
-    }, {
-      key: "Default",
-      get: function get() {
-        return Default;
-      }
-    }]);
-
-    return Carousel;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-
-  $(document).on(Event$2.CLICK_DATA_API, Selector$2.DATA_SLIDE, Carousel._dataApiClickHandler);
-  $(window).on(Event$2.LOAD_DATA_API, function () {
-    var carousels = [].slice.call(document.querySelectorAll(Selector$2.DATA_RIDE));
-
-    for (var i = 0, len = carousels.length; i < len; i++) {
-      var $carousel = $(carousels[i]);
-
-      Carousel._jQueryInterface.call($carousel, $carousel.data());
-    }
-  });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME$2] = Carousel._jQueryInterface;
-  $.fn[NAME$2].Constructor = Carousel;
-
-  $.fn[NAME$2].noConflict = function () {
-    $.fn[NAME$2] = JQUERY_NO_CONFLICT$2;
-    return Carousel._jQueryInterface;
-  };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$3 = 'collapse';
-  var VERSION$3 = '4.3.1';
-  var DATA_KEY$3 = 'bs.collapse';
-  var EVENT_KEY$3 = "." + DATA_KEY$3;
-  var DATA_API_KEY$3 = '.data-api';
-  var JQUERY_NO_CONFLICT$3 = $.fn[NAME$3];
-  var Default$1 = {
-    toggle: true,
-    parent: ''
-  };
-  var DefaultType$1 = {
-    toggle: 'boolean',
-    parent: '(string|element)'
-  };
-  var Event$3 = {
-    SHOW: "show" + EVENT_KEY$3,
-    SHOWN: "shown" + EVENT_KEY$3,
-    HIDE: "hide" + EVENT_KEY$3,
-    HIDDEN: "hidden" + EVENT_KEY$3,
-    CLICK_DATA_API: "click" + EVENT_KEY$3 + DATA_API_KEY$3
-  };
-  var ClassName$3 = {
-    SHOW: 'show',
-    COLLAPSE: 'collapse',
-    COLLAPSING: 'collapsing',
-    COLLAPSED: 'collapsed'
-  };
-  var Dimension = {
-    WIDTH: 'width',
-    HEIGHT: 'height'
-  };
-  var Selector$3 = {
-    ACTIVES: '.show, .collapsing',
-    DATA_TOGGLE: '[data-toggle="collapse"]'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Collapse =
-  /*#__PURE__*/
-  function () {
-    function Collapse(element, config) {
-      this._isTransitioning = false;
-      this._element = element;
-      this._config = this._getConfig(config);
-      this._triggerArray = [].slice.call(document.querySelectorAll("[data-toggle=\"collapse\"][href=\"#" + element.id + "\"]," + ("[data-toggle=\"collapse\"][data-target=\"#" + element.id + "\"]")));
-      var toggleList = [].slice.call(document.querySelectorAll(Selector$3.DATA_TOGGLE));
-
-      for (var i = 0, len = toggleList.length; i < len; i++) {
-        var elem = toggleList[i];
-        var selector = Util.getSelectorFromElement(elem);
-        var filterElement = [].slice.call(document.querySelectorAll(selector)).filter(function (foundElem) {
-          return foundElem === element;
-        });
-
-        if (selector !== null && filterElement.length > 0) {
-          this._selector = selector;
-
-          this._triggerArray.push(elem);
-        }
-      }
-
-      this._parent = this._config.parent ? this._getParent() : null;
-
-      if (!this._config.parent) {
-        this._addAriaAndCollapsedClass(this._element, this._triggerArray);
-      }
-
-      if (this._config.toggle) {
-        this.toggle();
-      }
-    } // Getters
-
-
-    var _proto = Collapse.prototype;
-
-    // Public
-    _proto.toggle = function toggle() {
-      if ($(this._element).hasClass(ClassName$3.SHOW)) {
-        this.hide();
-      } else {
-        this.show();
-      }
-    };
-
-    _proto.show = function show() {
-      var _this = this;
-
-      if (this._isTransitioning || $(this._element).hasClass(ClassName$3.SHOW)) {
-        return;
-      }
-
-      var actives;
-      var activesData;
-
-      if (this._parent) {
-        actives = [].slice.call(this._parent.querySelectorAll(Selector$3.ACTIVES)).filter(function (elem) {
-          if (typeof _this._config.parent === 'string') {
-            return elem.getAttribute('data-parent') === _this._config.parent;
-          }
-
-          return elem.classList.contains(ClassName$3.COLLAPSE);
-        });
-
-        if (actives.length === 0) {
-          actives = null;
-        }
-      }
-
-      if (actives) {
-        activesData = $(actives).not(this._selector).data(DATA_KEY$3);
-
-        if (activesData && activesData._isTransitioning) {
-          return;
-        }
-      }
-
-      var startEvent = $.Event(Event$3.SHOW);
-      $(this._element).trigger(startEvent);
-
-      if (startEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      if (actives) {
-        Collapse._jQueryInterface.call($(actives).not(this._selector), 'hide');
-
-        if (!activesData) {
-          $(actives).data(DATA_KEY$3, null);
-        }
-      }
-
-      var dimension = this._getDimension();
-
-      $(this._element).removeClass(ClassName$3.COLLAPSE).addClass(ClassName$3.COLLAPSING);
-      this._element.style[dimension] = 0;
-
-      if (this._triggerArray.length) {
-        $(this._triggerArray).removeClass(ClassName$3.COLLAPSED).attr('aria-expanded', true);
-      }
-
-      this.setTransitioning(true);
-
-      var complete = function complete() {
-        $(_this._element).removeClass(ClassName$3.COLLAPSING).addClass(ClassName$3.COLLAPSE).addClass(ClassName$3.SHOW);
-        _this._element.style[dimension] = '';
-
-        _this.setTransitioning(false);
-
-        $(_this._element).trigger(Event$3.SHOWN);
-      };
-
-      var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
-      var scrollSize = "scroll" + capitalizedDimension;
-      var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-      $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
-      this._element.style[dimension] = this._element[scrollSize] + "px";
-    };
-
-    _proto.hide = function hide() {
-      var _this2 = this;
-
-      if (this._isTransitioning || !$(this._element).hasClass(ClassName$3.SHOW)) {
-        return;
-      }
-
-      var startEvent = $.Event(Event$3.HIDE);
-      $(this._element).trigger(startEvent);
-
-      if (startEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      var dimension = this._getDimension();
-
-      this._element.style[dimension] = this._element.getBoundingClientRect()[dimension] + "px";
-      Util.reflow(this._element);
-      $(this._element).addClass(ClassName$3.COLLAPSING).removeClass(ClassName$3.COLLAPSE).removeClass(ClassName$3.SHOW);
-      var triggerArrayLength = this._triggerArray.length;
-
-      if (triggerArrayLength > 0) {
-        for (var i = 0; i < triggerArrayLength; i++) {
-          var trigger = this._triggerArray[i];
-          var selector = Util.getSelectorFromElement(trigger);
-
-          if (selector !== null) {
-            var $elem = $([].slice.call(document.querySelectorAll(selector)));
-
-            if (!$elem.hasClass(ClassName$3.SHOW)) {
-              $(trigger).addClass(ClassName$3.COLLAPSED).attr('aria-expanded', false);
-            }
-          }
-        }
-      }
-
-      this.setTransitioning(true);
-
-      var complete = function complete() {
-        _this2.setTransitioning(false);
-
-        $(_this2._element).removeClass(ClassName$3.COLLAPSING).addClass(ClassName$3.COLLAPSE).trigger(Event$3.HIDDEN);
-      };
-
-      this._element.style[dimension] = '';
-      var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-      $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
-    };
-
-    _proto.setTransitioning = function setTransitioning(isTransitioning) {
-      this._isTransitioning = isTransitioning;
-    };
-
-    _proto.dispose = function dispose() {
-      $.removeData(this._element, DATA_KEY$3);
-      this._config = null;
-      this._parent = null;
-      this._element = null;
-      this._triggerArray = null;
-      this._isTransitioning = null;
-    } // Private
-    ;
-
-    _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread({}, Default$1, config);
-      config.toggle = Boolean(config.toggle); // Coerce string values
-
-      Util.typeCheckConfig(NAME$3, config, DefaultType$1);
-      return config;
-    };
-
-    _proto._getDimension = function _getDimension() {
-      var hasWidth = $(this._element).hasClass(Dimension.WIDTH);
-      return hasWidth ? Dimension.WIDTH : Dimension.HEIGHT;
-    };
-
-    _proto._getParent = function _getParent() {
-      var _this3 = this;
-
-      var parent;
-
-      if (Util.isElement(this._config.parent)) {
-        parent = this._config.parent; // It's a jQuery object
-
-        if (typeof this._config.parent.jquery !== 'undefined') {
-          parent = this._config.parent[0];
-        }
-      } else {
-        parent = document.querySelector(this._config.parent);
-      }
-
-      var selector = "[data-toggle=\"collapse\"][data-parent=\"" + this._config.parent + "\"]";
-      var children = [].slice.call(parent.querySelectorAll(selector));
-      $(children).each(function (i, element) {
-        _this3._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
-      });
-      return parent;
-    };
-
-    _proto._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
-      var isOpen = $(element).hasClass(ClassName$3.SHOW);
-
-      if (triggerArray.length) {
-        $(triggerArray).toggleClass(ClassName$3.COLLAPSED, !isOpen).attr('aria-expanded', isOpen);
-      }
-    } // Static
-    ;
-
-    Collapse._getTargetFromElement = function _getTargetFromElement(element) {
-      var selector = Util.getSelectorFromElement(element);
-      return selector ? document.querySelector(selector) : null;
-    };
-
-    Collapse._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var $this = $(this);
-        var data = $this.data(DATA_KEY$3);
-
-        var _config = _objectSpread({}, Default$1, $this.data(), typeof config === 'object' && config ? config : {});
-
-        if (!data && _config.toggle && /show|hide/.test(config)) {
-          _config.toggle = false;
-        }
-
-        if (!data) {
-          data = new Collapse(this, _config);
-          $this.data(DATA_KEY$3, data);
-        }
-
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError("No method named \"" + config + "\"");
-          }
-
-          data[config]();
-        }
-      });
-    };
-
-    _createClass(Collapse, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION$3;
-      }
-    }, {
-      key: "Default",
-      get: function get() {
-        return Default$1;
-      }
-    }]);
-
-    return Collapse;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-
-  $(document).on(Event$3.CLICK_DATA_API, Selector$3.DATA_TOGGLE, function (event) {
-    // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
-    if (event.currentTarget.tagName === 'A') {
-      event.preventDefault();
-    }
-
-    var $trigger = $(this);
-    var selector = Util.getSelectorFromElement(this);
-    var selectors = [].slice.call(document.querySelectorAll(selector));
-    $(selectors).each(function () {
-      var $target = $(this);
-      var data = $target.data(DATA_KEY$3);
-      var config = data ? 'toggle' : $trigger.data();
-
-      Collapse._jQueryInterface.call($target, config);
-    });
-  });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME$3] = Collapse._jQueryInterface;
-  $.fn[NAME$3].Constructor = Collapse;
-
-  $.fn[NAME$3].noConflict = function () {
-    $.fn[NAME$3] = JQUERY_NO_CONFLICT$3;
-    return Collapse._jQueryInterface;
-  };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$4 = 'dropdown';
-  var VERSION$4 = '4.3.1';
-  var DATA_KEY$4 = 'bs.dropdown';
-  var EVENT_KEY$4 = "." + DATA_KEY$4;
-  var DATA_API_KEY$4 = '.data-api';
-  var JQUERY_NO_CONFLICT$4 = $.fn[NAME$4];
-  var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
-
-  var SPACE_KEYCODE = 32; // KeyboardEvent.which value for space key
-
-  var TAB_KEYCODE = 9; // KeyboardEvent.which value for tab key
-
-  var ARROW_UP_KEYCODE = 38; // KeyboardEvent.which value for up arrow key
-
-  var ARROW_DOWN_KEYCODE = 40; // KeyboardEvent.which value for down arrow key
-
-  var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
-
-  var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEYCODE + "|" + ARROW_DOWN_KEYCODE + "|" + ESCAPE_KEYCODE);
-  var Event$4 = {
-    HIDE: "hide" + EVENT_KEY$4,
-    HIDDEN: "hidden" + EVENT_KEY$4,
-    SHOW: "show" + EVENT_KEY$4,
-    SHOWN: "shown" + EVENT_KEY$4,
-    CLICK: "click" + EVENT_KEY$4,
-    CLICK_DATA_API: "click" + EVENT_KEY$4 + DATA_API_KEY$4,
-    KEYDOWN_DATA_API: "keydown" + EVENT_KEY$4 + DATA_API_KEY$4,
-    KEYUP_DATA_API: "keyup" + EVENT_KEY$4 + DATA_API_KEY$4
-  };
-  var ClassName$4 = {
-    DISABLED: 'disabled',
-    SHOW: 'show',
-    DROPUP: 'dropup',
-    DROPRIGHT: 'dropright',
-    DROPLEFT: 'dropleft',
-    MENURIGHT: 'dropdown-menu-right',
-    MENULEFT: 'dropdown-menu-left',
-    POSITION_STATIC: 'position-static'
-  };
-  var Selector$4 = {
-    DATA_TOGGLE: '[data-toggle="dropdown"]',
-    FORM_CHILD: '.dropdown form',
-    MENU: '.dropdown-menu',
-    NAVBAR_NAV: '.navbar-nav',
-    VISIBLE_ITEMS: '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
-  };
-  var AttachmentMap = {
-    TOP: 'top-start',
-    TOPEND: 'top-end',
-    BOTTOM: 'bottom-start',
-    BOTTOMEND: 'bottom-end',
-    RIGHT: 'right-start',
-    RIGHTEND: 'right-end',
-    LEFT: 'left-start',
-    LEFTEND: 'left-end'
-  };
-  var Default$2 = {
-    offset: 0,
-    flip: true,
-    boundary: 'scrollParent',
-    reference: 'toggle',
-    display: 'dynamic'
-  };
-  var DefaultType$2 = {
-    offset: '(number|string|function)',
-    flip: 'boolean',
-    boundary: '(string|element)',
-    reference: '(string|element)',
-    display: 'string'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Dropdown =
-  /*#__PURE__*/
-  function () {
-    function Dropdown(element, config) {
-      this._element = element;
-      this._popper = null;
-      this._config = this._getConfig(config);
-      this._menu = this._getMenuElement();
-      this._inNavbar = this._detectNavbar();
-
-      this._addEventListeners();
-    } // Getters
-
-
-    var _proto = Dropdown.prototype;
-
-    // Public
-    _proto.toggle = function toggle() {
-      if (this._element.disabled || $(this._element).hasClass(ClassName$4.DISABLED)) {
-        return;
-      }
-
-      var parent = Dropdown._getParentFromElement(this._element);
-
-      var isActive = $(this._menu).hasClass(ClassName$4.SHOW);
-
-      Dropdown._clearMenus();
-
-      if (isActive) {
-        return;
-      }
-
-      var relatedTarget = {
-        relatedTarget: this._element
-      };
-      var showEvent = $.Event(Event$4.SHOW, relatedTarget);
-      $(parent).trigger(showEvent);
-
-      if (showEvent.isDefaultPrevented()) {
-        return;
-      } // Disable totally Popper.js for Dropdown in Navbar
-
-
-      if (!this._inNavbar) {
-        /**
-         * Check for Popper dependency
-         * Popper - https://popper.js.org
-         */
-        if (typeof Popper === 'undefined') {
-          throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org/)');
-        }
-
-        var referenceElement = this._element;
-
-        if (this._config.reference === 'parent') {
-          referenceElement = parent;
-        } else if (Util.isElement(this._config.reference)) {
-          referenceElement = this._config.reference; // Check if it's jQuery element
-
-          if (typeof this._config.reference.jquery !== 'undefined') {
-            referenceElement = this._config.reference[0];
-          }
-        } // If boundary is not `scrollParent`, then set position to `static`
-        // to allow the menu to "escape" the scroll parent's boundaries
-        // https://github.com/twbs/bootstrap/issues/24251
-
-
-        if (this._config.boundary !== 'scrollParent') {
-          $(parent).addClass(ClassName$4.POSITION_STATIC);
-        }
-
-        this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig());
-      } // If this is a touch-enabled device we add extra
-      // empty mouseover listeners to the body's immediate children;
-      // only needed because of broken event delegation on iOS
-      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-
-
-      if ('ontouchstart' in document.documentElement && $(parent).closest(Selector$4.NAVBAR_NAV).length === 0) {
-        $(document.body).children().on('mouseover', null, $.noop);
-      }
-
-      this._element.focus();
-
-      this._element.setAttribute('aria-expanded', true);
-
-      $(this._menu).toggleClass(ClassName$4.SHOW);
-      $(parent).toggleClass(ClassName$4.SHOW).trigger($.Event(Event$4.SHOWN, relatedTarget));
-    };
-
-    _proto.show = function show() {
-      if (this._element.disabled || $(this._element).hasClass(ClassName$4.DISABLED) || $(this._menu).hasClass(ClassName$4.SHOW)) {
-        return;
-      }
-
-      var relatedTarget = {
-        relatedTarget: this._element
-      };
-      var showEvent = $.Event(Event$4.SHOW, relatedTarget);
-
-      var parent = Dropdown._getParentFromElement(this._element);
-
-      $(parent).trigger(showEvent);
-
-      if (showEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      $(this._menu).toggleClass(ClassName$4.SHOW);
-      $(parent).toggleClass(ClassName$4.SHOW).trigger($.Event(Event$4.SHOWN, relatedTarget));
-    };
-
-    _proto.hide = function hide() {
-      if (this._element.disabled || $(this._element).hasClass(ClassName$4.DISABLED) || !$(this._menu).hasClass(ClassName$4.SHOW)) {
-        return;
-      }
-
-      var relatedTarget = {
-        relatedTarget: this._element
-      };
-      var hideEvent = $.Event(Event$4.HIDE, relatedTarget);
-
-      var parent = Dropdown._getParentFromElement(this._element);
-
-      $(parent).trigger(hideEvent);
-
-      if (hideEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      $(this._menu).toggleClass(ClassName$4.SHOW);
-      $(parent).toggleClass(ClassName$4.SHOW).trigger($.Event(Event$4.HIDDEN, relatedTarget));
-    };
-
-    _proto.dispose = function dispose() {
-      $.removeData(this._element, DATA_KEY$4);
-      $(this._element).off(EVENT_KEY$4);
-      this._element = null;
-      this._menu = null;
-
-      if (this._popper !== null) {
-        this._popper.destroy();
-
-        this._popper = null;
-      }
-    };
-
-    _proto.update = function update() {
-      this._inNavbar = this._detectNavbar();
-
-      if (this._popper !== null) {
-        this._popper.scheduleUpdate();
-      }
-    } // Private
-    ;
-
-    _proto._addEventListeners = function _addEventListeners() {
-      var _this = this;
-
-      $(this._element).on(Event$4.CLICK, function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        _this.toggle();
-      });
-    };
-
-    _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread({}, this.constructor.Default, $(this._element).data(), config);
-      Util.typeCheckConfig(NAME$4, config, this.constructor.DefaultType);
-      return config;
-    };
-
-    _proto._getMenuElement = function _getMenuElement() {
-      if (!this._menu) {
-        var parent = Dropdown._getParentFromElement(this._element);
-
-        if (parent) {
-          this._menu = parent.querySelector(Selector$4.MENU);
-        }
-      }
-
-      return this._menu;
-    };
-
-    _proto._getPlacement = function _getPlacement() {
-      var $parentDropdown = $(this._element.parentNode);
-      var placement = AttachmentMap.BOTTOM; // Handle dropup
-
-      if ($parentDropdown.hasClass(ClassName$4.DROPUP)) {
-        placement = AttachmentMap.TOP;
-
-        if ($(this._menu).hasClass(ClassName$4.MENURIGHT)) {
-          placement = AttachmentMap.TOPEND;
-        }
-      } else if ($parentDropdown.hasClass(ClassName$4.DROPRIGHT)) {
-        placement = AttachmentMap.RIGHT;
-      } else if ($parentDropdown.hasClass(ClassName$4.DROPLEFT)) {
-        placement = AttachmentMap.LEFT;
-      } else if ($(this._menu).hasClass(ClassName$4.MENURIGHT)) {
-        placement = AttachmentMap.BOTTOMEND;
-      }
-
-      return placement;
-    };
-
-    _proto._detectNavbar = function _detectNavbar() {
-      return $(this._element).closest('.navbar').length > 0;
-    };
-
-    _proto._getOffset = function _getOffset() {
-      var _this2 = this;
-
-      var offset = {};
-
-      if (typeof this._config.offset === 'function') {
-        offset.fn = function (data) {
-          data.offsets = _objectSpread({}, data.offsets, _this2._config.offset(data.offsets, _this2._element) || {});
-          return data;
-        };
-      } else {
-        offset.offset = this._config.offset;
-      }
-
-      return offset;
-    };
-
-    _proto._getPopperConfig = function _getPopperConfig() {
-      var popperConfig = {
-        placement: this._getPlacement(),
-        modifiers: {
-          offset: this._getOffset(),
-          flip: {
-            enabled: this._config.flip
-          },
-          preventOverflow: {
-            boundariesElement: this._config.boundary
-          }
-        } // Disable Popper.js if we have a static display
-
-      };
-
-      if (this._config.display === 'static') {
-        popperConfig.modifiers.applyStyle = {
-          enabled: false
-        };
-      }
-
-      return popperConfig;
-    } // Static
-    ;
-
-    Dropdown._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var data = $(this).data(DATA_KEY$4);
-
-        var _config = typeof config === 'object' ? config : null;
-
-        if (!data) {
-          data = new Dropdown(this, _config);
-          $(this).data(DATA_KEY$4, data);
-        }
-
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError("No method named \"" + config + "\"");
-          }
-
-          data[config]();
-        }
-      });
-    };
-
-    Dropdown._clearMenus = function _clearMenus(event) {
-      if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH || event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
-        return;
-      }
-
-      var toggles = [].slice.call(document.querySelectorAll(Selector$4.DATA_TOGGLE));
-
-      for (var i = 0, len = toggles.length; i < len; i++) {
-        var parent = Dropdown._getParentFromElement(toggles[i]);
-
-        var context = $(toggles[i]).data(DATA_KEY$4);
-        var relatedTarget = {
-          relatedTarget: toggles[i]
-        };
-
-        if (event && event.type === 'click') {
-          relatedTarget.clickEvent = event;
-        }
-
-        if (!context) {
-          continue;
-        }
-
-        var dropdownMenu = context._menu;
-
-        if (!$(parent).hasClass(ClassName$4.SHOW)) {
-          continue;
-        }
-
-        if (event && (event.type === 'click' && /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) && $.contains(parent, event.target)) {
-          continue;
-        }
-
-        var hideEvent = $.Event(Event$4.HIDE, relatedTarget);
-        $(parent).trigger(hideEvent);
-
-        if (hideEvent.isDefaultPrevented()) {
-          continue;
-        } // If this is a touch-enabled device we remove the extra
-        // empty mouseover listeners we added for iOS support
-
-
-        if ('ontouchstart' in document.documentElement) {
-          $(document.body).children().off('mouseover', null, $.noop);
-        }
-
-        toggles[i].setAttribute('aria-expanded', 'false');
-        $(dropdownMenu).removeClass(ClassName$4.SHOW);
-        $(parent).removeClass(ClassName$4.SHOW).trigger($.Event(Event$4.HIDDEN, relatedTarget));
-      }
-    };
-
-    Dropdown._getParentFromElement = function _getParentFromElement(element) {
-      var parent;
-      var selector = Util.getSelectorFromElement(element);
-
-      if (selector) {
-        parent = document.querySelector(selector);
-      }
-
-      return parent || element.parentNode;
-    } // eslint-disable-next-line complexity
-    ;
-
-    Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
-      // If not input/textarea:
-      //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
-      // If input/textarea:
-      //  - If space key => not a dropdown command
-      //  - If key is other than escape
-      //    - If key is not up or down => not a dropdown command
-      //    - If trigger inside the menu => not a dropdown command
-      if (/input|textarea/i.test(event.target.tagName) ? event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE && (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE || $(event.target).closest(Selector$4.MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
-        return;
-      }
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      if (this.disabled || $(this).hasClass(ClassName$4.DISABLED)) {
-        return;
-      }
-
-      var parent = Dropdown._getParentFromElement(this);
-
-      var isActive = $(parent).hasClass(ClassName$4.SHOW);
-
-      if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
-        if (event.which === ESCAPE_KEYCODE) {
-          var toggle = parent.querySelector(Selector$4.DATA_TOGGLE);
-          $(toggle).trigger('focus');
-        }
-
-        $(this).trigger('click');
-        return;
-      }
-
-      var items = [].slice.call(parent.querySelectorAll(Selector$4.VISIBLE_ITEMS));
-
-      if (items.length === 0) {
-        return;
-      }
-
-      var index = items.indexOf(event.target);
-
-      if (event.which === ARROW_UP_KEYCODE && index > 0) {
-        // Up
-        index--;
-      }
-
-      if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) {
-        // Down
-        index++;
-      }
-
-      if (index < 0) {
-        index = 0;
-      }
-
-      items[index].focus();
-    };
-
-    _createClass(Dropdown, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION$4;
-      }
-    }, {
-      key: "Default",
-      get: function get() {
-        return Default$2;
-      }
-    }, {
-      key: "DefaultType",
-      get: function get() {
-        return DefaultType$2;
-      }
-    }]);
-
-    return Dropdown;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-
-  $(document).on(Event$4.KEYDOWN_DATA_API, Selector$4.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event$4.KEYDOWN_DATA_API, Selector$4.MENU, Dropdown._dataApiKeydownHandler).on(Event$4.CLICK_DATA_API + " " + Event$4.KEYUP_DATA_API, Dropdown._clearMenus).on(Event$4.CLICK_DATA_API, Selector$4.DATA_TOGGLE, function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    Dropdown._jQueryInterface.call($(this), 'toggle');
-  }).on(Event$4.CLICK_DATA_API, Selector$4.FORM_CHILD, function (e) {
-    e.stopPropagation();
-  });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME$4] = Dropdown._jQueryInterface;
-  $.fn[NAME$4].Constructor = Dropdown;
-
-  $.fn[NAME$4].noConflict = function () {
-    $.fn[NAME$4] = JQUERY_NO_CONFLICT$4;
-    return Dropdown._jQueryInterface;
-  };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$5 = 'modal';
-  var VERSION$5 = '4.3.1';
-  var DATA_KEY$5 = 'bs.modal';
-  var EVENT_KEY$5 = "." + DATA_KEY$5;
-  var DATA_API_KEY$5 = '.data-api';
-  var JQUERY_NO_CONFLICT$5 = $.fn[NAME$5];
-  var ESCAPE_KEYCODE$1 = 27; // KeyboardEvent.which value for Escape (Esc) key
-
-  var Default$3 = {
-    backdrop: true,
-    keyboard: true,
-    focus: true,
-    show: true
-  };
-  var DefaultType$3 = {
-    backdrop: '(boolean|string)',
-    keyboard: 'boolean',
-    focus: 'boolean',
-    show: 'boolean'
-  };
-  var Event$5 = {
-    HIDE: "hide" + EVENT_KEY$5,
-    HIDDEN: "hidden" + EVENT_KEY$5,
-    SHOW: "show" + EVENT_KEY$5,
-    SHOWN: "shown" + EVENT_KEY$5,
-    FOCUSIN: "focusin" + EVENT_KEY$5,
-    RESIZE: "resize" + EVENT_KEY$5,
-    CLICK_DISMISS: "click.dismiss" + EVENT_KEY$5,
-    KEYDOWN_DISMISS: "keydown.dismiss" + EVENT_KEY$5,
-    MOUSEUP_DISMISS: "mouseup.dismiss" + EVENT_KEY$5,
-    MOUSEDOWN_DISMISS: "mousedown.dismiss" + EVENT_KEY$5,
-    CLICK_DATA_API: "click" + EVENT_KEY$5 + DATA_API_KEY$5
-  };
-  var ClassName$5 = {
-    SCROLLABLE: 'modal-dialog-scrollable',
-    SCROLLBAR_MEASURER: 'modal-scrollbar-measure',
-    BACKDROP: 'modal-backdrop',
-    OPEN: 'modal-open',
-    FADE: 'fade',
-    SHOW: 'show'
-  };
-  var Selector$5 = {
-    DIALOG: '.modal-dialog',
-    MODAL_BODY: '.modal-body',
-    DATA_TOGGLE: '[data-toggle="modal"]',
-    DATA_DISMISS: '[data-dismiss="modal"]',
-    FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-    STICKY_CONTENT: '.sticky-top'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Modal =
-  /*#__PURE__*/
-  function () {
-    function Modal(element, config) {
-      this._config = this._getConfig(config);
-      this._element = element;
-      this._dialog = element.querySelector(Selector$5.DIALOG);
-      this._backdrop = null;
-      this._isShown = false;
-      this._isBodyOverflowing = false;
-      this._ignoreBackdropClick = false;
-      this._isTransitioning = false;
-      this._scrollbarWidth = 0;
-    } // Getters
-
-
-    var _proto = Modal.prototype;
-
-    // Public
-    _proto.toggle = function toggle(relatedTarget) {
-      return this._isShown ? this.hide() : this.show(relatedTarget);
-    };
-
-    _proto.show = function show(relatedTarget) {
-      var _this = this;
-
-      if (this._isShown || this._isTransitioning) {
-        return;
-      }
-
-      if ($(this._element).hasClass(ClassName$5.FADE)) {
-        this._isTransitioning = true;
-      }
-
-      var showEvent = $.Event(Event$5.SHOW, {
-        relatedTarget: relatedTarget
-      });
-      $(this._element).trigger(showEvent);
-
-      if (this._isShown || showEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      this._isShown = true;
-
-      this._checkScrollbar();
-
-      this._setScrollbar();
-
-      this._adjustDialog();
-
-      this._setEscapeEvent();
-
-      this._setResizeEvent();
-
-      $(this._element).on(Event$5.CLICK_DISMISS, Selector$5.DATA_DISMISS, function (event) {
-        return _this.hide(event);
-      });
-      $(this._dialog).on(Event$5.MOUSEDOWN_DISMISS, function () {
-        $(_this._element).one(Event$5.MOUSEUP_DISMISS, function (event) {
-          if ($(event.target).is(_this._element)) {
-            _this._ignoreBackdropClick = true;
-          }
-        });
-      });
-
-      this._showBackdrop(function () {
-        return _this._showElement(relatedTarget);
-      });
-    };
-
-    _proto.hide = function hide(event) {
-      var _this2 = this;
-
-      if (event) {
-        event.preventDefault();
-      }
-
-      if (!this._isShown || this._isTransitioning) {
-        return;
-      }
-
-      var hideEvent = $.Event(Event$5.HIDE);
-      $(this._element).trigger(hideEvent);
-
-      if (!this._isShown || hideEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      this._isShown = false;
-      var transition = $(this._element).hasClass(ClassName$5.FADE);
-
-      if (transition) {
-        this._isTransitioning = true;
-      }
-
-      this._setEscapeEvent();
-
-      this._setResizeEvent();
-
-      $(document).off(Event$5.FOCUSIN);
-      $(this._element).removeClass(ClassName$5.SHOW);
-      $(this._element).off(Event$5.CLICK_DISMISS);
-      $(this._dialog).off(Event$5.MOUSEDOWN_DISMISS);
-
-      if (transition) {
-        var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-        $(this._element).one(Util.TRANSITION_END, function (event) {
-          return _this2._hideModal(event);
-        }).emulateTransitionEnd(transitionDuration);
-      } else {
-        this._hideModal();
-      }
-    };
-
-    _proto.dispose = function dispose() {
-      [window, this._element, this._dialog].forEach(function (htmlElement) {
-        return $(htmlElement).off(EVENT_KEY$5);
-      });
-      /**
-       * `document` has 2 events `Event.FOCUSIN` and `Event.CLICK_DATA_API`
-       * Do not move `document` in `htmlElements` array
-       * It will remove `Event.CLICK_DATA_API` event that should remain
-       */
-
-      $(document).off(Event$5.FOCUSIN);
-      $.removeData(this._element, DATA_KEY$5);
-      this._config = null;
-      this._element = null;
-      this._dialog = null;
-      this._backdrop = null;
-      this._isShown = null;
-      this._isBodyOverflowing = null;
-      this._ignoreBackdropClick = null;
-      this._isTransitioning = null;
-      this._scrollbarWidth = null;
-    };
-
-    _proto.handleUpdate = function handleUpdate() {
-      this._adjustDialog();
-    } // Private
-    ;
-
-    _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread({}, Default$3, config);
-      Util.typeCheckConfig(NAME$5, config, DefaultType$3);
-      return config;
-    };
-
-    _proto._showElement = function _showElement(relatedTarget) {
-      var _this3 = this;
-
-      var transition = $(this._element).hasClass(ClassName$5.FADE);
-
-      if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
-        // Don't move modal's DOM position
-        document.body.appendChild(this._element);
-      }
-
-      this._element.style.display = 'block';
-
-      this._element.removeAttribute('aria-hidden');
-
-      this._element.setAttribute('aria-modal', true);
-
-      if ($(this._dialog).hasClass(ClassName$5.SCROLLABLE)) {
-        this._dialog.querySelector(Selector$5.MODAL_BODY).scrollTop = 0;
-      } else {
-        this._element.scrollTop = 0;
-      }
-
-      if (transition) {
-        Util.reflow(this._element);
-      }
-
-      $(this._element).addClass(ClassName$5.SHOW);
-
-      if (this._config.focus) {
-        this._enforceFocus();
-      }
-
-      var shownEvent = $.Event(Event$5.SHOWN, {
-        relatedTarget: relatedTarget
-      });
-
-      var transitionComplete = function transitionComplete() {
-        if (_this3._config.focus) {
-          _this3._element.focus();
-        }
-
-        _this3._isTransitioning = false;
-        $(_this3._element).trigger(shownEvent);
-      };
-
-      if (transition) {
-        var transitionDuration = Util.getTransitionDurationFromElement(this._dialog);
-        $(this._dialog).one(Util.TRANSITION_END, transitionComplete).emulateTransitionEnd(transitionDuration);
-      } else {
-        transitionComplete();
-      }
-    };
-
-    _proto._enforceFocus = function _enforceFocus() {
-      var _this4 = this;
-
-      $(document).off(Event$5.FOCUSIN) // Guard against infinite focus loop
-      .on(Event$5.FOCUSIN, function (event) {
-        if (document !== event.target && _this4._element !== event.target && $(_this4._element).has(event.target).length === 0) {
-          _this4._element.focus();
-        }
-      });
-    };
-
-    _proto._setEscapeEvent = function _setEscapeEvent() {
-      var _this5 = this;
-
-      if (this._isShown && this._config.keyboard) {
-        $(this._element).on(Event$5.KEYDOWN_DISMISS, function (event) {
-          if (event.which === ESCAPE_KEYCODE$1) {
-            event.preventDefault();
-
-            _this5.hide();
-          }
-        });
-      } else if (!this._isShown) {
-        $(this._element).off(Event$5.KEYDOWN_DISMISS);
-      }
-    };
-
-    _proto._setResizeEvent = function _setResizeEvent() {
-      var _this6 = this;
-
-      if (this._isShown) {
-        $(window).on(Event$5.RESIZE, function (event) {
-          return _this6.handleUpdate(event);
-        });
-      } else {
-        $(window).off(Event$5.RESIZE);
-      }
-    };
-
-    _proto._hideModal = function _hideModal() {
-      var _this7 = this;
-
-      this._element.style.display = 'none';
-
-      this._element.setAttribute('aria-hidden', true);
-
-      this._element.removeAttribute('aria-modal');
-
-      this._isTransitioning = false;
-
-      this._showBackdrop(function () {
-        $(document.body).removeClass(ClassName$5.OPEN);
-
-        _this7._resetAdjustments();
-
-        _this7._resetScrollbar();
-
-        $(_this7._element).trigger(Event$5.HIDDEN);
-      });
-    };
-
-    _proto._removeBackdrop = function _removeBackdrop() {
-      if (this._backdrop) {
-        $(this._backdrop).remove();
-        this._backdrop = null;
-      }
-    };
-
-    _proto._showBackdrop = function _showBackdrop(callback) {
-      var _this8 = this;
-
-      var animate = $(this._element).hasClass(ClassName$5.FADE) ? ClassName$5.FADE : '';
-
-      if (this._isShown && this._config.backdrop) {
-        this._backdrop = document.createElement('div');
-        this._backdrop.className = ClassName$5.BACKDROP;
-
-        if (animate) {
-          this._backdrop.classList.add(animate);
-        }
-
-        $(this._backdrop).appendTo(document.body);
-        $(this._element).on(Event$5.CLICK_DISMISS, function (event) {
-          if (_this8._ignoreBackdropClick) {
-            _this8._ignoreBackdropClick = false;
-            return;
-          }
-
-          if (event.target !== event.currentTarget) {
-            return;
-          }
-
-          if (_this8._config.backdrop === 'static') {
-            _this8._element.focus();
-          } else {
-            _this8.hide();
-          }
-        });
-
-        if (animate) {
-          Util.reflow(this._backdrop);
-        }
-
-        $(this._backdrop).addClass(ClassName$5.SHOW);
-
-        if (!callback) {
-          return;
-        }
-
-        if (!animate) {
-          callback();
-          return;
-        }
-
-        var backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop);
-        $(this._backdrop).one(Util.TRANSITION_END, callback).emulateTransitionEnd(backdropTransitionDuration);
-      } else if (!this._isShown && this._backdrop) {
-        $(this._backdrop).removeClass(ClassName$5.SHOW);
-
-        var callbackRemove = function callbackRemove() {
-          _this8._removeBackdrop();
-
-          if (callback) {
-            callback();
-          }
-        };
-
-        if ($(this._element).hasClass(ClassName$5.FADE)) {
-          var _backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop);
-
-          $(this._backdrop).one(Util.TRANSITION_END, callbackRemove).emulateTransitionEnd(_backdropTransitionDuration);
-        } else {
-          callbackRemove();
-        }
-      } else if (callback) {
-        callback();
-      }
-    } // ----------------------------------------------------------------------
-    // the following methods are used to handle overflowing modals
-    // todo (fat): these should probably be refactored out of modal.js
-    // ----------------------------------------------------------------------
-    ;
-
-    _proto._adjustDialog = function _adjustDialog() {
-      var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
-
-      if (!this._isBodyOverflowing && isModalOverflowing) {
-        this._element.style.paddingLeft = this._scrollbarWidth + "px";
-      }
-
-      if (this._isBodyOverflowing && !isModalOverflowing) {
-        this._element.style.paddingRight = this._scrollbarWidth + "px";
-      }
-    };
-
-    _proto._resetAdjustments = function _resetAdjustments() {
-      this._element.style.paddingLeft = '';
-      this._element.style.paddingRight = '';
-    };
-
-    _proto._checkScrollbar = function _checkScrollbar() {
-      var rect = document.body.getBoundingClientRect();
-      this._isBodyOverflowing = rect.left + rect.right < window.innerWidth;
-      this._scrollbarWidth = this._getScrollbarWidth();
-    };
-
-    _proto._setScrollbar = function _setScrollbar() {
-      var _this9 = this;
-
-      if (this._isBodyOverflowing) {
-        // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
-        //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
-        var fixedContent = [].slice.call(document.querySelectorAll(Selector$5.FIXED_CONTENT));
-        var stickyContent = [].slice.call(document.querySelectorAll(Selector$5.STICKY_CONTENT)); // Adjust fixed content padding
-
-        $(fixedContent).each(function (index, element) {
-          var actualPadding = element.style.paddingRight;
-          var calculatedPadding = $(element).css('padding-right');
-          $(element).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + _this9._scrollbarWidth + "px");
-        }); // Adjust sticky content margin
-
-        $(stickyContent).each(function (index, element) {
-          var actualMargin = element.style.marginRight;
-          var calculatedMargin = $(element).css('margin-right');
-          $(element).data('margin-right', actualMargin).css('margin-right', parseFloat(calculatedMargin) - _this9._scrollbarWidth + "px");
-        }); // Adjust body padding
-
-        var actualPadding = document.body.style.paddingRight;
-        var calculatedPadding = $(document.body).css('padding-right');
-        $(document.body).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + "px");
-      }
-
-      $(document.body).addClass(ClassName$5.OPEN);
-    };
-
-    _proto._resetScrollbar = function _resetScrollbar() {
-      // Restore fixed content padding
-      var fixedContent = [].slice.call(document.querySelectorAll(Selector$5.FIXED_CONTENT));
-      $(fixedContent).each(function (index, element) {
-        var padding = $(element).data('padding-right');
-        $(element).removeData('padding-right');
-        element.style.paddingRight = padding ? padding : '';
-      }); // Restore sticky content
-
-      var elements = [].slice.call(document.querySelectorAll("" + Selector$5.STICKY_CONTENT));
-      $(elements).each(function (index, element) {
-        var margin = $(element).data('margin-right');
-
-        if (typeof margin !== 'undefined') {
-          $(element).css('margin-right', margin).removeData('margin-right');
-        }
-      }); // Restore body padding
-
-      var padding = $(document.body).data('padding-right');
-      $(document.body).removeData('padding-right');
-      document.body.style.paddingRight = padding ? padding : '';
-    };
-
-    _proto._getScrollbarWidth = function _getScrollbarWidth() {
-      // thx d.walsh
-      var scrollDiv = document.createElement('div');
-      scrollDiv.className = ClassName$5.SCROLLBAR_MEASURER;
-      document.body.appendChild(scrollDiv);
-      var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
-      document.body.removeChild(scrollDiv);
-      return scrollbarWidth;
-    } // Static
-    ;
-
-    Modal._jQueryInterface = function _jQueryInterface(config, relatedTarget) {
-      return this.each(function () {
-        var data = $(this).data(DATA_KEY$5);
-
-        var _config = _objectSpread({}, Default$3, $(this).data(), typeof config === 'object' && config ? config : {});
-
-        if (!data) {
-          data = new Modal(this, _config);
-          $(this).data(DATA_KEY$5, data);
-        }
-
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError("No method named \"" + config + "\"");
-          }
-
-          data[config](relatedTarget);
-        } else if (_config.show) {
-          data.show(relatedTarget);
-        }
-      });
-    };
-
-    _createClass(Modal, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION$5;
-      }
-    }, {
-      key: "Default",
-      get: function get() {
-        return Default$3;
-      }
-    }]);
-
-    return Modal;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-
-  $(document).on(Event$5.CLICK_DATA_API, Selector$5.DATA_TOGGLE, function (event) {
-    var _this10 = this;
-
-    var target;
-    var selector = Util.getSelectorFromElement(this);
-
-    if (selector) {
-      target = document.querySelector(selector);
-    }
-
-    var config = $(target).data(DATA_KEY$5) ? 'toggle' : _objectSpread({}, $(target).data(), $(this).data());
-
-    if (this.tagName === 'A' || this.tagName === 'AREA') {
-      event.preventDefault();
-    }
-
-    var $target = $(target).one(Event$5.SHOW, function (showEvent) {
-      if (showEvent.isDefaultPrevented()) {
-        // Only register focus restorer if modal will actually get shown
-        return;
-      }
-
-      $target.one(Event$5.HIDDEN, function () {
-        if ($(_this10).is(':visible')) {
-          _this10.focus();
-        }
-      });
-    });
-
-    Modal._jQueryInterface.call($(target), config, this);
-  });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME$5] = Modal._jQueryInterface;
-  $.fn[NAME$5].Constructor = Modal;
-
-  $.fn[NAME$5].noConflict = function () {
-    $.fn[NAME$5] = JQUERY_NO_CONFLICT$5;
-    return Modal._jQueryInterface;
-  };
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): tools/sanitizer.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  var uriAttrs = ['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href'];
-  var ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
-  var DefaultWhitelist = {
-    // Global attributes allowed on any supplied element below.
-    '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
-    a: ['target', 'href', 'title', 'rel'],
-    area: [],
-    b: [],
-    br: [],
-    col: [],
-    code: [],
-    div: [],
-    em: [],
-    hr: [],
-    h1: [],
-    h2: [],
-    h3: [],
-    h4: [],
-    h5: [],
-    h6: [],
-    i: [],
-    img: ['src', 'alt', 'title', 'width', 'height'],
-    li: [],
-    ol: [],
-    p: [],
-    pre: [],
-    s: [],
-    small: [],
-    span: [],
-    sub: [],
-    sup: [],
-    strong: [],
-    u: [],
-    ul: []
-    /**
-     * A pattern that recognizes a commonly useful subset of URLs that are safe.
-     *
-     * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
-     */
-
-  };
-  var SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file):|[^&:/?#]*(?:[/?#]|$))/gi;
-  /**
-   * A pattern that matches safe data URLs. Only matches image, video and audio types.
-   *
-   * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
-   */
-
-  var DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+/]+=*$/i;
-
-  function allowedAttribute(attr, allowedAttributeList) {
-    var attrName = attr.nodeName.toLowerCase();
-
-    if (allowedAttributeList.indexOf(attrName) !== -1) {
-      if (uriAttrs.indexOf(attrName) !== -1) {
-        return Boolean(attr.nodeValue.match(SAFE_URL_PATTERN) || attr.nodeValue.match(DATA_URL_PATTERN));
-      }
-
-      return true;
-    }
-
-    var regExp = allowedAttributeList.filter(function (attrRegex) {
-      return attrRegex instanceof RegExp;
-    }); // Check if a regular expression validates the attribute.
-
-    for (var i = 0, l = regExp.length; i < l; i++) {
-      if (attrName.match(regExp[i])) {
-        return true;
-      }
-    }
-
-    return false;
+}
+
+function parseDate (dateString, year) {
+  // Invalid ISO-formatted year
+  if (year === null) {
+    return null
   }
 
-  function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
-    if (unsafeHtml.length === 0) {
-      return unsafeHtml;
-    }
+  var token
+  var date
+  var month
+  var week
 
-    if (sanitizeFn && typeof sanitizeFn === 'function') {
-      return sanitizeFn(unsafeHtml);
-    }
-
-    var domParser = new window.DOMParser();
-    var createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
-    var whitelistKeys = Object.keys(whiteList);
-    var elements = [].slice.call(createdDocument.body.querySelectorAll('*'));
-
-    var _loop = function _loop(i, len) {
-      var el = elements[i];
-      var elName = el.nodeName.toLowerCase();
-
-      if (whitelistKeys.indexOf(el.nodeName.toLowerCase()) === -1) {
-        el.parentNode.removeChild(el);
-        return "continue";
-      }
-
-      var attributeList = [].slice.call(el.attributes);
-      var whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || []);
-      attributeList.forEach(function (attr) {
-        if (!allowedAttribute(attr, whitelistedAttributes)) {
-          el.removeAttribute(attr.nodeName);
-        }
-      });
-    };
-
-    for (var i = 0, len = elements.length; i < len; i++) {
-      var _ret = _loop(i, len);
-
-      if (_ret === "continue") continue;
-    }
-
-    return createdDocument.body.innerHTML;
+  // YYYY
+  if (dateString.length === 0) {
+    date = new Date(0)
+    date.setUTCFullYear(year)
+    return date
   }
 
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$6 = 'tooltip';
-  var VERSION$6 = '4.3.1';
-  var DATA_KEY$6 = 'bs.tooltip';
-  var EVENT_KEY$6 = "." + DATA_KEY$6;
-  var JQUERY_NO_CONFLICT$6 = $.fn[NAME$6];
-  var CLASS_PREFIX = 'bs-tooltip';
-  var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
-  var DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn'];
-  var DefaultType$4 = {
-    animation: 'boolean',
-    template: 'string',
-    title: '(string|element|function)',
-    trigger: 'string',
-    delay: '(number|object)',
-    html: 'boolean',
-    selector: '(string|boolean)',
-    placement: '(string|function)',
-    offset: '(number|string|function)',
-    container: '(string|element|boolean)',
-    fallbackPlacement: '(string|array)',
-    boundary: '(string|element)',
-    sanitize: 'boolean',
-    sanitizeFn: '(null|function)',
-    whiteList: 'object'
-  };
-  var AttachmentMap$1 = {
-    AUTO: 'auto',
-    TOP: 'top',
-    RIGHT: 'right',
-    BOTTOM: 'bottom',
-    LEFT: 'left'
-  };
-  var Default$4 = {
-    animation: true,
-    template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
-    trigger: 'hover focus',
-    title: '',
-    delay: 0,
-    html: false,
-    selector: false,
-    placement: 'top',
-    offset: 0,
-    container: false,
-    fallbackPlacement: 'flip',
-    boundary: 'scrollParent',
-    sanitize: true,
-    sanitizeFn: null,
-    whiteList: DefaultWhitelist
-  };
-  var HoverState = {
-    SHOW: 'show',
-    OUT: 'out'
-  };
-  var Event$6 = {
-    HIDE: "hide" + EVENT_KEY$6,
-    HIDDEN: "hidden" + EVENT_KEY$6,
-    SHOW: "show" + EVENT_KEY$6,
-    SHOWN: "shown" + EVENT_KEY$6,
-    INSERTED: "inserted" + EVENT_KEY$6,
-    CLICK: "click" + EVENT_KEY$6,
-    FOCUSIN: "focusin" + EVENT_KEY$6,
-    FOCUSOUT: "focusout" + EVENT_KEY$6,
-    MOUSEENTER: "mouseenter" + EVENT_KEY$6,
-    MOUSELEAVE: "mouseleave" + EVENT_KEY$6
-  };
-  var ClassName$6 = {
-    FADE: 'fade',
-    SHOW: 'show'
-  };
-  var Selector$6 = {
-    TOOLTIP: '.tooltip',
-    TOOLTIP_INNER: '.tooltip-inner',
-    ARROW: '.arrow'
-  };
-  var Trigger = {
-    HOVER: 'hover',
-    FOCUS: 'focus',
-    CLICK: 'click',
-    MANUAL: 'manual'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Tooltip =
-  /*#__PURE__*/
-  function () {
-    function Tooltip(element, config) {
-      /**
-       * Check for Popper dependency
-       * Popper - https://popper.js.org
-       */
-      if (typeof Popper === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper.js (https://popper.js.org/)');
-      } // private
-
-
-      this._isEnabled = true;
-      this._timeout = 0;
-      this._hoverState = '';
-      this._activeTrigger = {};
-      this._popper = null; // Protected
-
-      this.element = element;
-      this.config = this._getConfig(config);
-      this.tip = null;
-
-      this._setListeners();
-    } // Getters
-
-
-    var _proto = Tooltip.prototype;
-
-    // Public
-    _proto.enable = function enable() {
-      this._isEnabled = true;
-    };
-
-    _proto.disable = function disable() {
-      this._isEnabled = false;
-    };
-
-    _proto.toggleEnabled = function toggleEnabled() {
-      this._isEnabled = !this._isEnabled;
-    };
-
-    _proto.toggle = function toggle(event) {
-      if (!this._isEnabled) {
-        return;
-      }
-
-      if (event) {
-        var dataKey = this.constructor.DATA_KEY;
-        var context = $(event.currentTarget).data(dataKey);
-
-        if (!context) {
-          context = new this.constructor(event.currentTarget, this._getDelegateConfig());
-          $(event.currentTarget).data(dataKey, context);
-        }
-
-        context._activeTrigger.click = !context._activeTrigger.click;
-
-        if (context._isWithActiveTrigger()) {
-          context._enter(null, context);
-        } else {
-          context._leave(null, context);
-        }
-      } else {
-        if ($(this.getTipElement()).hasClass(ClassName$6.SHOW)) {
-          this._leave(null, this);
-
-          return;
-        }
-
-        this._enter(null, this);
-      }
-    };
-
-    _proto.dispose = function dispose() {
-      clearTimeout(this._timeout);
-      $.removeData(this.element, this.constructor.DATA_KEY);
-      $(this.element).off(this.constructor.EVENT_KEY);
-      $(this.element).closest('.modal').off('hide.bs.modal');
-
-      if (this.tip) {
-        $(this.tip).remove();
-      }
-
-      this._isEnabled = null;
-      this._timeout = null;
-      this._hoverState = null;
-      this._activeTrigger = null;
-
-      if (this._popper !== null) {
-        this._popper.destroy();
-      }
-
-      this._popper = null;
-      this.element = null;
-      this.config = null;
-      this.tip = null;
-    };
-
-    _proto.show = function show() {
-      var _this = this;
-
-      if ($(this.element).css('display') === 'none') {
-        throw new Error('Please use show on visible elements');
-      }
-
-      var showEvent = $.Event(this.constructor.Event.SHOW);
-
-      if (this.isWithContent() && this._isEnabled) {
-        $(this.element).trigger(showEvent);
-        var shadowRoot = Util.findShadowRoot(this.element);
-        var isInTheDom = $.contains(shadowRoot !== null ? shadowRoot : this.element.ownerDocument.documentElement, this.element);
-
-        if (showEvent.isDefaultPrevented() || !isInTheDom) {
-          return;
-        }
-
-        var tip = this.getTipElement();
-        var tipId = Util.getUID(this.constructor.NAME);
-        tip.setAttribute('id', tipId);
-        this.element.setAttribute('aria-describedby', tipId);
-        this.setContent();
-
-        if (this.config.animation) {
-          $(tip).addClass(ClassName$6.FADE);
-        }
-
-        var placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this.element) : this.config.placement;
-
-        var attachment = this._getAttachment(placement);
-
-        this.addAttachmentClass(attachment);
-
-        var container = this._getContainer();
-
-        $(tip).data(this.constructor.DATA_KEY, this);
-
-        if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
-          $(tip).appendTo(container);
-        }
-
-        $(this.element).trigger(this.constructor.Event.INSERTED);
-        this._popper = new Popper(this.element, tip, {
-          placement: attachment,
-          modifiers: {
-            offset: this._getOffset(),
-            flip: {
-              behavior: this.config.fallbackPlacement
-            },
-            arrow: {
-              element: Selector$6.ARROW
-            },
-            preventOverflow: {
-              boundariesElement: this.config.boundary
-            }
-          },
-          onCreate: function onCreate(data) {
-            if (data.originalPlacement !== data.placement) {
-              _this._handlePopperPlacementChange(data);
-            }
-          },
-          onUpdate: function onUpdate(data) {
-            return _this._handlePopperPlacementChange(data);
-          }
-        });
-        $(tip).addClass(ClassName$6.SHOW); // If this is a touch-enabled device we add extra
-        // empty mouseover listeners to the body's immediate children;
-        // only needed because of broken event delegation on iOS
-        // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-
-        if ('ontouchstart' in document.documentElement) {
-          $(document.body).children().on('mouseover', null, $.noop);
-        }
-
-        var complete = function complete() {
-          if (_this.config.animation) {
-            _this._fixTransition();
-          }
-
-          var prevHoverState = _this._hoverState;
-          _this._hoverState = null;
-          $(_this.element).trigger(_this.constructor.Event.SHOWN);
-
-          if (prevHoverState === HoverState.OUT) {
-            _this._leave(null, _this);
-          }
-        };
-
-        if ($(this.tip).hasClass(ClassName$6.FADE)) {
-          var transitionDuration = Util.getTransitionDurationFromElement(this.tip);
-          $(this.tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
-        } else {
-          complete();
-        }
-      }
-    };
-
-    _proto.hide = function hide(callback) {
-      var _this2 = this;
-
-      var tip = this.getTipElement();
-      var hideEvent = $.Event(this.constructor.Event.HIDE);
-
-      var complete = function complete() {
-        if (_this2._hoverState !== HoverState.SHOW && tip.parentNode) {
-          tip.parentNode.removeChild(tip);
-        }
-
-        _this2._cleanTipClass();
-
-        _this2.element.removeAttribute('aria-describedby');
-
-        $(_this2.element).trigger(_this2.constructor.Event.HIDDEN);
-
-        if (_this2._popper !== null) {
-          _this2._popper.destroy();
-        }
-
-        if (callback) {
-          callback();
-        }
-      };
-
-      $(this.element).trigger(hideEvent);
-
-      if (hideEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      $(tip).removeClass(ClassName$6.SHOW); // If this is a touch-enabled device we remove the extra
-      // empty mouseover listeners we added for iOS support
-
-      if ('ontouchstart' in document.documentElement) {
-        $(document.body).children().off('mouseover', null, $.noop);
-      }
-
-      this._activeTrigger[Trigger.CLICK] = false;
-      this._activeTrigger[Trigger.FOCUS] = false;
-      this._activeTrigger[Trigger.HOVER] = false;
-
-      if ($(this.tip).hasClass(ClassName$6.FADE)) {
-        var transitionDuration = Util.getTransitionDurationFromElement(tip);
-        $(tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
-      } else {
-        complete();
-      }
-
-      this._hoverState = '';
-    };
-
-    _proto.update = function update() {
-      if (this._popper !== null) {
-        this._popper.scheduleUpdate();
-      }
-    } // Protected
-    ;
-
-    _proto.isWithContent = function isWithContent() {
-      return Boolean(this.getTitle());
-    };
-
-    _proto.addAttachmentClass = function addAttachmentClass(attachment) {
-      $(this.getTipElement()).addClass(CLASS_PREFIX + "-" + attachment);
-    };
-
-    _proto.getTipElement = function getTipElement() {
-      this.tip = this.tip || $(this.config.template)[0];
-      return this.tip;
-    };
-
-    _proto.setContent = function setContent() {
-      var tip = this.getTipElement();
-      this.setElementContent($(tip.querySelectorAll(Selector$6.TOOLTIP_INNER)), this.getTitle());
-      $(tip).removeClass(ClassName$6.FADE + " " + ClassName$6.SHOW);
-    };
-
-    _proto.setElementContent = function setElementContent($element, content) {
-      if (typeof content === 'object' && (content.nodeType || content.jquery)) {
-        // Content is a DOM node or a jQuery
-        if (this.config.html) {
-          if (!$(content).parent().is($element)) {
-            $element.empty().append(content);
-          }
-        } else {
-          $element.text($(content).text());
-        }
-
-        return;
-      }
-
-      if (this.config.html) {
-        if (this.config.sanitize) {
-          content = sanitizeHtml(content, this.config.whiteList, this.config.sanitizeFn);
-        }
-
-        $element.html(content);
-      } else {
-        $element.text(content);
-      }
-    };
-
-    _proto.getTitle = function getTitle() {
-      var title = this.element.getAttribute('data-original-title');
-
-      if (!title) {
-        title = typeof this.config.title === 'function' ? this.config.title.call(this.element) : this.config.title;
-      }
-
-      return title;
-    } // Private
-    ;
-
-    _proto._getOffset = function _getOffset() {
-      var _this3 = this;
-
-      var offset = {};
-
-      if (typeof this.config.offset === 'function') {
-        offset.fn = function (data) {
-          data.offsets = _objectSpread({}, data.offsets, _this3.config.offset(data.offsets, _this3.element) || {});
-          return data;
-        };
-      } else {
-        offset.offset = this.config.offset;
-      }
-
-      return offset;
-    };
-
-    _proto._getContainer = function _getContainer() {
-      if (this.config.container === false) {
-        return document.body;
-      }
-
-      if (Util.isElement(this.config.container)) {
-        return $(this.config.container);
-      }
-
-      return $(document).find(this.config.container);
-    };
-
-    _proto._getAttachment = function _getAttachment(placement) {
-      return AttachmentMap$1[placement.toUpperCase()];
-    };
-
-    _proto._setListeners = function _setListeners() {
-      var _this4 = this;
-
-      var triggers = this.config.trigger.split(' ');
-      triggers.forEach(function (trigger) {
-        if (trigger === 'click') {
-          $(_this4.element).on(_this4.constructor.Event.CLICK, _this4.config.selector, function (event) {
-            return _this4.toggle(event);
-          });
-        } else if (trigger !== Trigger.MANUAL) {
-          var eventIn = trigger === Trigger.HOVER ? _this4.constructor.Event.MOUSEENTER : _this4.constructor.Event.FOCUSIN;
-          var eventOut = trigger === Trigger.HOVER ? _this4.constructor.Event.MOUSELEAVE : _this4.constructor.Event.FOCUSOUT;
-          $(_this4.element).on(eventIn, _this4.config.selector, function (event) {
-            return _this4._enter(event);
-          }).on(eventOut, _this4.config.selector, function (event) {
-            return _this4._leave(event);
-          });
-        }
-      });
-      $(this.element).closest('.modal').on('hide.bs.modal', function () {
-        if (_this4.element) {
-          _this4.hide();
-        }
-      });
-
-      if (this.config.selector) {
-        this.config = _objectSpread({}, this.config, {
-          trigger: 'manual',
-          selector: ''
-        });
-      } else {
-        this._fixTitle();
-      }
-    };
-
-    _proto._fixTitle = function _fixTitle() {
-      var titleType = typeof this.element.getAttribute('data-original-title');
-
-      if (this.element.getAttribute('title') || titleType !== 'string') {
-        this.element.setAttribute('data-original-title', this.element.getAttribute('title') || '');
-        this.element.setAttribute('title', '');
-      }
-    };
-
-    _proto._enter = function _enter(event, context) {
-      var dataKey = this.constructor.DATA_KEY;
-      context = context || $(event.currentTarget).data(dataKey);
-
-      if (!context) {
-        context = new this.constructor(event.currentTarget, this._getDelegateConfig());
-        $(event.currentTarget).data(dataKey, context);
-      }
-
-      if (event) {
-        context._activeTrigger[event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
-      }
-
-      if ($(context.getTipElement()).hasClass(ClassName$6.SHOW) || context._hoverState === HoverState.SHOW) {
-        context._hoverState = HoverState.SHOW;
-        return;
-      }
-
-      clearTimeout(context._timeout);
-      context._hoverState = HoverState.SHOW;
-
-      if (!context.config.delay || !context.config.delay.show) {
-        context.show();
-        return;
-      }
-
-      context._timeout = setTimeout(function () {
-        if (context._hoverState === HoverState.SHOW) {
-          context.show();
-        }
-      }, context.config.delay.show);
-    };
-
-    _proto._leave = function _leave(event, context) {
-      var dataKey = this.constructor.DATA_KEY;
-      context = context || $(event.currentTarget).data(dataKey);
-
-      if (!context) {
-        context = new this.constructor(event.currentTarget, this._getDelegateConfig());
-        $(event.currentTarget).data(dataKey, context);
-      }
-
-      if (event) {
-        context._activeTrigger[event.type === 'focusout' ? Trigger.FOCUS : Trigger.HOVER] = false;
-      }
-
-      if (context._isWithActiveTrigger()) {
-        return;
-      }
-
-      clearTimeout(context._timeout);
-      context._hoverState = HoverState.OUT;
-
-      if (!context.config.delay || !context.config.delay.hide) {
-        context.hide();
-        return;
-      }
-
-      context._timeout = setTimeout(function () {
-        if (context._hoverState === HoverState.OUT) {
-          context.hide();
-        }
-      }, context.config.delay.hide);
-    };
-
-    _proto._isWithActiveTrigger = function _isWithActiveTrigger() {
-      for (var trigger in this._activeTrigger) {
-        if (this._activeTrigger[trigger]) {
-          return true;
-        }
-      }
-
-      return false;
-    };
-
-    _proto._getConfig = function _getConfig(config) {
-      var dataAttributes = $(this.element).data();
-      Object.keys(dataAttributes).forEach(function (dataAttr) {
-        if (DISALLOWED_ATTRIBUTES.indexOf(dataAttr) !== -1) {
-          delete dataAttributes[dataAttr];
-        }
-      });
-      config = _objectSpread({}, this.constructor.Default, dataAttributes, typeof config === 'object' && config ? config : {});
-
-      if (typeof config.delay === 'number') {
-        config.delay = {
-          show: config.delay,
-          hide: config.delay
-        };
-      }
-
-      if (typeof config.title === 'number') {
-        config.title = config.title.toString();
-      }
-
-      if (typeof config.content === 'number') {
-        config.content = config.content.toString();
-      }
-
-      Util.typeCheckConfig(NAME$6, config, this.constructor.DefaultType);
-
-      if (config.sanitize) {
-        config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn);
-      }
-
-      return config;
-    };
-
-    _proto._getDelegateConfig = function _getDelegateConfig() {
-      var config = {};
-
-      if (this.config) {
-        for (var key in this.config) {
-          if (this.constructor.Default[key] !== this.config[key]) {
-            config[key] = this.config[key];
-          }
-        }
-      }
-
-      return config;
-    };
-
-    _proto._cleanTipClass = function _cleanTipClass() {
-      var $tip = $(this.getTipElement());
-      var tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX);
-
-      if (tabClass !== null && tabClass.length) {
-        $tip.removeClass(tabClass.join(''));
-      }
-    };
-
-    _proto._handlePopperPlacementChange = function _handlePopperPlacementChange(popperData) {
-      var popperInstance = popperData.instance;
-      this.tip = popperInstance.popper;
-
-      this._cleanTipClass();
-
-      this.addAttachmentClass(this._getAttachment(popperData.placement));
-    };
-
-    _proto._fixTransition = function _fixTransition() {
-      var tip = this.getTipElement();
-      var initConfigAnimation = this.config.animation;
-
-      if (tip.getAttribute('x-placement') !== null) {
-        return;
-      }
-
-      $(tip).removeClass(ClassName$6.FADE);
-      this.config.animation = false;
-      this.hide();
-      this.show();
-      this.config.animation = initConfigAnimation;
-    } // Static
-    ;
-
-    Tooltip._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var data = $(this).data(DATA_KEY$6);
-
-        var _config = typeof config === 'object' && config;
-
-        if (!data && /dispose|hide/.test(config)) {
-          return;
-        }
-
-        if (!data) {
-          data = new Tooltip(this, _config);
-          $(this).data(DATA_KEY$6, data);
-        }
-
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError("No method named \"" + config + "\"");
-          }
-
-          data[config]();
-        }
-      });
-    };
-
-    _createClass(Tooltip, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION$6;
-      }
-    }, {
-      key: "Default",
-      get: function get() {
-        return Default$4;
-      }
-    }, {
-      key: "NAME",
-      get: function get() {
-        return NAME$6;
-      }
-    }, {
-      key: "DATA_KEY",
-      get: function get() {
-        return DATA_KEY$6;
-      }
-    }, {
-      key: "Event",
-      get: function get() {
-        return Event$6;
-      }
-    }, {
-      key: "EVENT_KEY",
-      get: function get() {
-        return EVENT_KEY$6;
-      }
-    }, {
-      key: "DefaultType",
-      get: function get() {
-        return DefaultType$4;
-      }
-    }]);
-
-    return Tooltip;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-
-  $.fn[NAME$6] = Tooltip._jQueryInterface;
-  $.fn[NAME$6].Constructor = Tooltip;
-
-  $.fn[NAME$6].noConflict = function () {
-    $.fn[NAME$6] = JQUERY_NO_CONFLICT$6;
-    return Tooltip._jQueryInterface;
-  };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$7 = 'popover';
-  var VERSION$7 = '4.3.1';
-  var DATA_KEY$7 = 'bs.popover';
-  var EVENT_KEY$7 = "." + DATA_KEY$7;
-  var JQUERY_NO_CONFLICT$7 = $.fn[NAME$7];
-  var CLASS_PREFIX$1 = 'bs-popover';
-  var BSCLS_PREFIX_REGEX$1 = new RegExp("(^|\\s)" + CLASS_PREFIX$1 + "\\S+", 'g');
-
-  var Default$5 = _objectSpread({}, Tooltip.Default, {
-    placement: 'right',
-    trigger: 'click',
-    content: '',
-    template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
-  });
-
-  var DefaultType$5 = _objectSpread({}, Tooltip.DefaultType, {
-    content: '(string|element|function)'
-  });
-
-  var ClassName$7 = {
-    FADE: 'fade',
-    SHOW: 'show'
-  };
-  var Selector$7 = {
-    TITLE: '.popover-header',
-    CONTENT: '.popover-body'
-  };
-  var Event$7 = {
-    HIDE: "hide" + EVENT_KEY$7,
-    HIDDEN: "hidden" + EVENT_KEY$7,
-    SHOW: "show" + EVENT_KEY$7,
-    SHOWN: "shown" + EVENT_KEY$7,
-    INSERTED: "inserted" + EVENT_KEY$7,
-    CLICK: "click" + EVENT_KEY$7,
-    FOCUSIN: "focusin" + EVENT_KEY$7,
-    FOCUSOUT: "focusout" + EVENT_KEY$7,
-    MOUSEENTER: "mouseenter" + EVENT_KEY$7,
-    MOUSELEAVE: "mouseleave" + EVENT_KEY$7
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Popover =
-  /*#__PURE__*/
-  function (_Tooltip) {
-    _inheritsLoose(Popover, _Tooltip);
-
-    function Popover() {
-      return _Tooltip.apply(this, arguments) || this;
-    }
-
-    var _proto = Popover.prototype;
-
-    // Overrides
-    _proto.isWithContent = function isWithContent() {
-      return this.getTitle() || this._getContent();
-    };
-
-    _proto.addAttachmentClass = function addAttachmentClass(attachment) {
-      $(this.getTipElement()).addClass(CLASS_PREFIX$1 + "-" + attachment);
-    };
-
-    _proto.getTipElement = function getTipElement() {
-      this.tip = this.tip || $(this.config.template)[0];
-      return this.tip;
-    };
-
-    _proto.setContent = function setContent() {
-      var $tip = $(this.getTipElement()); // We use append for html objects to maintain js events
-
-      this.setElementContent($tip.find(Selector$7.TITLE), this.getTitle());
-
-      var content = this._getContent();
-
-      if (typeof content === 'function') {
-        content = content.call(this.element);
-      }
-
-      this.setElementContent($tip.find(Selector$7.CONTENT), content);
-      $tip.removeClass(ClassName$7.FADE + " " + ClassName$7.SHOW);
-    } // Private
-    ;
-
-    _proto._getContent = function _getContent() {
-      return this.element.getAttribute('data-content') || this.config.content;
-    };
-
-    _proto._cleanTipClass = function _cleanTipClass() {
-      var $tip = $(this.getTipElement());
-      var tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX$1);
-
-      if (tabClass !== null && tabClass.length > 0) {
-        $tip.removeClass(tabClass.join(''));
-      }
-    } // Static
-    ;
-
-    Popover._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var data = $(this).data(DATA_KEY$7);
-
-        var _config = typeof config === 'object' ? config : null;
-
-        if (!data && /dispose|hide/.test(config)) {
-          return;
-        }
-
-        if (!data) {
-          data = new Popover(this, _config);
-          $(this).data(DATA_KEY$7, data);
-        }
-
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError("No method named \"" + config + "\"");
-          }
-
-          data[config]();
-        }
-      });
-    };
-
-    _createClass(Popover, null, [{
-      key: "VERSION",
-      // Getters
-      get: function get() {
-        return VERSION$7;
-      }
-    }, {
-      key: "Default",
-      get: function get() {
-        return Default$5;
-      }
-    }, {
-      key: "NAME",
-      get: function get() {
-        return NAME$7;
-      }
-    }, {
-      key: "DATA_KEY",
-      get: function get() {
-        return DATA_KEY$7;
-      }
-    }, {
-      key: "Event",
-      get: function get() {
-        return Event$7;
-      }
-    }, {
-      key: "EVENT_KEY",
-      get: function get() {
-        return EVENT_KEY$7;
-      }
-    }, {
-      key: "DefaultType",
-      get: function get() {
-        return DefaultType$5;
-      }
-    }]);
-
-    return Popover;
-  }(Tooltip);
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-
-  $.fn[NAME$7] = Popover._jQueryInterface;
-  $.fn[NAME$7].Constructor = Popover;
-
-  $.fn[NAME$7].noConflict = function () {
-    $.fn[NAME$7] = JQUERY_NO_CONFLICT$7;
-    return Popover._jQueryInterface;
-  };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$8 = 'scrollspy';
-  var VERSION$8 = '4.3.1';
-  var DATA_KEY$8 = 'bs.scrollspy';
-  var EVENT_KEY$8 = "." + DATA_KEY$8;
-  var DATA_API_KEY$6 = '.data-api';
-  var JQUERY_NO_CONFLICT$8 = $.fn[NAME$8];
-  var Default$6 = {
-    offset: 10,
-    method: 'auto',
-    target: ''
-  };
-  var DefaultType$6 = {
-    offset: 'number',
-    method: 'string',
-    target: '(string|element)'
-  };
-  var Event$8 = {
-    ACTIVATE: "activate" + EVENT_KEY$8,
-    SCROLL: "scroll" + EVENT_KEY$8,
-    LOAD_DATA_API: "load" + EVENT_KEY$8 + DATA_API_KEY$6
-  };
-  var ClassName$8 = {
-    DROPDOWN_ITEM: 'dropdown-item',
-    DROPDOWN_MENU: 'dropdown-menu',
-    ACTIVE: 'active'
-  };
-  var Selector$8 = {
-    DATA_SPY: '[data-spy="scroll"]',
-    ACTIVE: '.active',
-    NAV_LIST_GROUP: '.nav, .list-group',
-    NAV_LINKS: '.nav-link',
-    NAV_ITEMS: '.nav-item',
-    LIST_ITEMS: '.list-group-item',
-    DROPDOWN: '.dropdown',
-    DROPDOWN_ITEMS: '.dropdown-item',
-    DROPDOWN_TOGGLE: '.dropdown-toggle'
-  };
-  var OffsetMethod = {
-    OFFSET: 'offset',
-    POSITION: 'position'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var ScrollSpy =
-  /*#__PURE__*/
-  function () {
-    function ScrollSpy(element, config) {
-      var _this = this;
-
-      this._element = element;
-      this._scrollElement = element.tagName === 'BODY' ? window : element;
-      this._config = this._getConfig(config);
-      this._selector = this._config.target + " " + Selector$8.NAV_LINKS + "," + (this._config.target + " " + Selector$8.LIST_ITEMS + ",") + (this._config.target + " " + Selector$8.DROPDOWN_ITEMS);
-      this._offsets = [];
-      this._targets = [];
-      this._activeTarget = null;
-      this._scrollHeight = 0;
-      $(this._scrollElement).on(Event$8.SCROLL, function (event) {
-        return _this._process(event);
-      });
-      this.refresh();
-
-      this._process();
-    } // Getters
-
-
-    var _proto = ScrollSpy.prototype;
-
-    // Public
-    _proto.refresh = function refresh() {
-      var _this2 = this;
-
-      var autoMethod = this._scrollElement === this._scrollElement.window ? OffsetMethod.OFFSET : OffsetMethod.POSITION;
-      var offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
-      var offsetBase = offsetMethod === OffsetMethod.POSITION ? this._getScrollTop() : 0;
-      this._offsets = [];
-      this._targets = [];
-      this._scrollHeight = this._getScrollHeight();
-      var targets = [].slice.call(document.querySelectorAll(this._selector));
-      targets.map(function (element) {
-        var target;
-        var targetSelector = Util.getSelectorFromElement(element);
-
-        if (targetSelector) {
-          target = document.querySelector(targetSelector);
-        }
-
-        if (target) {
-          var targetBCR = target.getBoundingClientRect();
-
-          if (targetBCR.width || targetBCR.height) {
-            // TODO (fat): remove sketch reliance on jQuery position/offset
-            return [$(target)[offsetMethod]().top + offsetBase, targetSelector];
-          }
-        }
-
-        return null;
-      }).filter(function (item) {
-        return item;
-      }).sort(function (a, b) {
-        return a[0] - b[0];
-      }).forEach(function (item) {
-        _this2._offsets.push(item[0]);
-
-        _this2._targets.push(item[1]);
-      });
-    };
-
-    _proto.dispose = function dispose() {
-      $.removeData(this._element, DATA_KEY$8);
-      $(this._scrollElement).off(EVENT_KEY$8);
-      this._element = null;
-      this._scrollElement = null;
-      this._config = null;
-      this._selector = null;
-      this._offsets = null;
-      this._targets = null;
-      this._activeTarget = null;
-      this._scrollHeight = null;
-    } // Private
-    ;
-
-    _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread({}, Default$6, typeof config === 'object' && config ? config : {});
-
-      if (typeof config.target !== 'string') {
-        var id = $(config.target).attr('id');
-
-        if (!id) {
-          id = Util.getUID(NAME$8);
-          $(config.target).attr('id', id);
-        }
-
-        config.target = "#" + id;
-      }
-
-      Util.typeCheckConfig(NAME$8, config, DefaultType$6);
-      return config;
-    };
-
-    _proto._getScrollTop = function _getScrollTop() {
-      return this._scrollElement === window ? this._scrollElement.pageYOffset : this._scrollElement.scrollTop;
-    };
-
-    _proto._getScrollHeight = function _getScrollHeight() {
-      return this._scrollElement.scrollHeight || Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-    };
-
-    _proto._getOffsetHeight = function _getOffsetHeight() {
-      return this._scrollElement === window ? window.innerHeight : this._scrollElement.getBoundingClientRect().height;
-    };
-
-    _proto._process = function _process() {
-      var scrollTop = this._getScrollTop() + this._config.offset;
-
-      var scrollHeight = this._getScrollHeight();
-
-      var maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight();
-
-      if (this._scrollHeight !== scrollHeight) {
-        this.refresh();
-      }
-
-      if (scrollTop >= maxScroll) {
-        var target = this._targets[this._targets.length - 1];
-
-        if (this._activeTarget !== target) {
-          this._activate(target);
-        }
-
-        return;
-      }
-
-      if (this._activeTarget && scrollTop < this._offsets[0] && this._offsets[0] > 0) {
-        this._activeTarget = null;
-
-        this._clear();
-
-        return;
-      }
-
-      var offsetLength = this._offsets.length;
-
-      for (var i = offsetLength; i--;) {
-        var isActiveTarget = this._activeTarget !== this._targets[i] && scrollTop >= this._offsets[i] && (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1]);
-
-        if (isActiveTarget) {
-          this._activate(this._targets[i]);
-        }
-      }
-    };
-
-    _proto._activate = function _activate(target) {
-      this._activeTarget = target;
-
-      this._clear();
-
-      var queries = this._selector.split(',').map(function (selector) {
-        return selector + "[data-target=\"" + target + "\"]," + selector + "[href=\"" + target + "\"]";
-      });
-
-      var $link = $([].slice.call(document.querySelectorAll(queries.join(','))));
-
-      if ($link.hasClass(ClassName$8.DROPDOWN_ITEM)) {
-        $link.closest(Selector$8.DROPDOWN).find(Selector$8.DROPDOWN_TOGGLE).addClass(ClassName$8.ACTIVE);
-        $link.addClass(ClassName$8.ACTIVE);
-      } else {
-        // Set triggered link as active
-        $link.addClass(ClassName$8.ACTIVE); // Set triggered links parents as active
-        // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-
-        $link.parents(Selector$8.NAV_LIST_GROUP).prev(Selector$8.NAV_LINKS + ", " + Selector$8.LIST_ITEMS).addClass(ClassName$8.ACTIVE); // Handle special case when .nav-link is inside .nav-item
-
-        $link.parents(Selector$8.NAV_LIST_GROUP).prev(Selector$8.NAV_ITEMS).children(Selector$8.NAV_LINKS).addClass(ClassName$8.ACTIVE);
-      }
-
-      $(this._scrollElement).trigger(Event$8.ACTIVATE, {
-        relatedTarget: target
-      });
-    };
-
-    _proto._clear = function _clear() {
-      [].slice.call(document.querySelectorAll(this._selector)).filter(function (node) {
-        return node.classList.contains(ClassName$8.ACTIVE);
-      }).forEach(function (node) {
-        return node.classList.remove(ClassName$8.ACTIVE);
-      });
-    } // Static
-    ;
-
-    ScrollSpy._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var data = $(this).data(DATA_KEY$8);
-
-        var _config = typeof config === 'object' && config;
-
-        if (!data) {
-          data = new ScrollSpy(this, _config);
-          $(this).data(DATA_KEY$8, data);
-        }
-
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError("No method named \"" + config + "\"");
-          }
-
-          data[config]();
-        }
-      });
-    };
-
-    _createClass(ScrollSpy, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION$8;
-      }
-    }, {
-      key: "Default",
-      get: function get() {
-        return Default$6;
-      }
-    }]);
-
-    return ScrollSpy;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-
-  $(window).on(Event$8.LOAD_DATA_API, function () {
-    var scrollSpys = [].slice.call(document.querySelectorAll(Selector$8.DATA_SPY));
-    var scrollSpysLength = scrollSpys.length;
-
-    for (var i = scrollSpysLength; i--;) {
-      var $spy = $(scrollSpys[i]);
-
-      ScrollSpy._jQueryInterface.call($spy, $spy.data());
-    }
-  });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME$8] = ScrollSpy._jQueryInterface;
-  $.fn[NAME$8].Constructor = ScrollSpy;
-
-  $.fn[NAME$8].noConflict = function () {
-    $.fn[NAME$8] = JQUERY_NO_CONFLICT$8;
-    return ScrollSpy._jQueryInterface;
-  };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$9 = 'tab';
-  var VERSION$9 = '4.3.1';
-  var DATA_KEY$9 = 'bs.tab';
-  var EVENT_KEY$9 = "." + DATA_KEY$9;
-  var DATA_API_KEY$7 = '.data-api';
-  var JQUERY_NO_CONFLICT$9 = $.fn[NAME$9];
-  var Event$9 = {
-    HIDE: "hide" + EVENT_KEY$9,
-    HIDDEN: "hidden" + EVENT_KEY$9,
-    SHOW: "show" + EVENT_KEY$9,
-    SHOWN: "shown" + EVENT_KEY$9,
-    CLICK_DATA_API: "click" + EVENT_KEY$9 + DATA_API_KEY$7
-  };
-  var ClassName$9 = {
-    DROPDOWN_MENU: 'dropdown-menu',
-    ACTIVE: 'active',
-    DISABLED: 'disabled',
-    FADE: 'fade',
-    SHOW: 'show'
-  };
-  var Selector$9 = {
-    DROPDOWN: '.dropdown',
-    NAV_LIST_GROUP: '.nav, .list-group',
-    ACTIVE: '.active',
-    ACTIVE_UL: '> li > .active',
-    DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
-    DROPDOWN_TOGGLE: '.dropdown-toggle',
-    DROPDOWN_ACTIVE_CHILD: '> .dropdown-menu .active'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Tab =
-  /*#__PURE__*/
-  function () {
-    function Tab(element) {
-      this._element = element;
-    } // Getters
-
-
-    var _proto = Tab.prototype;
-
-    // Public
-    _proto.show = function show() {
-      var _this = this;
-
-      if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && $(this._element).hasClass(ClassName$9.ACTIVE) || $(this._element).hasClass(ClassName$9.DISABLED)) {
-        return;
-      }
-
-      var target;
-      var previous;
-      var listElement = $(this._element).closest(Selector$9.NAV_LIST_GROUP)[0];
-      var selector = Util.getSelectorFromElement(this._element);
-
-      if (listElement) {
-        var itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector$9.ACTIVE_UL : Selector$9.ACTIVE;
-        previous = $.makeArray($(listElement).find(itemSelector));
-        previous = previous[previous.length - 1];
-      }
-
-      var hideEvent = $.Event(Event$9.HIDE, {
-        relatedTarget: this._element
-      });
-      var showEvent = $.Event(Event$9.SHOW, {
-        relatedTarget: previous
-      });
-
-      if (previous) {
-        $(previous).trigger(hideEvent);
-      }
-
-      $(this._element).trigger(showEvent);
-
-      if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) {
-        return;
-      }
-
-      if (selector) {
-        target = document.querySelector(selector);
-      }
-
-      this._activate(this._element, listElement);
-
-      var complete = function complete() {
-        var hiddenEvent = $.Event(Event$9.HIDDEN, {
-          relatedTarget: _this._element
-        });
-        var shownEvent = $.Event(Event$9.SHOWN, {
-          relatedTarget: previous
-        });
-        $(previous).trigger(hiddenEvent);
-        $(_this._element).trigger(shownEvent);
-      };
-
-      if (target) {
-        this._activate(target, target.parentNode, complete);
-      } else {
-        complete();
-      }
-    };
-
-    _proto.dispose = function dispose() {
-      $.removeData(this._element, DATA_KEY$9);
-      this._element = null;
-    } // Private
-    ;
-
-    _proto._activate = function _activate(element, container, callback) {
-      var _this2 = this;
-
-      var activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? $(container).find(Selector$9.ACTIVE_UL) : $(container).children(Selector$9.ACTIVE);
-      var active = activeElements[0];
-      var isTransitioning = callback && active && $(active).hasClass(ClassName$9.FADE);
-
-      var complete = function complete() {
-        return _this2._transitionComplete(element, active, callback);
-      };
-
-      if (active && isTransitioning) {
-        var transitionDuration = Util.getTransitionDurationFromElement(active);
-        $(active).removeClass(ClassName$9.SHOW).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
-      } else {
-        complete();
-      }
-    };
-
-    _proto._transitionComplete = function _transitionComplete(element, active, callback) {
-      if (active) {
-        $(active).removeClass(ClassName$9.ACTIVE);
-        var dropdownChild = $(active.parentNode).find(Selector$9.DROPDOWN_ACTIVE_CHILD)[0];
-
-        if (dropdownChild) {
-          $(dropdownChild).removeClass(ClassName$9.ACTIVE);
-        }
-
-        if (active.getAttribute('role') === 'tab') {
-          active.setAttribute('aria-selected', false);
-        }
-      }
-
-      $(element).addClass(ClassName$9.ACTIVE);
-
-      if (element.getAttribute('role') === 'tab') {
-        element.setAttribute('aria-selected', true);
-      }
-
-      Util.reflow(element);
-
-      if (element.classList.contains(ClassName$9.FADE)) {
-        element.classList.add(ClassName$9.SHOW);
-      }
-
-      if (element.parentNode && $(element.parentNode).hasClass(ClassName$9.DROPDOWN_MENU)) {
-        var dropdownElement = $(element).closest(Selector$9.DROPDOWN)[0];
-
-        if (dropdownElement) {
-          var dropdownToggleList = [].slice.call(dropdownElement.querySelectorAll(Selector$9.DROPDOWN_TOGGLE));
-          $(dropdownToggleList).addClass(ClassName$9.ACTIVE);
-        }
-
-        element.setAttribute('aria-expanded', true);
-      }
-
-      if (callback) {
-        callback();
-      }
-    } // Static
-    ;
-
-    Tab._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var $this = $(this);
-        var data = $this.data(DATA_KEY$9);
-
-        if (!data) {
-          data = new Tab(this);
-          $this.data(DATA_KEY$9, data);
-        }
-
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError("No method named \"" + config + "\"");
-          }
-
-          data[config]();
-        }
-      });
-    };
-
-    _createClass(Tab, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION$9;
-      }
-    }]);
-
-    return Tab;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-
-  $(document).on(Event$9.CLICK_DATA_API, Selector$9.DATA_TOGGLE, function (event) {
-    event.preventDefault();
-
-    Tab._jQueryInterface.call($(this), 'show');
-  });
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME$9] = Tab._jQueryInterface;
-  $.fn[NAME$9].Constructor = Tab;
-
-  $.fn[NAME$9].noConflict = function () {
-    $.fn[NAME$9] = JQUERY_NO_CONFLICT$9;
-    return Tab._jQueryInterface;
-  };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME$a = 'toast';
-  var VERSION$a = '4.3.1';
-  var DATA_KEY$a = 'bs.toast';
-  var EVENT_KEY$a = "." + DATA_KEY$a;
-  var JQUERY_NO_CONFLICT$a = $.fn[NAME$a];
-  var Event$a = {
-    CLICK_DISMISS: "click.dismiss" + EVENT_KEY$a,
-    HIDE: "hide" + EVENT_KEY$a,
-    HIDDEN: "hidden" + EVENT_KEY$a,
-    SHOW: "show" + EVENT_KEY$a,
-    SHOWN: "shown" + EVENT_KEY$a
-  };
-  var ClassName$a = {
-    FADE: 'fade',
-    HIDE: 'hide',
-    SHOW: 'show',
-    SHOWING: 'showing'
-  };
-  var DefaultType$7 = {
-    animation: 'boolean',
-    autohide: 'boolean',
-    delay: 'number'
-  };
-  var Default$7 = {
-    animation: true,
-    autohide: true,
-    delay: 500
-  };
-  var Selector$a = {
-    DATA_DISMISS: '[data-dismiss="toast"]'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-
-  var Toast =
-  /*#__PURE__*/
-  function () {
-    function Toast(element, config) {
-      this._element = element;
-      this._config = this._getConfig(config);
-      this._timeout = null;
-
-      this._setListeners();
-    } // Getters
-
-
-    var _proto = Toast.prototype;
-
-    // Public
-    _proto.show = function show() {
-      var _this = this;
-
-      $(this._element).trigger(Event$a.SHOW);
-
-      if (this._config.animation) {
-        this._element.classList.add(ClassName$a.FADE);
-      }
-
-      var complete = function complete() {
-        _this._element.classList.remove(ClassName$a.SHOWING);
-
-        _this._element.classList.add(ClassName$a.SHOW);
-
-        $(_this._element).trigger(Event$a.SHOWN);
-
-        if (_this._config.autohide) {
-          _this.hide();
-        }
-      };
-
-      this._element.classList.remove(ClassName$a.HIDE);
-
-      this._element.classList.add(ClassName$a.SHOWING);
-
-      if (this._config.animation) {
-        var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-        $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
-      } else {
-        complete();
-      }
-    };
-
-    _proto.hide = function hide(withoutTimeout) {
-      var _this2 = this;
-
-      if (!this._element.classList.contains(ClassName$a.SHOW)) {
-        return;
-      }
-
-      $(this._element).trigger(Event$a.HIDE);
-
-      if (withoutTimeout) {
-        this._close();
-      } else {
-        this._timeout = setTimeout(function () {
-          _this2._close();
-        }, this._config.delay);
-      }
-    };
-
-    _proto.dispose = function dispose() {
-      clearTimeout(this._timeout);
-      this._timeout = null;
-
-      if (this._element.classList.contains(ClassName$a.SHOW)) {
-        this._element.classList.remove(ClassName$a.SHOW);
-      }
-
-      $(this._element).off(Event$a.CLICK_DISMISS);
-      $.removeData(this._element, DATA_KEY$a);
-      this._element = null;
-      this._config = null;
-    } // Private
-    ;
-
-    _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread({}, Default$7, $(this._element).data(), typeof config === 'object' && config ? config : {});
-      Util.typeCheckConfig(NAME$a, config, this.constructor.DefaultType);
-      return config;
-    };
-
-    _proto._setListeners = function _setListeners() {
-      var _this3 = this;
-
-      $(this._element).on(Event$a.CLICK_DISMISS, Selector$a.DATA_DISMISS, function () {
-        return _this3.hide(true);
-      });
-    };
-
-    _proto._close = function _close() {
-      var _this4 = this;
-
-      var complete = function complete() {
-        _this4._element.classList.add(ClassName$a.HIDE);
-
-        $(_this4._element).trigger(Event$a.HIDDEN);
-      };
-
-      this._element.classList.remove(ClassName$a.SHOW);
-
-      if (this._config.animation) {
-        var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-        $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
-      } else {
-        complete();
-      }
-    } // Static
-    ;
-
-    Toast._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var $element = $(this);
-        var data = $element.data(DATA_KEY$a);
-
-        var _config = typeof config === 'object' && config;
-
-        if (!data) {
-          data = new Toast(this, _config);
-          $element.data(DATA_KEY$a, data);
-        }
-
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError("No method named \"" + config + "\"");
-          }
-
-          data[config](this);
-        }
-      });
-    };
-
-    _createClass(Toast, null, [{
-      key: "VERSION",
-      get: function get() {
-        return VERSION$a;
-      }
-    }, {
-      key: "DefaultType",
-      get: function get() {
-        return DefaultType$7;
-      }
-    }, {
-      key: "Default",
-      get: function get() {
-        return Default$7;
-      }
-    }]);
-
-    return Toast;
-  }();
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-
-  $.fn[NAME$a] = Toast._jQueryInterface;
-  $.fn[NAME$a].Constructor = Toast;
-
-  $.fn[NAME$a].noConflict = function () {
-    $.fn[NAME$a] = JQUERY_NO_CONFLICT$a;
-    return Toast._jQueryInterface;
-  };
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): index.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-  (function () {
-    if (typeof $ === 'undefined') {
-      throw new TypeError('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.');
-    }
-
-    var version = $.fn.jquery.split(' ')[0].split('.');
-    var minMajor = 1;
-    var ltMajor = 2;
-    var minMinor = 9;
-    var minPatch = 1;
-    var maxMajor = 4;
-
-    if (version[0] < ltMajor && version[1] < minMinor || version[0] === minMajor && version[1] === minMinor && version[2] < minPatch || version[0] >= maxMajor) {
-      throw new Error('Bootstrap\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0');
-    }
-  })();
-
-  exports.Util = Util;
-  exports.Alert = Alert;
-  exports.Button = Button;
-  exports.Carousel = Carousel;
-  exports.Collapse = Collapse;
-  exports.Dropdown = Dropdown;
-  exports.Modal = Modal;
-  exports.Popover = Popover;
-  exports.Scrollspy = ScrollSpy;
-  exports.Tab = Tab;
-  exports.Toast = Toast;
-  exports.Tooltip = Tooltip;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-}));
-//# sourceMappingURL=bootstrap.js.map
+  // YYYY-MM
+  token = parseTokenMM.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    month = parseInt(token[1], 10) - 1
+    date.setUTCFullYear(year, month)
+    return date
+  }
+
+  // YYYY-DDD or YYYYDDD
+  token = parseTokenDDD.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    var dayOfYear = parseInt(token[1], 10)
+    date.setUTCFullYear(year, 0, dayOfYear)
+    return date
+  }
+
+  // YYYY-MM-DD or YYYYMMDD
+  token = parseTokenMMDD.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    month = parseInt(token[1], 10) - 1
+    var day = parseInt(token[2], 10)
+    date.setUTCFullYear(year, month, day)
+    return date
+  }
+
+  // YYYY-Www or YYYYWww
+  token = parseTokenWww.exec(dateString)
+  if (token) {
+    week = parseInt(token[1], 10) - 1
+    return dayOfISOYear(year, week)
+  }
+
+  // YYYY-Www-D or YYYYWwwD
+  token = parseTokenWwwD.exec(dateString)
+  if (token) {
+    week = parseInt(token[1], 10) - 1
+    var dayOfWeek = parseInt(token[2], 10) - 1
+    return dayOfISOYear(year, week, dayOfWeek)
+  }
+
+  // Invalid ISO-formatted date
+  return null
+}
+
+function parseTime (timeString) {
+  var token
+  var hours
+  var minutes
+
+  // hh
+  token = parseTokenHH.exec(timeString)
+  if (token) {
+    hours = parseFloat(token[1].replace(',', '.'))
+    return (hours % 24) * MILLISECONDS_IN_HOUR
+  }
+
+  // hh:mm or hhmm
+  token = parseTokenHHMM.exec(timeString)
+  if (token) {
+    hours = parseInt(token[1], 10)
+    minutes = parseFloat(token[2].replace(',', '.'))
+    return (hours % 24) * MILLISECONDS_IN_HOUR +
+      minutes * MILLISECONDS_IN_MINUTE
+  }
+
+  // hh:mm:ss or hhmmss
+  token = parseTokenHHMMSS.exec(timeString)
+  if (token) {
+    hours = parseInt(token[1], 10)
+    minutes = parseInt(token[2], 10)
+    var seconds = parseFloat(token[3].replace(',', '.'))
+    return (hours % 24) * MILLISECONDS_IN_HOUR +
+      minutes * MILLISECONDS_IN_MINUTE +
+      seconds * 1000
+  }
+
+  // Invalid ISO-formatted time
+  return null
+}
+
+function parseTimezone (timezoneString) {
+  var token
+  var absoluteOffset
+
+  // Z
+  token = parseTokenTimezoneZ.exec(timezoneString)
+  if (token) {
+    return 0
+  }
+
+  // ±hh
+  token = parseTokenTimezoneHH.exec(timezoneString)
+  if (token) {
+    absoluteOffset = parseInt(token[2], 10) * 60
+    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+  }
+
+  // ±hh:mm or ±hhmm
+  token = parseTokenTimezoneHHMM.exec(timezoneString)
+  if (token) {
+    absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
+    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+  }
+
+  return 0
+}
+
+function dayOfISOYear (isoYear, week, day) {
+  week = week || 0
+  day = day || 0
+  var date = new Date(0)
+  date.setUTCFullYear(isoYear, 0, 4)
+  var fourthOfJanuaryDay = date.getUTCDay() || 7
+  var diff = week * 7 + day + 1 - fourthOfJanuaryDay
+  date.setUTCDate(date.getUTCDate() + diff)
+  return date
+}
+
+module.exports = parse
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_date/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/set_date/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Set the day of the month to the given date.
+ *
+ * @description
+ * Set the day of the month to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} dayOfMonth - the day of the month of the new date
+ * @returns {Date} the new date with the day of the month setted
+ *
+ * @example
+ * // Set the 30th day of the month to 1 September 2014:
+ * var result = setDate(new Date(2014, 8, 1), 30)
+ * //=> Tue Sep 30 2014 00:00:00
+ */
+function setDate (dirtyDate, dirtyDayOfMonth) {
+  var date = parse(dirtyDate)
+  var dayOfMonth = Number(dirtyDayOfMonth)
+  date.setDate(dayOfMonth)
+  return date
+}
+
+module.exports = setDate
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_day/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/date-fns/set_day/index.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var addDays = __webpack_require__(/*! ../add_days/index.js */ "./node_modules/date-fns/add_days/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Set the day of the week to the given date.
+ *
+ * @description
+ * Set the day of the week to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} day - the day of the week of the new date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the new date with the day of the week setted
+ *
+ * @example
+ * // Set Sunday to 1 September 2014:
+ * var result = setDay(new Date(2014, 8, 1), 0)
+ * //=> Sun Aug 31 2014 00:00:00
+ *
+ * @example
+ * // If week starts with Monday, set Sunday to 1 September 2014:
+ * var result = setDay(new Date(2014, 8, 1), 0, {weekStartsOn: 1})
+ * //=> Sun Sep 07 2014 00:00:00
+ */
+function setDay (dirtyDate, dirtyDay, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
+  var date = parse(dirtyDate)
+  var day = Number(dirtyDay)
+  var currentDay = date.getDay()
+
+  var remainder = day % 7
+  var dayIndex = (remainder + 7) % 7
+
+  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
+  return addDays(date, diff)
+}
+
+module.exports = setDay
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_day_of_year/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/set_day_of_year/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Set the day of the year to the given date.
+ *
+ * @description
+ * Set the day of the year to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} dayOfYear - the day of the year of the new date
+ * @returns {Date} the new date with the day of the year setted
+ *
+ * @example
+ * // Set the 2nd day of the year to 2 July 2014:
+ * var result = setDayOfYear(new Date(2014, 6, 2), 2)
+ * //=> Thu Jan 02 2014 00:00:00
+ */
+function setDayOfYear (dirtyDate, dirtyDayOfYear) {
+  var date = parse(dirtyDate)
+  var dayOfYear = Number(dirtyDayOfYear)
+  date.setMonth(0)
+  date.setDate(dayOfYear)
+  return date
+}
+
+module.exports = setDayOfYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_hours/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/set_hours/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Set the hours to the given date.
+ *
+ * @description
+ * Set the hours to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} hours - the hours of the new date
+ * @returns {Date} the new date with the hours setted
+ *
+ * @example
+ * // Set 4 hours to 1 September 2014 11:30:00:
+ * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
+ * //=> Mon Sep 01 2014 04:30:00
+ */
+function setHours (dirtyDate, dirtyHours) {
+  var date = parse(dirtyDate)
+  var hours = Number(dirtyHours)
+  date.setHours(hours)
+  return date
+}
+
+module.exports = setHours
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_iso_day/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/set_iso_day/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var addDays = __webpack_require__(/*! ../add_days/index.js */ "./node_modules/date-fns/add_days/index.js")
+var getISODay = __webpack_require__(/*! ../get_iso_day/index.js */ "./node_modules/date-fns/get_iso_day/index.js")
+
+/**
+ * @category Weekday Helpers
+ * @summary Set the day of the ISO week to the given date.
+ *
+ * @description
+ * Set the day of the ISO week to the given date.
+ * ISO week starts with Monday.
+ * 7 is the index of Sunday, 1 is the index of Monday etc.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} day - the day of the ISO week of the new date
+ * @returns {Date} the new date with the day of the ISO week setted
+ *
+ * @example
+ * // Set Sunday to 1 September 2014:
+ * var result = setISODay(new Date(2014, 8, 1), 7)
+ * //=> Sun Sep 07 2014 00:00:00
+ */
+function setISODay (dirtyDate, dirtyDay) {
+  var date = parse(dirtyDate)
+  var day = Number(dirtyDay)
+  var currentDay = getISODay(date)
+  var diff = day - currentDay
+  return addDays(date, diff)
+}
+
+module.exports = setISODay
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_iso_week/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/set_iso_week/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var getISOWeek = __webpack_require__(/*! ../get_iso_week/index.js */ "./node_modules/date-fns/get_iso_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Set the ISO week to the given date.
+ *
+ * @description
+ * Set the ISO week to the given date, saving the weekday number.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} isoWeek - the ISO week of the new date
+ * @returns {Date} the new date with the ISO week setted
+ *
+ * @example
+ * // Set the 53rd ISO week to 7 August 2004:
+ * var result = setISOWeek(new Date(2004, 7, 7), 53)
+ * //=> Sat Jan 01 2005 00:00:00
+ */
+function setISOWeek (dirtyDate, dirtyISOWeek) {
+  var date = parse(dirtyDate)
+  var isoWeek = Number(dirtyISOWeek)
+  var diff = getISOWeek(date) - isoWeek
+  date.setDate(date.getDate() - diff * 7)
+  return date
+}
+
+module.exports = setISOWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_iso_year/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/set_iso_year/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var startOfISOYear = __webpack_require__(/*! ../start_of_iso_year/index.js */ "./node_modules/date-fns/start_of_iso_year/index.js")
+var differenceInCalendarDays = __webpack_require__(/*! ../difference_in_calendar_days/index.js */ "./node_modules/date-fns/difference_in_calendar_days/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Set the ISO week-numbering year to the given date.
+ *
+ * @description
+ * Set the ISO week-numbering year to the given date,
+ * saving the week number and the weekday number.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} isoYear - the ISO week-numbering year of the new date
+ * @returns {Date} the new date with the ISO week-numbering year setted
+ *
+ * @example
+ * // Set ISO week-numbering year 2007 to 29 December 2008:
+ * var result = setISOYear(new Date(2008, 11, 29), 2007)
+ * //=> Mon Jan 01 2007 00:00:00
+ */
+function setISOYear (dirtyDate, dirtyISOYear) {
+  var date = parse(dirtyDate)
+  var isoYear = Number(dirtyISOYear)
+  var diff = differenceInCalendarDays(date, startOfISOYear(date))
+  var fourthOfJanuary = new Date(0)
+  fourthOfJanuary.setFullYear(isoYear, 0, 4)
+  fourthOfJanuary.setHours(0, 0, 0, 0)
+  date = startOfISOYear(fourthOfJanuary)
+  date.setDate(date.getDate() + diff)
+  return date
+}
+
+module.exports = setISOYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_milliseconds/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/set_milliseconds/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Set the milliseconds to the given date.
+ *
+ * @description
+ * Set the milliseconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} milliseconds - the milliseconds of the new date
+ * @returns {Date} the new date with the milliseconds setted
+ *
+ * @example
+ * // Set 300 milliseconds to 1 September 2014 11:30:40.500:
+ * var result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
+ * //=> Mon Sep 01 2014 11:30:40.300
+ */
+function setMilliseconds (dirtyDate, dirtyMilliseconds) {
+  var date = parse(dirtyDate)
+  var milliseconds = Number(dirtyMilliseconds)
+  date.setMilliseconds(milliseconds)
+  return date
+}
+
+module.exports = setMilliseconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_minutes/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/set_minutes/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Set the minutes to the given date.
+ *
+ * @description
+ * Set the minutes to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} minutes - the minutes of the new date
+ * @returns {Date} the new date with the minutes setted
+ *
+ * @example
+ * // Set 45 minutes to 1 September 2014 11:30:40:
+ * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
+ * //=> Mon Sep 01 2014 11:45:40
+ */
+function setMinutes (dirtyDate, dirtyMinutes) {
+  var date = parse(dirtyDate)
+  var minutes = Number(dirtyMinutes)
+  date.setMinutes(minutes)
+  return date
+}
+
+module.exports = setMinutes
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_month/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/set_month/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var getDaysInMonth = __webpack_require__(/*! ../get_days_in_month/index.js */ "./node_modules/date-fns/get_days_in_month/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Set the month to the given date.
+ *
+ * @description
+ * Set the month to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} month - the month of the new date
+ * @returns {Date} the new date with the month setted
+ *
+ * @example
+ * // Set February to 1 September 2014:
+ * var result = setMonth(new Date(2014, 8, 1), 1)
+ * //=> Sat Feb 01 2014 00:00:00
+ */
+function setMonth (dirtyDate, dirtyMonth) {
+  var date = parse(dirtyDate)
+  var month = Number(dirtyMonth)
+  var year = date.getFullYear()
+  var day = date.getDate()
+
+  var dateWithDesiredMonth = new Date(0)
+  dateWithDesiredMonth.setFullYear(year, month, 15)
+  dateWithDesiredMonth.setHours(0, 0, 0, 0)
+  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)
+  // Set the last day of the new month
+  // if the original date was the last day of the longer month
+  date.setMonth(month, Math.min(day, daysInMonth))
+  return date
+}
+
+module.exports = setMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_quarter/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/set_quarter/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+var setMonth = __webpack_require__(/*! ../set_month/index.js */ "./node_modules/date-fns/set_month/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Set the year quarter to the given date.
+ *
+ * @description
+ * Set the year quarter to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} quarter - the quarter of the new date
+ * @returns {Date} the new date with the quarter setted
+ *
+ * @example
+ * // Set the 2nd quarter to 2 July 2014:
+ * var result = setQuarter(new Date(2014, 6, 2), 2)
+ * //=> Wed Apr 02 2014 00:00:00
+ */
+function setQuarter (dirtyDate, dirtyQuarter) {
+  var date = parse(dirtyDate)
+  var quarter = Number(dirtyQuarter)
+  var oldQuarter = Math.floor(date.getMonth() / 3) + 1
+  var diff = quarter - oldQuarter
+  return setMonth(date, date.getMonth() + diff * 3)
+}
+
+module.exports = setQuarter
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_seconds/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/set_seconds/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Set the seconds to the given date.
+ *
+ * @description
+ * Set the seconds to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} seconds - the seconds of the new date
+ * @returns {Date} the new date with the seconds setted
+ *
+ * @example
+ * // Set 45 seconds to 1 September 2014 11:30:40:
+ * var result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
+ * //=> Mon Sep 01 2014 11:30:45
+ */
+function setSeconds (dirtyDate, dirtySeconds) {
+  var date = parse(dirtyDate)
+  var seconds = Number(dirtySeconds)
+  date.setSeconds(seconds)
+  return date
+}
+
+module.exports = setSeconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/set_year/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/set_year/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Set the year to the given date.
+ *
+ * @description
+ * Set the year to the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} year - the year of the new date
+ * @returns {Date} the new date with the year setted
+ *
+ * @example
+ * // Set year 2013 to 1 September 2014:
+ * var result = setYear(new Date(2014, 8, 1), 2013)
+ * //=> Sun Sep 01 2013 00:00:00
+ */
+function setYear (dirtyDate, dirtyYear) {
+  var date = parse(dirtyDate)
+  var year = Number(dirtyYear)
+  date.setFullYear(year)
+  return date
+}
+
+module.exports = setYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_day/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/start_of_day/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the start of a day for the given date.
+ *
+ * @description
+ * Return the start of a day for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a day
+ *
+ * @example
+ * // The start of a day for 2 September 2014 11:55:00:
+ * var result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 02 2014 00:00:00
+ */
+function startOfDay (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfDay
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_hour/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/start_of_hour/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Return the start of an hour for the given date.
+ *
+ * @description
+ * Return the start of an hour for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of an hour
+ *
+ * @example
+ * // The start of an hour for 2 September 2014 11:55:00:
+ * var result = startOfHour(new Date(2014, 8, 2, 11, 55))
+ * //=> Tue Sep 02 2014 11:00:00
+ */
+function startOfHour (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setMinutes(0, 0, 0)
+  return date
+}
+
+module.exports = startOfHour
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_iso_week/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/date-fns/start_of_iso_week/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfWeek = __webpack_require__(/*! ../start_of_week/index.js */ "./node_modules/date-fns/start_of_week/index.js")
+
+/**
+ * @category ISO Week Helpers
+ * @summary Return the start of an ISO week for the given date.
+ *
+ * @description
+ * Return the start of an ISO week for the given date.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of an ISO week
+ *
+ * @example
+ * // The start of an ISO week for 2 September 2014 11:55:00:
+ * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Mon Sep 01 2014 00:00:00
+ */
+function startOfISOWeek (dirtyDate) {
+  return startOfWeek(dirtyDate, {weekStartsOn: 1})
+}
+
+module.exports = startOfISOWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_iso_year/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/date-fns/start_of_iso_year/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getISOYear = __webpack_require__(/*! ../get_iso_year/index.js */ "./node_modules/date-fns/get_iso_year/index.js")
+var startOfISOWeek = __webpack_require__(/*! ../start_of_iso_week/index.js */ "./node_modules/date-fns/start_of_iso_week/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Return the start of an ISO week-numbering year for the given date.
+ *
+ * @description
+ * Return the start of an ISO week-numbering year,
+ * which always starts 3 days before the year's first Thursday.
+ * The result will be in the local timezone.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of an ISO year
+ *
+ * @example
+ * // The start of an ISO week-numbering year for 2 July 2005:
+ * var result = startOfISOYear(new Date(2005, 6, 2))
+ * //=> Mon Jan 03 2005 00:00:00
+ */
+function startOfISOYear (dirtyDate) {
+  var year = getISOYear(dirtyDate)
+  var fourthOfJanuary = new Date(0)
+  fourthOfJanuary.setFullYear(year, 0, 4)
+  fourthOfJanuary.setHours(0, 0, 0, 0)
+  var date = startOfISOWeek(fourthOfJanuary)
+  return date
+}
+
+module.exports = startOfISOYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_minute/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/start_of_minute/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Return the start of a minute for the given date.
+ *
+ * @description
+ * Return the start of a minute for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a minute
+ *
+ * @example
+ * // The start of a minute for 1 December 2014 22:15:45.400:
+ * var result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * //=> Mon Dec 01 2014 22:15:00
+ */
+function startOfMinute (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setSeconds(0, 0)
+  return date
+}
+
+module.exports = startOfMinute
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_month/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/start_of_month/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Return the start of a month for the given date.
+ *
+ * @description
+ * Return the start of a month for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a month
+ *
+ * @example
+ * // The start of a month for 2 September 2014 11:55:00:
+ * var result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Mon Sep 01 2014 00:00:00
+ */
+function startOfMonth (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setDate(1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfMonth
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_quarter/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/start_of_quarter/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Return the start of a year quarter for the given date.
+ *
+ * @description
+ * Return the start of a year quarter for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a quarter
+ *
+ * @example
+ * // The start of a quarter for 2 September 2014 11:55:00:
+ * var result = startOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Jul 01 2014 00:00:00
+ */
+function startOfQuarter (dirtyDate) {
+  var date = parse(dirtyDate)
+  var currentMonth = date.getMonth()
+  var month = currentMonth - currentMonth % 3
+  date.setMonth(month, 1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfQuarter
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_second/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/date-fns/start_of_second/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Return the start of a second for the given date.
+ *
+ * @description
+ * Return the start of a second for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a second
+ *
+ * @example
+ * // The start of a second for 1 December 2014 22:15:45.400:
+ * var result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * //=> Mon Dec 01 2014 22:15:45.000
+ */
+function startOfSecond (dirtyDate) {
+  var date = parse(dirtyDate)
+  date.setMilliseconds(0)
+  return date
+}
+
+module.exports = startOfSecond
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_today/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/start_of_today/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var startOfDay = __webpack_require__(/*! ../start_of_day/index.js */ "./node_modules/date-fns/start_of_day/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Return the start of today.
+ *
+ * @description
+ * Return the start of today.
+ *
+ * @returns {Date} the start of today
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = startOfToday()
+ * //=> Mon Oct 6 2014 00:00:00
+ */
+function startOfToday () {
+  return startOfDay(new Date())
+}
+
+module.exports = startOfToday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_tomorrow/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/date-fns/start_of_tomorrow/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * @category Day Helpers
+ * @summary Return the start of tomorrow.
+ *
+ * @description
+ * Return the start of tomorrow.
+ *
+ * @returns {Date} the start of tomorrow
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = startOfTomorrow()
+ * //=> Tue Oct 7 2014 00:00:00
+ */
+function startOfTomorrow () {
+  var now = new Date()
+  var year = now.getFullYear()
+  var month = now.getMonth()
+  var day = now.getDate()
+
+  var date = new Date(0)
+  date.setFullYear(year, month, day + 1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfTomorrow
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_week/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/start_of_week/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Return the start of a week for the given date.
+ *
+ * @description
+ * Return the start of a week for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the start of a week
+ *
+ * @example
+ * // The start of a week for 2 September 2014 11:55:00:
+ * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sun Aug 31 2014 00:00:00
+ *
+ * @example
+ * // If the week starts on Monday, the start of the week for 2 September 2014 11:55:00:
+ * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
+ * //=> Mon Sep 01 2014 00:00:00
+ */
+function startOfWeek (dirtyDate, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
+
+  var date = parse(dirtyDate)
+  var day = date.getDay()
+  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
+
+  date.setDate(date.getDate() - diff)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfWeek
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_year/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/start_of_year/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse = __webpack_require__(/*! ../parse/index.js */ "./node_modules/date-fns/parse/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Return the start of a year for the given date.
+ *
+ * @description
+ * Return the start of a year for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|String|Number} date - the original date
+ * @returns {Date} the start of a year
+ *
+ * @example
+ * // The start of a year for 2 September 2014 11:55:00:
+ * var result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
+ * //=> Wed Jan 01 2014 00:00:00
+ */
+function startOfYear (dirtyDate) {
+  var cleanDate = parse(dirtyDate)
+  var date = new Date(0)
+  date.setFullYear(cleanDate.getFullYear(), 0, 1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfYear
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/start_of_yesterday/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/date-fns/start_of_yesterday/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * @category Day Helpers
+ * @summary Return the start of yesterday.
+ *
+ * @description
+ * Return the start of yesterday.
+ *
+ * @returns {Date} the start of yesterday
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = startOfYesterday()
+ * //=> Sun Oct 5 2014 00:00:00
+ */
+function startOfYesterday () {
+  var now = new Date()
+  var year = now.getFullYear()
+  var month = now.getMonth()
+  var day = now.getDate()
+
+  var date = new Date(0)
+  date.setFullYear(year, month, day - 1)
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
+module.exports = startOfYesterday
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_days/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/date-fns/sub_days/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addDays = __webpack_require__(/*! ../add_days/index.js */ "./node_modules/date-fns/add_days/index.js")
+
+/**
+ * @category Day Helpers
+ * @summary Subtract the specified number of days from the given date.
+ *
+ * @description
+ * Subtract the specified number of days from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of days to be subtracted
+ * @returns {Date} the new date with the days subtracted
+ *
+ * @example
+ * // Subtract 10 days from 1 September 2014:
+ * var result = subDays(new Date(2014, 8, 1), 10)
+ * //=> Fri Aug 22 2014 00:00:00
+ */
+function subDays (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addDays(dirtyDate, -amount)
+}
+
+module.exports = subDays
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_hours/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/sub_hours/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addHours = __webpack_require__(/*! ../add_hours/index.js */ "./node_modules/date-fns/add_hours/index.js")
+
+/**
+ * @category Hour Helpers
+ * @summary Subtract the specified number of hours from the given date.
+ *
+ * @description
+ * Subtract the specified number of hours from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of hours to be subtracted
+ * @returns {Date} the new date with the hours subtracted
+ *
+ * @example
+ * // Subtract 2 hours from 11 July 2014 01:00:00:
+ * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
+ * //=> Thu Jul 10 2014 23:00:00
+ */
+function subHours (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addHours(dirtyDate, -amount)
+}
+
+module.exports = subHours
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_iso_years/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/sub_iso_years/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addISOYears = __webpack_require__(/*! ../add_iso_years/index.js */ "./node_modules/date-fns/add_iso_years/index.js")
+
+/**
+ * @category ISO Week-Numbering Year Helpers
+ * @summary Subtract the specified number of ISO week-numbering years from the given date.
+ *
+ * @description
+ * Subtract the specified number of ISO week-numbering years from the given date.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of ISO week-numbering years to be subtracted
+ * @returns {Date} the new date with the ISO week-numbering years subtracted
+ *
+ * @example
+ * // Subtract 5 ISO week-numbering years from 1 September 2014:
+ * var result = subISOYears(new Date(2014, 8, 1), 5)
+ * //=> Mon Aug 31 2009 00:00:00
+ */
+function subISOYears (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addISOYears(dirtyDate, -amount)
+}
+
+module.exports = subISOYears
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_milliseconds/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/sub_milliseconds/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addMilliseconds = __webpack_require__(/*! ../add_milliseconds/index.js */ "./node_modules/date-fns/add_milliseconds/index.js")
+
+/**
+ * @category Millisecond Helpers
+ * @summary Subtract the specified number of milliseconds from the given date.
+ *
+ * @description
+ * Subtract the specified number of milliseconds from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of milliseconds to be subtracted
+ * @returns {Date} the new date with the milliseconds subtracted
+ *
+ * @example
+ * // Subtract 750 milliseconds from 10 July 2014 12:45:30.000:
+ * var result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * //=> Thu Jul 10 2014 12:45:29.250
+ */
+function subMilliseconds (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMilliseconds(dirtyDate, -amount)
+}
+
+module.exports = subMilliseconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_minutes/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/sub_minutes/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addMinutes = __webpack_require__(/*! ../add_minutes/index.js */ "./node_modules/date-fns/add_minutes/index.js")
+
+/**
+ * @category Minute Helpers
+ * @summary Subtract the specified number of minutes from the given date.
+ *
+ * @description
+ * Subtract the specified number of minutes from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of minutes to be subtracted
+ * @returns {Date} the new date with the mintues subtracted
+ *
+ * @example
+ * // Subtract 30 minutes from 10 July 2014 12:00:00:
+ * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
+ * //=> Thu Jul 10 2014 11:30:00
+ */
+function subMinutes (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMinutes(dirtyDate, -amount)
+}
+
+module.exports = subMinutes
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_months/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/sub_months/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addMonths = __webpack_require__(/*! ../add_months/index.js */ "./node_modules/date-fns/add_months/index.js")
+
+/**
+ * @category Month Helpers
+ * @summary Subtract the specified number of months from the given date.
+ *
+ * @description
+ * Subtract the specified number of months from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of months to be subtracted
+ * @returns {Date} the new date with the months subtracted
+ *
+ * @example
+ * // Subtract 5 months from 1 February 2015:
+ * var result = subMonths(new Date(2015, 1, 1), 5)
+ * //=> Mon Sep 01 2014 00:00:00
+ */
+function subMonths (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addMonths(dirtyDate, -amount)
+}
+
+module.exports = subMonths
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_quarters/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/sub_quarters/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addQuarters = __webpack_require__(/*! ../add_quarters/index.js */ "./node_modules/date-fns/add_quarters/index.js")
+
+/**
+ * @category Quarter Helpers
+ * @summary Subtract the specified number of year quarters from the given date.
+ *
+ * @description
+ * Subtract the specified number of year quarters from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of quarters to be subtracted
+ * @returns {Date} the new date with the quarters subtracted
+ *
+ * @example
+ * // Subtract 3 quarters from 1 September 2014:
+ * var result = subQuarters(new Date(2014, 8, 1), 3)
+ * //=> Sun Dec 01 2013 00:00:00
+ */
+function subQuarters (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addQuarters(dirtyDate, -amount)
+}
+
+module.exports = subQuarters
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_seconds/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/sub_seconds/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addSeconds = __webpack_require__(/*! ../add_seconds/index.js */ "./node_modules/date-fns/add_seconds/index.js")
+
+/**
+ * @category Second Helpers
+ * @summary Subtract the specified number of seconds from the given date.
+ *
+ * @description
+ * Subtract the specified number of seconds from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of seconds to be subtracted
+ * @returns {Date} the new date with the seconds subtracted
+ *
+ * @example
+ * // Subtract 30 seconds from 10 July 2014 12:45:00:
+ * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
+ * //=> Thu Jul 10 2014 12:44:30
+ */
+function subSeconds (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addSeconds(dirtyDate, -amount)
+}
+
+module.exports = subSeconds
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_weeks/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/sub_weeks/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addWeeks = __webpack_require__(/*! ../add_weeks/index.js */ "./node_modules/date-fns/add_weeks/index.js")
+
+/**
+ * @category Week Helpers
+ * @summary Subtract the specified number of weeks from the given date.
+ *
+ * @description
+ * Subtract the specified number of weeks from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of weeks to be subtracted
+ * @returns {Date} the new date with the weeks subtracted
+ *
+ * @example
+ * // Subtract 4 weeks from 1 September 2014:
+ * var result = subWeeks(new Date(2014, 8, 1), 4)
+ * //=> Mon Aug 04 2014 00:00:00
+ */
+function subWeeks (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addWeeks(dirtyDate, -amount)
+}
+
+module.exports = subWeeks
+
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/sub_years/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/date-fns/sub_years/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var addYears = __webpack_require__(/*! ../add_years/index.js */ "./node_modules/date-fns/add_years/index.js")
+
+/**
+ * @category Year Helpers
+ * @summary Subtract the specified number of years from the given date.
+ *
+ * @description
+ * Subtract the specified number of years from the given date.
+ *
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of years to be subtracted
+ * @returns {Date} the new date with the years subtracted
+ *
+ * @example
+ * // Subtract 5 years from 1 September 2014:
+ * var result = subYears(new Date(2014, 8, 1), 5)
+ * //=> Tue Sep 01 2009 00:00:00
+ */
+function subYears (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
+  return addYears(dirtyDate, -amount)
+}
+
+module.exports = subYears
 
 
 /***/ }),
@@ -36920,6 +40373,575 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target, parent) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target, parent);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertAt.before, target);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/timers-browserify/main.js":
 /*!************************************************!*\
   !*** ./node_modules/timers-browserify/main.js ***!
@@ -36995,10 +41017,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddProduct.vue?vue&type=template&id=57bf9ab9&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddProduct.vue?vue&type=template&id=57bf9ab9&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -37010,28 +41032,270 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("form", { on: { submit: _vm.handleSubmit } }, [
+        _c("div", { staticClass: "form-row align-items-center" }, [
+          _c("div", { staticClass: "col-4" }, [
+            _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.product.name,
+                  expression: "product.name"
+                }
+              ],
+              staticClass: "form-control",
+              class: _vm.errors.name ? "is-invalid" : "",
+              attrs: {
+                type: "text",
+                id: "name",
+                placeholder: "Name",
+                "data-ewan": JSON.stringify(_vm.errors)
+              },
+              domProps: { value: _vm.product.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.product, "name", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _vm.errors.name
+                ? _c("span", [_vm._v(_vm._s(_vm.errors.name[0]))])
+                : _c("span", [_vm._v(" ")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-3" }, [
+            _c("label", { attrs: { for: "quantity" } }, [_vm._v("Quantity")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.product.quantity,
+                  expression: "product.quantity"
+                }
+              ],
+              staticClass: "form-control",
+              class: _vm.errors.quantity ? "is-invalid" : "",
+              attrs: { type: "text", id: "quantity", placeholder: "1" },
+              domProps: { value: _vm.product.quantity },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.product, "quantity", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _vm.errors.quantity
+                ? _c("span", [_vm._v(_vm._s(_vm.errors.quantity[0]))])
+                : _c("span", [_vm._v(" ")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-3" }, [
+            _c("label", { attrs: { for: "price" } }, [_vm._v("Price")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.product.price,
+                  expression: "product.price"
+                }
+              ],
+              staticClass: "form-control",
+              class: _vm.errors.price ? "is-invalid" : "",
+              attrs: { type: "text", id: "price", placeholder: "20" },
+              domProps: { value: _vm.product.price },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.product, "price", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _vm.errors.price
+                ? _c("span", [_vm._v(_vm._s(_vm.errors.price[0]))])
+                : _c("span", [_vm._v(" ")])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.message
+        ? _c("div", { staticClass: "alert alert-success" }, [
+            _vm._v("\n            " + _vm._s(_vm.message) + "\n        ")
+          ])
+        : _vm._e()
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("div", { staticStyle: { height: "18px" } }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary mb-2",
+          staticStyle: { width: "100%" },
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Submit")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=template&id=332fccf4&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/App.vue?vue&type=template&id=332fccf4&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [_c("AddProduct"), _vm._v(" "), _c("ProductList")],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductList.vue?vue&type=template&id=438ffe92&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProductList.vue?vue&type=template&id=438ffe92&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("table", { staticClass: "table" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "tbody",
+      _vm._l(_vm.products, function(product) {
+        return _c("tr", [
+          _c("td", [
+            _vm._v(
+              "\n                " + _vm._s(product.name) + "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              "\n                " + _vm._s(product.price) + "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              "\n                " + _vm._s(product.quantity) + "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.formatDate(product.created_at)) +
+                "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.totalValue(product.price, product.quantity)) +
+                "\n            "
+            )
           ])
         ])
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("tfoot", [
+      _c("tr", [
+        _c("th", { attrs: { colspan: "4", "text-align": "right" } }, [
+          _vm._v("\n            Total\n        ")
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v("\n            " + _vm._s(_vm.sumTotalValue) + "\n        ")
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("\n                Name\n            ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("\n                Price\n            ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("\n                Quantity\n            ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("\n                Date Sumitted\n            ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("\n                Total Price\n            ")])
       ])
     ])
   }
@@ -49114,6 +53378,1037 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/vuex/dist/vuex.esm.js":
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: default, Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/**
+ * vuex v3.1.1
+ * (c) 2019 Evan You
+ * @license MIT
+ */
+function applyMixin (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+}
+
+var target = typeof window !== 'undefined'
+  ? window
+  : typeof global !== 'undefined'
+    ? global
+    : {};
+var devtoolHook = target.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+function partial (fn, arg) {
+  return function () {
+    return fn(arg)
+  }
+}
+
+// Base data struct for store's module, package with some attribute and method
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  // Store some children item
+  this._children = Object.create(null);
+  // Store the origin module object which passed by programmer
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+
+  // Store the origin module's state
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors = { namespaced: { configurable: true } };
+
+prototypeAccessors.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if (true) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  if (!parent.getChild(key).runtime) { return }
+
+  parent.removeChild(key);
+};
+
+function update (path, targetModule, newModule) {
+  if (true) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if (true) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if (true) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  var state = this._modules.root.state;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  var useDevtools = options.devtools !== undefined ? options.devtools : Vue.config.devtools;
+  if (useDevtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors$1 = { state: { configurable: true } };
+
+prototypeAccessors$1.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors$1.state.set = function (v) {
+  if (true) {
+    assert(false, "use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+     true &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  try {
+    this._actionSubscribers
+      .filter(function (sub) { return sub.before; })
+      .forEach(function (sub) { return sub.before(action, this$1.state); });
+  } catch (e) {
+    if (true) {
+      console.warn("[vuex] error in before action subscribers: ");
+      console.error(e);
+    }
+  }
+
+  var result = entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload);
+
+  return result.then(function (res) {
+    try {
+      this$1._actionSubscribers
+        .filter(function (sub) { return sub.after; })
+        .forEach(function (sub) { return sub.after(action, this$1.state); });
+    } catch (e) {
+      if (true) {
+        console.warn("[vuex] error in after action subscribers: ");
+        console.error(e);
+      }
+    }
+    return res
+  })
+};
+
+Store.prototype.subscribe = function subscribe (fn) {
+  return genericSubscribe(fn, this._subscribers)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn) {
+  var subs = typeof fn === 'function' ? { before: fn } : fn;
+  return genericSubscribe(subs, this._actionSubscribers)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if (true) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors$1 );
+
+function genericSubscribe (fn, subs) {
+  if (subs.indexOf(fn) < 0) {
+    subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    // direct inline function use will lead to closure preserving oldVm.
+    // using partial to return function with only arguments preserved in closure enviroment.
+    computed[key] = partial(fn, store);
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  var gettersProxy = {};
+
+  var splitPos = namespace.length;
+  Object.keys(store.getters).forEach(function (type) {
+    // skip if the target getter is not match this namespace
+    if (type.slice(0, splitPos) !== namespace) { return }
+
+    // extract local getter type
+    var localType = type.slice(splitPos);
+
+    // Add a port to the getters proxy.
+    // Define as getter property because
+    // we do not want to evaluate the getters in this time.
+    Object.defineProperty(gettersProxy, localType, {
+      get: function () { return store.getters[type]; },
+      enumerable: true
+    });
+  });
+
+  return gettersProxy
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload, cb) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload, cb);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if (true) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if (true) {
+      assert(store._committing, "do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.length
+    ? path.reduce(function (state, key) { return state[key]; }, state)
+    : state
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if (true) {
+    assert(typeof type === 'string', ("expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if (true) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+/**
+ * Reduce the code which written in Vue.js for getting the state.
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} states # Object's item can be a function which accept state and getters for param, you can do something for state and getters in it.
+ * @param {Object}
+ */
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for committing the mutation
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} mutations # Object's item can be a function which accept `commit` function as the first param, it can accept anthor params. You can commit mutation and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // Get the commit method from store
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for getting the getters
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} getters
+ * @return {Object}
+ */
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    // The namespace has been mutated by normalizeNamespace
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if ( true && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for dispatch the action
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} actions # Object's item can be a function which accept `dispatch` function as the first param, it can accept anthor params. You can dispatch action and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // get dispatch function from store
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Rebinding namespace param for mapXXX function in special scoped, and return them by simple object
+ * @param {String} namespace
+ * @return {Object}
+ */
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+/**
+ * Normalize the map
+ * normalizeMap([1, 2, 3]) => [ { key: 1, val: 1 }, { key: 2, val: 2 }, { key: 3, val: 3 } ]
+ * normalizeMap({a: 1, b: 2, c: 3}) => [ { key: 'a', val: 1 }, { key: 'b', val: 2 }, { key: 'c', val: 3 } ]
+ * @param {Array|Object} map
+ * @return {Object}
+ */
+function normalizeMap (map) {
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+/**
+ * Return a function expect two param contains namespace and map. it will normalize the namespace and then the param's function will handle the new namespace and the map.
+ * @param {Function} fn
+ * @return {Function}
+ */
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+/**
+ * Search a special module from store by namespace. if module not exist, print error message.
+ * @param {Object} store
+ * @param {String} helper
+ * @param {String} namespace
+ * @return {Object}
+ */
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if ( true && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+var index_esm = {
+  Store: Store,
+  install: install,
+  version: '3.1.1',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index_esm);
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -49182,9 +54477,13 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49193,25 +54492,14 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
+  render: function render(h) {
+    return h(_components_App__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  }
 });
 
 /***/ }),
@@ -49232,9 +54520,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
-  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
-  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // require('bootstrap');
 } catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -49274,17 +54560,191 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue ***!
-  \******************************************************/
+/***/ "./resources/js/components/AddProduct.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/AddProduct.vue ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony import */ var _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _AddProduct_vue_vue_type_template_id_57bf9ab9_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddProduct.vue?vue&type=template&id=57bf9ab9&scoped=true& */ "./resources/js/components/AddProduct.vue?vue&type=template&id=57bf9ab9&scoped=true&");
+/* harmony import */ var _AddProduct_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddProduct.vue?vue&type=script&lang=js& */ "./resources/js/components/AddProduct.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AddProduct_vue_vue_type_style_index_0_id_57bf9ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css& */ "./resources/js/components/AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AddProduct_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddProduct_vue_vue_type_template_id_57bf9ab9_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddProduct_vue_vue_type_template_id_57bf9ab9_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "57bf9ab9",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AddProduct.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AddProduct.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/AddProduct.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AddProduct.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddProduct.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css& ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_style_index_0_id_57bf9ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddProduct.vue?vue&type=style&index=0&id=57bf9ab9&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_style_index_0_id_57bf9ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_style_index_0_id_57bf9ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_style_index_0_id_57bf9ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_style_index_0_id_57bf9ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_style_index_0_id_57bf9ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AddProduct.vue?vue&type=template&id=57bf9ab9&scoped=true&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/AddProduct.vue?vue&type=template&id=57bf9ab9&scoped=true& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_template_id_57bf9ab9_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AddProduct.vue?vue&type=template&id=57bf9ab9&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddProduct.vue?vue&type=template&id=57bf9ab9&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_template_id_57bf9ab9_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddProduct_vue_vue_type_template_id_57bf9ab9_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/App.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/components/App.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _App_vue_vue_type_template_id_332fccf4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=332fccf4&scoped=true& */ "./resources/js/components/App.vue?vue&type=template&id=332fccf4&scoped=true&");
+/* harmony import */ var _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js& */ "./resources/js/components/App.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _App_vue_vue_type_style_index_0_id_332fccf4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css& */ "./resources/js/components/App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _App_vue_vue_type_template_id_332fccf4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _App_vue_vue_type_template_id_332fccf4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "332fccf4",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/App.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/App.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/App.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css& ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_332fccf4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=style&index=0&id=332fccf4&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_332fccf4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_332fccf4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_332fccf4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_332fccf4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_332fccf4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/App.vue?vue&type=template&id=332fccf4&scoped=true&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/App.vue?vue&type=template&id=332fccf4&scoped=true& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_332fccf4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=template&id=332fccf4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/App.vue?vue&type=template&id=332fccf4&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_332fccf4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_332fccf4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ProductList.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/ProductList.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProductList_vue_vue_type_template_id_438ffe92_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProductList.vue?vue&type=template&id=438ffe92&scoped=true& */ "./resources/js/components/ProductList.vue?vue&type=template&id=438ffe92&scoped=true&");
+/* harmony import */ var _ProductList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductList.vue?vue&type=script&lang=js& */ "./resources/js/components/ProductList.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -49294,52 +54754,137 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ProductList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProductList_vue_vue_type_template_id_438ffe92_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProductList_vue_vue_type_template_id_438ffe92_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "438ffe92",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/ExampleComponent.vue"
+component.options.__file = "resources/js/components/ProductList.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/components/ProductList.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/ProductList.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ProductList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/ProductList.vue?vue&type=template&id=438ffe92&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/ProductList.vue?vue&type=template&id=438ffe92&scoped=true& ***!
+  \********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductList_vue_vue_type_template_id_438ffe92_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ProductList.vue?vue&type=template&id=438ffe92&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductList.vue?vue&type=template&id=438ffe92&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductList_vue_vue_type_template_id_438ffe92_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductList_vue_vue_type_template_id_438ffe92_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/store/index.js":
+/*!*************************************!*\
+  !*** ./resources/js/store/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _modules_product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/product */ "./resources/js/store/modules/product.js");
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+var debug = "development" !== 'production';
+/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  modules: {
+    product: _modules_product__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  strict: debug
+}));
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/product.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/modules/product.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: {
+    products: [],
+    hasLoaded: false
+  },
+  getters: {
+    products: function products(state) {
+      return state.products;
+    }
+  },
+  actions: {
+    fetchProducts: function fetchProducts(_ref) {
+      var commit = _ref.commit;
+      return new Promise(function (resolve, reject) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/products').then(function (response) {
+          commit('setProducts', response.data.data);
+          resolve(response.data.data);
+        })["catch"](function (error) {
+          reject(error.response.data);
+        });
+      });
+    },
+    addProduct: function addProduct(_ref2, product) {
+      var commit = _ref2.commit;
+      return new Promise(function (resolve, reject) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/products', product).then(function (response) {
+          commit('addProduct', response.data.data);
+          resolve(response.data);
+        })["catch"](function (error) {
+          reject(error.response.data);
+        });
+      });
+    }
+  },
+  mutations: {
+    setProducts: function setProducts(state, products) {
+      return state.products = products;
+    },
+    addProduct: function addProduct(state, product) {
+      return state.products.splice(0, 0, product);
+    }
+  }
+});
 
 /***/ }),
 

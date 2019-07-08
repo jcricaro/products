@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index(ProductRepository $repository)
     {
-        return response()->json($repository->all());
+        return response()->json(['data' => $repository->all()]);
     }
 
     /**
@@ -28,8 +28,8 @@ class ProductController extends Controller
         $product = $repository->store($addProduct->only(['name', 'quantity', 'price']));
 
         return response()->json([
-            'product' => $product,
-            'message' => 'Created'
+            'data' => $product,
+            'message' => 'Product added!'
         ], 201);
     }
 
@@ -60,6 +60,5 @@ class ProductController extends Controller
         return response()->json([
             'message' => 'Deleted'
         ]);
-
     }
 }

@@ -26,7 +26,7 @@ class AddProduct extends FormRequest
         return [
             'name' => 'required',
             'quantity' => 'required|integer',
-            'price' => 'required|decimal'
+            'price' => 'required|numeric'
         ];
     }
 }
