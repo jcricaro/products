@@ -4,16 +4,36 @@ namespace App\CT\Repositories\Json;
 
 
 use App\CT\Repositories\ProductRepository;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 
-abstract class JsonProductRepository implements ProductRepository
+class JsonProductRepository implements ProductRepository
 {
+    /**
+     * @return mixed
+     */
+    private function read()
+    {
+        $products = Storage::get('products.json');
+
+        return collect(json_decode($products, true));
+    }
+
+    /**
+     * @param Collection $products
+     */
+    private function save(Collection $products)
+    {
+        Storage::put('products.json', $products->toJson());
+    }
+
 
     /**
      * @return mixed
      */
     public function all()
     {
-        // TODO: Implement all() method.
+        return $this->read()->sortByDesc('created_at')->values()->all();
     }
 
     /**
@@ -22,7 +42,9 @@ abstract class JsonProductRepository implements ProductRepository
      */
     public function get($id)
     {
-        // TODO: Implement get() method.
+        $products = $this->read();
+
+        return $products->firstWhere('id', $id);
     }
 
     /**
@@ -31,7 +53,7 @@ abstract class JsonProductRepository implements ProductRepository
      */
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+
     }
 
     /**
@@ -41,7 +63,9 @@ abstract class JsonProductRepository implements ProductRepository
      */
     public function update($id, $data = [])
     {
-        // TODO: Implement update() method.
+        $products = $this->read();
+
+
     }
 
     /**
